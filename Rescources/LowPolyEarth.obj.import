@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3n3wt6lv812n"
+path="res://.godot/imported/LowPolyEarth.obj-2507e3601f343a08ef6fb191cc120db9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LowPolyEarth.obj-2507e3601f343a08ef6fb191cc120db9.mesh"]
+
+source_file="res://Rescources/LowPolyEarth.obj"
+dest_files=["res://.godot/imported/LowPolyEarth.obj-2507e3601f343a08ef6fb191cc120db9.mesh", "res://.godot/imported/LowPolyEarth.obj-2507e3601f343a08ef6fb191cc120db9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

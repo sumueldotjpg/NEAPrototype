@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2rofp84efgmr"]
+
+[ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="1_eg5km"]
+[ext_resource type="Script" path="res://Scripts/ConsoleControl.cs" id="2_8ple5"]
+
+[node name="ConsoleScene" type="Node2D"]
+
+[node name="ButtonControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GlobeButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 24.0
+offset_right = 641.0
+offset_bottom = 70.0
+text = "Globe"
+script = ExtResource("1_eg5km")
+
+[node name="ConsoleControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 42.0
+offset_right = 210.0
+offset_bottom = 154.0
+script = ExtResource("2_8ple5")
+
+[node name="ConsoleRichTextLabel" type="RichTextLabel" parent="ConsoleControl"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 48.0
+offset_right = 1073.0
+offset_bottom = 590.0
+
+[node name="ConsoleLineEdit" type="LineEdit" parent="ConsoleControl"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 72.0
+offset_right = 781.0
+offset_bottom = 209.0
