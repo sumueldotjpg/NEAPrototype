@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg7rvqusyrfuj"]
+[gd_scene load_steps=7 format=3 uid="uid://cg7rvqusyrfuj"]
 
 [ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="1_eg5km"]
+[ext_resource type="Script" path="res://Scripts/UpgradeButtonHandler.cs" id="1_nnlou"]
+[ext_resource type="Script" path="res://Scripts/NPCButtonHandler.cs" id="2_rbjtw"]
 [ext_resource type="Script" path="res://Scripts/ConsoleInputHandler.cs" id="2_xkb5v"]
+[ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="4_lwe8r"]
+[ext_resource type="Script" path="res://Scripts/SettingsButtonHandler.cs" id="5_nxe1y"]
 
 [node name="ConsoleScene" type="Node2D"]
 
@@ -11,14 +15,50 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="UpgradeButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 94.0
+text = "Upgrades"
+script = ExtResource("1_nnlou")
+
+[node name="NPCButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 26.0
+offset_right = 446.0
+offset_bottom = 96.0
+text = "NPC's"
+script = ExtResource("2_rbjtw")
+
 [node name="GlobeButton" type="Button" parent="ButtonControl"]
 layout_mode = 0
-offset_left = 499.0
-offset_top = 24.0
-offset_right = 641.0
-offset_bottom = 70.0
+offset_left = 496.0
+offset_top = 26.0
+offset_right = 656.0
+offset_bottom = 96.0
 text = "Globe"
 script = ExtResource("1_eg5km")
+
+[node name="ConsoleButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 25.0
+offset_right = 866.0
+offset_bottom = 95.0
+text = "Console"
+script = ExtResource("4_lwe8r")
+
+[node name="SettingsButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 24.0
+offset_right = 1076.0
+offset_bottom = 94.0
+text = "Settings"
+script = ExtResource("5_nxe1y")
 
 [node name="ConsoleControl" type="Control" parent="."]
 layout_mode = 3

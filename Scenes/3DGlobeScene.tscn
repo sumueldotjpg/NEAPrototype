@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmgrpegw0q5ia"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3n3wt6lv812n" path="res://Rescources/LowPolyEarth.obj" id="1_cahhr"]
+[ext_resource type="Script" path="res://Scripts/LowPolyEarthRotation.cs" id="2_nbyrn"]
+[ext_resource type="Material" uid="uid://doipc4rv2t042" path="res://Rescources/SeaBlue.tres" id="2_tiau0"]
+[ext_resource type="Material" uid="uid://cgny1cj4pxyc0" path="res://Rescources/GrassGreen.tres" id="3_2b6m6"]
+
+[node name="GlobeScene" type="Node3D"]
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1575)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74359)
+
+[node name="LowPolyEarth" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_cahhr")
+surface_material_override/0 = ExtResource("2_tiau0")
+surface_material_override/1 = ExtResource("3_2b6m6")
+surface_material_override/2 = ExtResource("3_2b6m6")
+surface_material_override/3 = ExtResource("3_2b6m6")
+script = ExtResource("2_nbyrn")

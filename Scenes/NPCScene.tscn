@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://u62yg7noagd6"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeButtonHandler.cs" id="1_3t0cx"]
+[ext_resource type="Script" path="res://Scripts/NPCButtonHandler.cs" id="2_pmaoh"]
+[ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="3_iomcu"]
+[ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="4_nwjle"]
+[ext_resource type="Script" path="res://Scripts/SettingsButtonHandler.cs" id="5_a0ra4"]
+
+[node name="NPCScreen" type="Node2D"]
+
+[node name="ButtonControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeButton" type="Button" parent="ButtonControl"]
+offset_left = 76.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 94.0
+text = "Upgrades"
+script = ExtResource("1_3t0cx")
+
+[node name="NPCButton" type="Button" parent="ButtonControl"]
+offset_left = 286.0
+offset_top = 26.0
+offset_right = 446.0
+offset_bottom = 96.0
+text = "NPC's"
+script = ExtResource("2_pmaoh")
+
+[node name="GlobeButton" type="Button" parent="ButtonControl"]
+offset_left = 496.0
+offset_top = 26.0
+offset_right = 656.0
+offset_bottom = 96.0
+text = "Globe"
+script = ExtResource("3_iomcu")
+
+[node name="ConsoleButton" type="Button" parent="ButtonControl"]
+offset_left = 706.0
+offset_top = 25.0
+offset_right = 866.0
+offset_bottom = 95.0
+text = "Console"
+script = ExtResource("4_nwjle")
+
+[node name="SettingsButton" type="Button" parent="ButtonControl"]
+offset_left = 916.0
+offset_top = 24.0
+offset_right = 1076.0
+offset_bottom = 94.0
+text = "Settings"
+script = ExtResource("5_a0ra4")

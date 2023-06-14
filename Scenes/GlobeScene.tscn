@@ -1,22 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmgrpegw0q5ia"]
+[gd_scene load_steps=7 format=3 uid="uid://4qtro0aeiqq4"]
 
-[ext_resource type="ArrayMesh" uid="uid://b3n3wt6lv812n" path="res://Rescources/LowPolyEarth.obj" id="1_cahhr"]
-[ext_resource type="Script" path="res://Scripts/LowPolyEarthRotation.cs" id="2_nbyrn"]
-[ext_resource type="Material" uid="uid://doipc4rv2t042" path="res://Rescources/SeaBlue.tres" id="2_tiau0"]
-[ext_resource type="Material" uid="uid://cgny1cj4pxyc0" path="res://Rescources/GrassGreen.tres" id="3_2b6m6"]
+[ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
+[ext_resource type="Script" path="res://Scripts/UpgradeButtonHandler.cs" id="2_kq0q1"]
+[ext_resource type="Script" path="res://Scripts/NPCButtonHandler.cs" id="3_t6jib"]
+[ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="4_84k20"]
+[ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="5_bwu3w"]
+[ext_resource type="Script" path="res://Scripts/SettingsButtonHandler.cs" id="6_pv58c"]
 
-[node name="GlobeScene" type="Node3D"]
+[node name="MainScreen" type="Node2D"]
 
-[node name="Light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1575)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 351.0
+offset_top = 150.0
+offset_right = 801.0
+offset_bottom = 600.0
+stretch = true
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.28702)
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(450, 450)
+render_target_update_mode = 4
 
-[node name="LowPolyEarth" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_cahhr")
-surface_material_override/0 = ExtResource("2_tiau0")
-surface_material_override/1 = ExtResource("3_2b6m6")
-surface_material_override/2 = ExtResource("3_2b6m6")
-surface_material_override/3 = ExtResource("3_2b6m6")
-script = ExtResource("2_nbyrn")
+[node name="GlobeScene" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 24.0
+offset_right = 236.0
+offset_bottom = 94.0
+text = "Upgrades"
+script = ExtResource("2_kq0q1")
+metadata/_edit_use_anchors_ = true
+
+[node name="NPCButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 26.0
+offset_right = 446.0
+offset_bottom = 96.0
+text = "NPC's"
+script = ExtResource("3_t6jib")
+metadata/_edit_use_anchors_ = true
+
+[node name="GlobeButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 26.0
+offset_right = 656.0
+offset_bottom = 96.0
+text = "Globe"
+script = ExtResource("4_84k20")
+metadata/_edit_use_anchors_ = true
+
+[node name="ConsoleButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 25.0
+offset_right = 866.0
+offset_bottom = 95.0
+text = "Console"
+script = ExtResource("5_bwu3w")
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 24.0
+offset_right = 1076.0
+offset_bottom = 94.0
+text = "Settings"
+script = ExtResource("6_pv58c")
+metadata/_edit_use_anchors_ = true

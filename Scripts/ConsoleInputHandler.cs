@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class ConsoleInputHandler : LineEdit
 {
@@ -23,18 +24,30 @@ public partial class ConsoleInputHandler : LineEdit
 		{
 			if (keyEvent.Pressed && keyEvent.Keycode == Key.Enter)
 			{
-				InputResponse(this.Text);
+				List<string> input = new List<string> ((this.Text).Split(" "));
+				InputResponse(input);
+				this.Clear();
 			}
 		}
 	}
-	private void InputResponse(string input)
+	private void InputResponse(List<string> input)
 	{
-		switch(input)
+		switch(input[0])
 		{
 			case "":
 				break;
 			case "hello":
 				OutputToConsole("Hello World");
+				break;
+			case "hack":
+				if(input.Count == 2)
+				{
+
+				}
+				else
+				{
+					OutputToConsole("What would you like to hack?");
+				}
 				break;
 			default:
 				OutputToConsole("That isnt a command.");

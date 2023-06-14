@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GlobeButtonHandler : Button
+public partial class UpgradeButtonHandler : Button
 {
 	public override void _Ready()
 	{
@@ -10,9 +10,9 @@ public partial class GlobeButtonHandler : Button
 
 	public void OnButtonPressed()
 	{
-		SwitchToScene("res://Scenes/GlobeScene.tscn");
+		SwitchToScene("res://Scenes/UpgradesScene.tscn");
 	}
-	
+
 	private void SwitchToScene(string scenePath)
 	{
 		var tree = GetTree();
