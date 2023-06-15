@@ -1,24 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=10 format=3 uid="uid://4qtro0aeiqq4"]
 
+[ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
 [ext_resource type="Script" path="res://Scripts/UpgradeButtonHandler.cs" id="2_kq0q1"]
 [ext_resource type="Script" path="res://Scripts/NPCButtonHandler.cs" id="3_t6jib"]
 [ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="4_84k20"]
 [ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="5_bwu3w"]
 [ext_resource type="Script" path="res://Scripts/SettingsButtonHandler.cs" id="6_pv58c"]
+[ext_resource type="Texture2D" uid="uid://csmyoa5r5anaw" path="res://Rescources/CloseButton.png" id="8_a65nv"]
+[ext_resource type="Script" path="res://Scripts/CloseButtonHandler.cs" id="9_ww88u"]
 
 [node name="MainScreen" type="Node2D"]
+script = ExtResource("1_r05rs")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 351.0
-offset_top = 150.0
-offset_right = 801.0
-offset_bottom = 600.0
-stretch = true
+offset_left = 585.0
+offset_top = 238.0
+offset_right = 1335.0
+offset_bottom = 988.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(450, 450)
+size = Vector2i(750, 750)
 render_target_update_mode = 4
 
 [node name="GlobeScene" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
@@ -31,51 +34,78 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="UpgradeButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 76.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 57.0
 offset_top = 24.0
-offset_right = 236.0
-offset_bottom = 94.0
+offset_right = 327.0
+offset_bottom = 144.0
 text = "Upgrades"
 script = ExtResource("2_kq0q1")
 metadata/_edit_use_anchors_ = true
 
 [node name="NPCButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 286.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 441.0
 offset_top = 26.0
-offset_right = 446.0
-offset_bottom = 96.0
+offset_right = 711.0
+offset_bottom = 146.0
 text = "NPC's"
 script = ExtResource("3_t6jib")
 metadata/_edit_use_anchors_ = true
 
 [node name="GlobeButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 496.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 825.0
 offset_top = 26.0
-offset_right = 656.0
-offset_bottom = 96.0
+offset_right = 1095.0
+offset_bottom = 146.0
 text = "Globe"
 script = ExtResource("4_84k20")
 metadata/_edit_use_anchors_ = true
 
 [node name="ConsoleButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 706.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 1209.0
 offset_top = 25.0
-offset_right = 866.0
-offset_bottom = 95.0
+offset_right = 1479.0
+offset_bottom = 145.0
 text = "Console"
 script = ExtResource("5_bwu3w")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 916.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 1593.0
 offset_top = 24.0
-offset_right = 1076.0
-offset_bottom = 94.0
+offset_right = 1863.0
+offset_bottom = 144.0
+scale = Vector2(1.00271, 1)
 text = "Settings"
 script = ExtResource("6_pv58c")
 metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1878.0
+offset_top = 1.0
+offset_right = 2789.0
+offset_bottom = 911.0
+scale = Vector2(0.045129, 0.045129)
+icon = ExtResource("8_a65nv")
+flat = true
+script = ExtResource("9_ww88u")

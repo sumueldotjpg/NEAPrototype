@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dojgflnlme11b"
+path="res://.godot/imported/EarthModel.obj-27e57ca2c81227f8c81a5fc8240fe5e9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/EarthModel.obj-27e57ca2c81227f8c81a5fc8240fe5e9.mesh"]
+
+source_file="res://Rescources/EarthModel.obj"
+dest_files=["res://.godot/imported/EarthModel.obj-27e57ca2c81227f8c81a5fc8240fe5e9.mesh", "res://.godot/imported/EarthModel.obj-27e57ca2c81227f8c81a5fc8240fe5e9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg7rvqusyrfuj"]
+[gd_scene load_steps=9 format=3 uid="uid://cg7rvqusyrfuj"]
 
 [ext_resource type="Script" path="res://Scripts/GlobeButtonHandler.cs" id="1_eg5km"]
 [ext_resource type="Script" path="res://Scripts/UpgradeButtonHandler.cs" id="1_nnlou"]
@@ -6,81 +6,114 @@
 [ext_resource type="Script" path="res://Scripts/ConsoleInputHandler.cs" id="2_xkb5v"]
 [ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="4_lwe8r"]
 [ext_resource type="Script" path="res://Scripts/SettingsButtonHandler.cs" id="5_nxe1y"]
+[ext_resource type="Texture2D" uid="uid://csmyoa5r5anaw" path="res://Rescources/CloseButton.png" id="7_kayoi"]
+[ext_resource type="Script" path="res://Scripts/CloseButtonHandler.cs" id="8_ww50c"]
 
 [node name="ConsoleScene" type="Node2D"]
 
-[node name="ButtonControl" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeButton" type="Button" parent="ButtonControl"]
-layout_mode = 0
-offset_left = 76.0
+[node name="UpgradeButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 57.0
 offset_top = 24.0
-offset_right = 236.0
-offset_bottom = 94.0
+offset_right = 327.0
+offset_bottom = 144.0
 text = "Upgrades"
 script = ExtResource("1_nnlou")
+metadata/_edit_use_anchors_ = true
 
-[node name="NPCButton" type="Button" parent="ButtonControl"]
-layout_mode = 0
-offset_left = 286.0
+[node name="NPCButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 441.0
 offset_top = 26.0
-offset_right = 446.0
-offset_bottom = 96.0
+offset_right = 711.0
+offset_bottom = 146.0
 text = "NPC's"
 script = ExtResource("2_rbjtw")
+metadata/_edit_use_anchors_ = true
 
-[node name="GlobeButton" type="Button" parent="ButtonControl"]
-layout_mode = 0
-offset_left = 496.0
+[node name="GlobeButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 825.0
 offset_top = 26.0
-offset_right = 656.0
-offset_bottom = 96.0
+offset_right = 1095.0
+offset_bottom = 146.0
 text = "Globe"
 script = ExtResource("1_eg5km")
+metadata/_edit_use_anchors_ = true
 
-[node name="ConsoleButton" type="Button" parent="ButtonControl"]
-layout_mode = 0
-offset_left = 706.0
+[node name="ConsoleButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 1209.0
 offset_top = 25.0
-offset_right = 866.0
-offset_bottom = 95.0
+offset_right = 1479.0
+offset_bottom = 145.0
 text = "Console"
 script = ExtResource("4_lwe8r")
+metadata/_edit_use_anchors_ = true
 
-[node name="SettingsButton" type="Button" parent="ButtonControl"]
-layout_mode = 0
-offset_left = 916.0
+[node name="SettingsButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.15
+anchor_bottom = 1.15
+offset_left = 1593.0
 offset_top = 24.0
-offset_right = 1076.0
-offset_bottom = 94.0
+offset_right = 1863.0
+offset_bottom = 144.0
+scale = Vector2(1.00271, 1)
 text = "Settings"
 script = ExtResource("5_nxe1y")
+metadata/_edit_use_anchors_ = true
 
 [node name="ConsoleControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 48.0
-offset_top = 42.0
-offset_right = 210.0
-offset_bottom = 154.0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ConsoleLineEdit" type="LineEdit" parent="ConsoleControl"]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 549.0
-offset_right = 991.0
-offset_bottom = 581.0
+offset_left = 216.0
+offset_top = 1028.0
+offset_right = 1727.0
+offset_bottom = 1059.0
 placeholder_text = "Type Here..."
 script = ExtResource("2_xkb5v")
 
 [node name="ConsoleRichTextLabel" type="RichTextLabel" parent="ConsoleControl/ConsoleLineEdit"]
 layout_mode = 0
 offset_left = -2.0
-offset_top = -467.0
-offset_right = 952.0
-offset_bottom = -60.0
+offset_top = -762.0
+offset_right = 1516.0
+offset_bottom = -27.0
 bbcode_enabled = true
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 1878.0
+offset_top = 1.0
+offset_right = 2789.0
+offset_bottom = 911.0
+scale = Vector2(0.045129, 0.045129)
+icon = ExtResource("7_kayoi")
+flat = true
+script = ExtResource("8_ww50c")

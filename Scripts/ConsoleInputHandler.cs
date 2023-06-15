@@ -32,30 +32,39 @@ public partial class ConsoleInputHandler : LineEdit
 	}
 	private void InputResponse(List<string> input)
 	{
-		switch(input[0])
+		switch(input[0].ToLower())
 		{
 			case "":
 				break;
 			case "hello":
-				OutputToConsole("Hello World");
+				OutputToConsole(string.Join(" ", input),"Hello World");
 				break;
 			case "hack":
 				if(input.Count == 2)
 				{
-
+					switch(input[1].ToLower())
+					{
+						case "google":
+							OutputToConsole(string.Join(" ", input),"Hack RN");
+							break;
+						default:
+							OutputToConsole(string.Join(" ", input),"That doesnt exist.");
+							break;
+					}
 				}
 				else
 				{
-					OutputToConsole("What would you like to hack?");
+					OutputToConsole(string.Join(" ", input),"What would you like to hack?");
 				}
 				break;
 			default:
-				OutputToConsole("That isnt a command.");
+				OutputToConsole(string.Join(" ", input),"That isnt a command.");
 				break;
 		}
 	}
-	private void OutputToConsole(string text)
+	private void OutputToConsole(string input,string text)
 	{
+		consoleRichTextLabel.AddText("\n> " + input);
 		consoleRichTextLabel.AddText("\n" + text);
 	}
 }

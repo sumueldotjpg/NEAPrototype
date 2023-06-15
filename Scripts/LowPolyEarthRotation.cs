@@ -2,9 +2,12 @@ using Godot;
 
 public partial class LowPolyEarthRotation : MeshInstance3D
 {
-	private float rotationSpeed = 0.01f;
+	private float rotationSpeed = 0.002f;
 	private bool mouseHeldDown = false;
 	
+	public override void _Ready()
+	{
+	}
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseButton && mouseButton.ButtonIndex == MouseButton.Left)
