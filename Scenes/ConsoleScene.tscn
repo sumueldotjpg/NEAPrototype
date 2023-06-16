@@ -84,6 +84,16 @@ text = "Settings"
 script = ExtResource("5_nxe1y")
 metadata/_edit_use_anchors_ = true
 
+[node name="CloseButton" type="Button" parent="Control"]
+offset_left = 1878.0
+offset_top = 1.0
+offset_right = 2789.0
+offset_bottom = 911.0
+scale = Vector2(0.045129, 0.045129)
+icon = ExtResource("7_kayoi")
+flat = true
+script = ExtResource("8_ww50c")
+
 [node name="ConsoleControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -107,13 +117,3 @@ offset_top = -762.0
 offset_right = 1516.0
 offset_bottom = -27.0
 bbcode_enabled = true
-
-[node name="CloseButton" type="Button" parent="."]
-offset_left = 1878.0
-offset_top = 1.0
-offset_right = 2789.0
-offset_bottom = 911.0
-scale = Vector2(0.045129, 0.045129)
-icon = ExtResource("7_kayoi")
-flat = true
-script = ExtResource("8_ww50c")
