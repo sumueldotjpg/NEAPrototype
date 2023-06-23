@@ -1,1 +1,5 @@
+res://Scenes/ConsoleScene.tscn
+res://Scenes/MainMenuScene.tscn
+res://Scenes/GlobeScene.tscn
 res://Scenes/NPCScene.tscn
+res://Scripts/ConsoleInputHandler.cs

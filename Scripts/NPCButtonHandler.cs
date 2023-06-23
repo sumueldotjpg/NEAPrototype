@@ -7,12 +7,10 @@ public partial class NPCButtonHandler : Button
 	{
 		Connect("pressed", new Callable(this, nameof(OnButtonPressed)));
 	}
-
 	public void OnButtonPressed()
 	{
 		SwitchToScene("res://Scenes/NPCScene.tscn");
 	}
-
 	private void SwitchToScene(string scenePath)
 	{
 		var tree = GetTree();

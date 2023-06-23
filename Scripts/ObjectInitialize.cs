@@ -6,9 +6,15 @@ using Variables;
 
 namespace Main
 {
-    class MainCreation
-    {
-        POI Google = new POI("Google","Multi-Billion Dollar Corporation created to brainwash the population",3);
-        
-    }
+	public class MainCreation
+	{
+		public static void Main()
+		{
+			//POI Creation
+			AllObjects.allPOIs.Add(new POI("Google","Multi-Billion Dollar Corporation created to brainwash the population",1));
+
+			//PuzzleCreation
+			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n-----\nCCCCC","travel over seas"));
+		}
+	}
 }

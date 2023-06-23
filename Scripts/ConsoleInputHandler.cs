@@ -1,5 +1,7 @@
 using Godot;
 using System.Collections.Generic;
+using Variables;
+using Main;
 
 public partial class ConsoleInputHandler : LineEdit
 {
@@ -9,8 +11,8 @@ public partial class ConsoleInputHandler : LineEdit
 	{
 		consoleRichTextLabel = GetNode<RichTextLabel>("ConsoleRichTextLabel");
 		consoleRichTextLabel.PushColor(new Color(0, 255, 0, 1));
+		MainCreation.Main();
 	}
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
@@ -43,7 +45,7 @@ public partial class ConsoleInputHandler : LineEdit
 					switch (input[1].ToLower())
 					{
 						case "google":
-							OutputToConsole(string.Join(" ", input), "Hack RN");
+							PuzzleHack("google");
 							break;
 						default:
 							OutputToConsole(string.Join(" ", input),"That doesnt exist.");
@@ -60,9 +62,14 @@ public partial class ConsoleInputHandler : LineEdit
 				break;
 		}
 	}
-	private void OutputToConsole(string input, string text)
+	public void OutputToConsole(string input, string text)
 	{
 		consoleRichTextLabel.AddText("\n> " + input);
 		consoleRichTextLabel.AddText("\n" + text);
+	}
+	private void PuzzleHack(string poiname)
+	{
+		Puzzle currentPuzzle = Puzzle.GetPuzzle(poiname);
+		consoleRichTextLabel.AddText("\n" + currentPuzzle.Question);
 	}
 }

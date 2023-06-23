@@ -4,14 +4,20 @@ using System.Collections.Generic;
 
 namespace Variables
 {
-	public static class AllObjects
+	/// <summary>
+	/// Stores all objects in lists
+	/// </summary>
+	public class AllObjects
 	{
-		public static List<Puzzle> allPuzzles { get; private set; }
-		public static List<SaveProfile> allProfiles { get; private set; }
-		public static List<NPC> allNPC  { get; private set; }
-		public static List<POI> allPOIs  = new List<POI> {};
-		public static List<Upgrades> allUpgrades { get; private set; }
+		public static List<Puzzle> allPuzzles { get; private set; } = new List<Puzzle>{};
+		public static List<SaveProfile> allProfiles { get; private set; } = new List<SaveProfile>{};
+		public static List<NPC> allNPC  { get; private set; } = new List<NPC>{};
+		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
+		public static List<Upgrades> allUpgrades { get; private set; } = new List<Upgrades>{};
 	}
+	/// <summary>
+	///Profile for storing game save data
+	/// </summary>
 	public class SaveProfile
 	{
 		public int moneyBalance { get; private set; }
@@ -20,16 +26,39 @@ namespace Variables
 		public List<Upgrades> unlockedUpgrades { get; private set; }
 
 	}
+	/// <summary>
+	///Game Puzzles
+	/// </summary>
 	public class Puzzle
 	{
-		public int puzzleId { get; private set; }
-		public string outPut { get; private set; }
-		public Puzzle(int puzzleid, string output)
+		public int PuzzleId { get; private set; }
+		public string Question { get; private set; }
+		public string Answer { get; private set; }
+		public Puzzle(int puzzleid, string question, string answer)
 		{
-			puzzleId = puzzleid;
-			output = outPut;
+			PuzzleId = puzzleid;
+			Question = question;
+			Answer = answer;
 		}
-	}
+		/// <summary>
+		/// Gets the puzzle
+		/// </summary>
+		public static Puzzle GetPuzzle(string poiName)
+		{
+			POI currentPOI = POI.GetPOI("poiName");
+			foreach(Puzzle puzzle in AllObjects.allPuzzles)
+			{
+				if (currentPOI.PuzzleId == puzzle.PuzzleId)
+				{
+					return puzzle;
+				}
+			}
+			throw new Exception("Puzzle Not Found");
+		}
+	} 
+	/// <summary>
+	///NPC's that help the player
+	/// <summary>
 	public class NPC
 	{
 		public string npcName { get; private set; }
@@ -47,20 +76,39 @@ namespace Variables
 		{
 		}
 	}
+	/// <summary>
+	///Points of interest on the globe
+	/// </summary>
 	public class POI
 	{
-		public string name {get; private set;}
-		public string description {get; private set;}
-		public int puzzleId { get; private set; }
-		public bool isUnlocked {get; private set;}
-		public POI(string Name, string Description, int PuzzleId)
+		public string Name {get; private set;}
+		public string Description {get; private set;}
+		public int PuzzleId { get; private set; }
+		public bool IsUnlocked {get; private set;}
+		public POI(string name, string description, int puzzleid)
 		{
-			name = Name;
-			description = Description;
-			puzzleId = PuzzleId;
-			isUnlocked = false;
+			Name = name;
+			Description = description;
+			PuzzleId = puzzleid;
+			IsUnlocked = false;
+		}
+		public static POI GetPOI(string poiName)
+		{
+			Console.WriteLine(poiName);
+			foreach(POI poi in AllObjects.allPOIs)
+			{
+				if (poi.Name.ToLower() == poiName.ToLower())
+				{
+					Console.WriteLine(poi.Name);
+					return poi;
+				}
+			}
+			throw new Exception("There isnt any POIs with that name");
 		}
 	}
+	/// <summary>
+	///Help speed up gameplay
+	/// </summary>
 	public class Upgrades
 	{
 		public int upgradeID { get; private set; }
