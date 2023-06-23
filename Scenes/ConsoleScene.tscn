@@ -11,14 +11,14 @@
 
 [node name="ConsoleScene" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="ButtonControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeButton" type="Button" parent="Control"]
+[node name="UpgradeButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -31,7 +31,7 @@ text = "Upgrades"
 script = ExtResource("1_nnlou")
 metadata/_edit_use_anchors_ = true
 
-[node name="NPCButton" type="Button" parent="Control"]
+[node name="NPCButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -44,7 +44,7 @@ text = "NPC's"
 script = ExtResource("2_rbjtw")
 metadata/_edit_use_anchors_ = true
 
-[node name="GlobeButton" type="Button" parent="Control"]
+[node name="GlobeButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -57,7 +57,7 @@ text = "Globe"
 script = ExtResource("1_eg5km")
 metadata/_edit_use_anchors_ = true
 
-[node name="ConsoleButton" type="Button" parent="Control"]
+[node name="ConsoleButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -70,7 +70,7 @@ text = "Console"
 script = ExtResource("4_lwe8r")
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingsButton" type="Button" parent="Control"]
+[node name="SettingsButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -84,7 +84,8 @@ text = "Settings"
 script = ExtResource("5_nxe1y")
 metadata/_edit_use_anchors_ = true
 
-[node name="CloseButton" type="Button" parent="Control"]
+[node name="CloseButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
 offset_left = 1878.0
 offset_top = 1.0
 offset_right = 2789.0

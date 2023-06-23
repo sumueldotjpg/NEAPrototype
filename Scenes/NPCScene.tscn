@@ -10,14 +10,14 @@
 
 [node name="NPCScreen" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="ButtonControl" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="UpgradeButton" type="Button" parent="Control"]
+[node name="UpgradeButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -28,9 +28,8 @@ offset_right = 327.0
 offset_bottom = 144.0
 text = "Upgrades"
 script = ExtResource("1_3t0cx")
-metadata/_edit_use_anchors_ = true
 
-[node name="NPCButton" type="Button" parent="Control"]
+[node name="NPCButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -43,7 +42,7 @@ text = "NPC's"
 script = ExtResource("2_pmaoh")
 metadata/_edit_use_anchors_ = true
 
-[node name="GlobeButton" type="Button" parent="Control"]
+[node name="GlobeButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -56,7 +55,7 @@ text = "Globe"
 script = ExtResource("3_iomcu")
 metadata/_edit_use_anchors_ = true
 
-[node name="ConsoleButton" type="Button" parent="Control"]
+[node name="ConsoleButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -69,7 +68,7 @@ text = "Console"
 script = ExtResource("4_nwjle")
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingsButton" type="Button" parent="Control"]
+[node name="SettingsButton" type="Button" parent="ButtonControl"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.15
@@ -83,7 +82,8 @@ text = "Settings"
 script = ExtResource("5_a0ra4")
 metadata/_edit_use_anchors_ = true
 
-[node name="CloseButton" type="Button" parent="Control"]
+[node name="CloseButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
 offset_left = 1878.0
 offset_top = 1.0
 offset_right = 2789.0
@@ -92,3 +92,18 @@ scale = Vector2(0.045129, 0.045129)
 icon = ExtResource("6_chtf8")
 flat = true
 script = ExtResource("7_15eck")
+
+[node name="NPCLayoutControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 95.0
+offset_top = 235.0
+offset_right = 1834.0
+offset_bottom = 999.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NPCLayoutControl"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 9.0
+offset_right = 1657.0
+offset_bottom = 733.0

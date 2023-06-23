@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://u700lg06mj12"]
+
+[ext_resource type="Script" path="res://Scripts/PlayButtonHandler.cs" id="1_wvrf7"]
+
+[node name="Main Menu Scene" type="Node2D"]
+
+[node name="ButtonControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayButton" type="Button" parent="ButtonControl"]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 412.0
+offset_right = 1249.0
+offset_bottom = 723.0
+text = "Play"
+script = ExtResource("1_wvrf7")
