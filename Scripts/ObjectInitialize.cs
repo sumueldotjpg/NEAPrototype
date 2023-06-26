@@ -14,7 +14,7 @@ namespace Main
 			AllObjects.allPOIs.Add(new POI("Google","Multi-Billion Dollar Corporation created to brainwash the population",1));
 
 			//PuzzleCreation
-			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n-----\nCCCCC","travel over seas"));
+			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n----------\nCCCCC","travel over seas"));
 		}
 	}
 }

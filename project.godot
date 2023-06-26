@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/MainMenuScene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://Rescources/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Rescources/DefaultAudioBus.tres"
+
 [display]
 
 window/size/viewport_width=1920

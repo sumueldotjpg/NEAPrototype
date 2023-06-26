@@ -45,7 +45,7 @@ namespace Variables
 		/// </summary>
 		public static Puzzle GetPuzzle(string poiName)
 		{
-			POI currentPOI = POI.GetPOI("poiName");
+			POI currentPOI = POI.GetPOI(poiName);
 			foreach(Puzzle puzzle in AllObjects.allPuzzles)
 			{
 				if (currentPOI.PuzzleId == puzzle.PuzzleId)
@@ -94,12 +94,10 @@ namespace Variables
 		}
 		public static POI GetPOI(string poiName)
 		{
-			Console.WriteLine(poiName);
 			foreach(POI poi in AllObjects.allPOIs)
 			{
 				if (poi.Name.ToLower() == poiName.ToLower())
 				{
-					Console.WriteLine(poi.Name);
 					return poi;
 				}
 			}

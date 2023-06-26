@@ -1,5 +1,6 @@
+res://Scenes/GlobeScene.tscn
 res://Scenes/ConsoleScene.tscn
 res://Scenes/MainMenuScene.tscn
-res://Scenes/GlobeScene.tscn
 res://Scenes/NPCScene.tscn
-res://Scripts/ConsoleInputHandler.cs
+res://Scenes/3DGlobeScene.tscn
+res://Rescources/DefaultAudioBus.tres
