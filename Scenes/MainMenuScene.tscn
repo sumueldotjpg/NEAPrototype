@@ -1,20 +1,125 @@
-[gd_scene load_steps=2 format=3 uid="uid://u700lg06mj12"]
+[gd_scene load_steps=5 format=3 uid="uid://u700lg06mj12"]
 
-[ext_resource type="Script" path="res://Scripts/PlayButtonHandler.cs" id="1_wvrf7"]
+[ext_resource type="Texture2D" uid="uid://b03mtjojvnr6p" path="res://Rescources/Background.png" id="1_7x8pc"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="2_e4tdl"]
 
-[node name="Main Menu Scene" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vggjb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="ButtonControl" type="Control" parent="."]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq1h3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MainMenu" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7x8pc")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_e4tdl")
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="ButtonControl"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main"]
 layout_mode = 0
-offset_left = 602.0
-offset_top = 412.0
-offset_right = 1249.0
-offset_bottom = 723.0
+offset_left = 24.0
+offset_top = 765.0
+offset_right = 424.0
+offset_bottom = 1065.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/CenterContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vggjb")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
 text = "Play"
-script = ExtResource("1_wvrf7")
+
+[node name="ButtonSetttings" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Settings"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 765.0
+offset_right = 424.0
+offset_bottom = 1065.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Settings/CenterContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kq1h3")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="CheckButtonFullScreen" type="CheckButton" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+button_pressed = true
+text = "Fullscreen"
+
+[node name="ButtonSomeOtherSettings" type="Button" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "OtherSettings"
+
+[node name="ButtonBack" type="Button" parent="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonPlay" to="CanvasLayer" method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonSetttings" to="CanvasLayer" method="_on_button_setttings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonQuit" to="CanvasLayer" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_full_screen_toggled"]
+[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]
