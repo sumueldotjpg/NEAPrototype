@@ -5,7 +5,6 @@
 [ext_resource type="Material" uid="uid://doipc4rv2t042" path="res://Rescources/SeaBlue.tres" id="2_tiau0"]
 [ext_resource type="Material" uid="uid://cgny1cj4pxyc0" path="res://Rescources/GrassGreen.tres" id="3_2b6m6"]
 [ext_resource type="Shader" path="res://Rescources/3DGlobeScene.gdshader" id="6_dw7tg"]
-[ext_resource type="Script" path="res://Scripts/TestStar.cs" id="7_k1gbs"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2sfjj"]
 _surfaces = [{
@@ -104,8 +103,3 @@ transform = Transform3D(-0.050378, -0.505838, 0.861157, -0.0295412, 0.862629, 0.
 pixel_size = 0.25
 text = "Google
 "
-
-[node name="TestStar" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_2sfjj")
-surface_material_override/0 = SubResource("ShaderMaterial_nd8p7")
-script = ExtResource("7_k1gbs")

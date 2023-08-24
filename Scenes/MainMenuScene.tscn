@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://u700lg06mj12"]
+[gd_scene load_steps=6 format=3 uid="uid://u700lg06mj12"]
 
 [ext_resource type="Texture2D" uid="uid://b03mtjojvnr6p" path="res://Rescources/Background.png" id="1_7x8pc"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="2_e4tdl"]
+[ext_resource type="Script" path="res://Scripts/ProfileManagement.cs" id="3_yto7r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vggjb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -69,6 +70,61 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 36
 text = "Quit"
 
+[node name="Profiles" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_yto7r")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Profiles"]
+custom_minimum_size = Vector2(1880, 1040)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Profiles/MarginContainer"]
+custom_minimum_size = Vector2(1880, 1040)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ButtonProfile1" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profile1"
+
+[node name="ButtonProfile2" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profile2"
+
+[node name="ButtonProfile3" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profile3"
+
+[node name="ButtonProfile4" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Profile4"
+
 [node name="Settings" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
@@ -120,6 +176,7 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonPlay" to="CanvasLayer" method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonSetttings" to="CanvasLayer" method="_on_button_setttings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonQuit" to="CanvasLayer" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1" to="CanvasLayer/Profiles" method="_on_button_profile_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_full_screen_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]

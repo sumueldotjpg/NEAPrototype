@@ -5,15 +5,20 @@ public partial class MainMenu : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
 	Control MainMenuNode = null;
+	Control ProfilesNode = null;
 	Control SettingsNode  = null;
 	public override void _Ready()
 	{
 		MainMenuNode = GetNode<Control>("Main");
+		ProfilesNode = GetNode<Control>("Profiles");
 		SettingsNode = GetNode<Control>("Settings");
 		GD.Print(MainMenuNode.GetType());
 
 		MainMenuNode.Visible = true;
+		ProfilesNode.Visible = false;
 		SettingsNode.Visible = false;
+		
+		DisplayServer.WindowSetMinSize(new Vector2I(1000,1020));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,18 +28,21 @@ public partial class MainMenu : CanvasLayer
 
 	private void _on_button_play_pressed()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
+		MainMenuNode.Visible = false;
+		ProfilesNode.Visible = true;
+		SettingsNode.Visible = false;
 	}
 
 	//settings buttons
 	private void _on_button_setttings_pressed()
 	{
 		MainMenuNode.Visible = false;
+		ProfilesNode.Visible = false;
 		SettingsNode.Visible = true;
 	}
 	private void _on_check_button_full_screen_toggled(bool button_pressed)
 	{
-		Vector2I WindowSize = new Vector2I(10,30);
+		Vector2I WindowSize = new Vector2I(1920,1040);
 		if(button_pressed)
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.ExclusiveFullscreen);
@@ -42,7 +50,7 @@ public partial class MainMenu : CanvasLayer
 		else
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
-			DisplayServer.WindowSetSize(WindowSize, 1 );
+			DisplayServer.WindowSetSize(WindowSize, 0 );
 		}
 	}
 	private void _on_button_back_pressed()

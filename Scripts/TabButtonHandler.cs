@@ -13,6 +13,11 @@ public partial class TabButtonHandler : Control
 	{
 	}
 	
+	private void _on_button_settings_pressed()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/MainMenuScene.tscn");
+	}
+	
 	private void _on_button_exit_pressed()
 	{
 		GetTree().Quit();

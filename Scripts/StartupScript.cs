@@ -3,6 +3,7 @@ using System;
 
 public partial class StartupScript : Node2D
 {
+	Control TabNode = null;
 	Control GlobeNode = null;
 	Control ConsoleNode = null;
 	Control UpgradesNode = null;
@@ -10,11 +11,13 @@ public partial class StartupScript : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		TabNode = GetNode<Control>("TabButtonControl");
 		GlobeNode = GetNode<Control>("Globe");
 		ConsoleNode = GetNode<Control>("Console");
 		UpgradesNode = GetNode<Control>("Upgrades");
 		NPCsNode = GetNode<Control>("NPCs");
 		
+		TabNode.Visible = true;
 		GlobeNode.Visible = true;
 		ConsoleNode.Visible = false;
 		UpgradesNode.Visible = false;

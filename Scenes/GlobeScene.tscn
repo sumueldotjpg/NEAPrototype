@@ -19,6 +19,7 @@ data = PackedByteArray(73, 68, 51, 2, 0, 0, 0, 0, 31, 118, 84, 83, 83, 0, 0, 19,
 script = ExtResource("1_r05rs")
 
 [node name="TabButtonControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,6 +103,7 @@ render_target_update_mode = 0
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
 [node name="Console" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,6 +161,7 @@ autoplay = true
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonNPCs" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_np_cs_mouse_exited"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_settings_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_settings_mouse_exited"]
+[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl" method="_on_button_settings_pressed"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_exited"]
 [connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl" method="_on_button_exit_pressed"]
