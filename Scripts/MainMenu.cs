@@ -1,7 +1,11 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Variables;
+using Main;
 
-public partial class MainMenu : CanvasLayer
+public class MainMenu : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
 	Control MainMenuNode = null;
@@ -30,7 +34,9 @@ public partial class MainMenu : CanvasLayer
 	{
 		MainMenuNode.Visible = false;
 		ProfilesNode.Visible = true;
-		SettingsNode.Visible = false;
+        SettingsNode.Visible = false;
+
+        
 	}
 
 	//settings buttons

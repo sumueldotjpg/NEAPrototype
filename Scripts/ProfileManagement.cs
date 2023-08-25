@@ -17,7 +17,7 @@ public partial class ProfileManagement : Control
 		ButtonProfile3 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3");
 		ButtonProfile4 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4");
 
-		ButtonProfile1.Text =  "This is the profile to use";
+		ButtonProfile1.Text =  $"{AllObjects.allProfiles[0]}";
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,5 +28,5 @@ public partial class ProfileManagement : Control
 	private void _on_button_profile_1_pressed()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
-	||}
+	}
 }

@@ -1,10 +1,10 @@
 res://Scenes/MainMenuScene.tscn
-res://Scripts/TabButtonHandler.cs
-res://Scenes/GlobeScene.tscn
+res://Scripts/ProfileManagement.cs
 res://Scripts/ConsoleInputHandler.cs
 res://Scripts/LowPolyEarthRotation.cs
 res://Scripts/MainMenu.cs
 res://Scripts/PlayButtonHandler.cs
 res://Scripts/StartupScript.cs
+res://Scripts/TabButtonHandler.cs
 res://Scripts/TabMovement.cs
-res://Scripts/ProfileManagement.cs
+res://Scenes/GlobeScene.tscn

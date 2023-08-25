@@ -13,17 +13,23 @@ namespace Variables
 		public static List<SaveProfile> allProfiles { get; private set; } = new List<SaveProfile>{};
 		public static List<NPC> allNPC  { get; private set; } = new List<NPC>{};
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
-		public static List<Upgrades> allUpgrades { get; private set; } = new List<Upgrades>{};
+		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 	}
 	/// <summary>
 	///Profile for storing game save data
 	/// </summary>
 	public class SaveProfile
 	{
-		public int moneyBalance { get; private set; }
-		public List<POI> unlockedPOIs { get; private set; }
-		public List<NPC> unlockedNPCs { get; private set; }
-		public List<Upgrades> unlockedUpgrades { get; private set; }
+		public string Title { get; private set; }
+		public int MoneyBalance { get; private set; }
+		public List<POI> UnlockedPOIs { get; private set; }
+		public List<NPC> UnlockedNPCs { get; private set; }
+		public List<Upgrade> UnlockedUpgrades { get; private set; }
+		
+		public void SetTitle(string title)
+		{
+			Title = title;
+		}
 
 	}
 	/// <summary>
@@ -61,16 +67,16 @@ namespace Variables
 	/// <summary>
 	public class NPC
 	{
-		public string npcName { get; private set; }
-		public int npcId { get; private set; }
-		public int actionTime { get; private set; }
-		public bool isUnlocked {get; private set;}
+		public string NpcName { get; private set; }
+		public int NpcId { get; private set; }
+		public int ActionTime { get; private set; }
+		public bool IsUnlocked {get; private set;}
 		public NPC(string npcname,int  npcid, int actiontime)
 		{
-			npcName = npcname;
-			npcId = npcid;
-			actionTime = actiontime;
-			isUnlocked = false;
+			NpcName = npcname;
+			NpcId = npcid;
+			ActionTime = actiontime;
+			IsUnlocked = false;
 		}
 		public void NPCAction()
 		{
@@ -107,7 +113,7 @@ namespace Variables
 	/// <summary>
 	///Help speed up gameplay
 	/// </summary>
-	public class Upgrades
+	public class Upgrade
 	{
 		public int upgradeID { get; private set; }
 		public string description { get; private set; }
@@ -115,7 +121,7 @@ namespace Variables
 		public int level { get; private set; }
 		public bool isUnlocked {get; private set;}
 
-		public Upgrades(int upgradeid, string Description, int Cost)
+		public Upgrade(int upgradeid, string Description, int Cost)
 		{
 			upgradeID = upgradeid;
 			description = Description;
