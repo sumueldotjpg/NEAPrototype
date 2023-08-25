@@ -16,7 +16,6 @@ public partial class MainMenu : CanvasLayer
 		MainMenuNode = GetNode<Control>("Main");
 		ProfilesNode = GetNode<Control>("Profiles");
 		SettingsNode = GetNode<Control>("Settings");
-		GD.Print(MainMenuNode.GetType());
 
 		MainMenuNode.Visible = true;
 		ProfilesNode.Visible = false;
