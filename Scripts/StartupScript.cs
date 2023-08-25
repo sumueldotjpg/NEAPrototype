@@ -43,4 +43,20 @@ public partial class StartupScript : Node2D
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
 	}
+	private void _on_button_upgrades_pressed()
+	{
+		GetTree().Quit();
+	}
+	private void _on_button_np_cs_pressed()
+	{
+		GetTree().Quit();
+	}
+	private void _on_button_settings_pressed()
+	{
+		GetTree().Quit();
+	}
+	private void _on_button_exit_pressed()
+	{
+		GetTree().Quit();
+	}
 }

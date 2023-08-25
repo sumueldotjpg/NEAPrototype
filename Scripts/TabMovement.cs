@@ -3,7 +3,6 @@ using System;
 
 public partial class TabMovement : VBoxContainer
 {
-	public float Speed = 20.0f;
 	private PathFollow2D followPath;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

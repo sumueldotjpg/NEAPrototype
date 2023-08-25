@@ -26,6 +26,14 @@ namespace Variables
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UnlockedUpgrades { get; private set; }
 		
+		public SaveProfile(string title, int moneybalance, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades)
+		{
+			Title = title;
+			MoneyBalance = moneybalance;
+			UnlockedPOIs = unlockedpois;
+			UnlockedNPCs = unlockednpcs;
+			UnlockedUpgrades = unlockedupgrades;
+		}
 		public void SetTitle(string title)
 		{
 			Title = title;

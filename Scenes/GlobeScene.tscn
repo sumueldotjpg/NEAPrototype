@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=7 format=3 uid="uid://4qtro0aeiqq4"]
 
 [ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
-[ext_resource type="Script" path="res://Scripts/TabButtonHandler.cs" id="3_qn3yk"]
 [ext_resource type="Script" path="res://Scripts/TabMovement.cs" id="4_j1mad"]
 [ext_resource type="Script" path="res://Scripts/ConsoleInputHandler.cs" id="5_ay06t"]
 
@@ -19,14 +18,12 @@ data = PackedByteArray(73, 68, 51, 2, 0, 0, 0, 0, 31, 118, 84, 83, 83, 0, 0, 19,
 script = ExtResource("1_r05rs")
 
 [node name="TabButtonControl" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_qn3yk")
 
 [node name="Path2D" type="Path2D" parent="TabButtonControl"]
 curve = SubResource("Curve2D_12liy")
@@ -157,11 +154,13 @@ autoplay = true
 [connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonConsole" to="." method="_on_button_console_pressed"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonUpgrades" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_upgrades_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonUpgrades" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_upgrades_mouse_exited"]
+[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonUpgrades" to="." method="_on_button_upgrades_pressed"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonNPCs" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_np_cs_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonNPCs" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_np_cs_mouse_exited"]
+[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonNPCs" to="." method="_on_button_np_cs_pressed"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_settings_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_settings_mouse_exited"]
-[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="TabButtonControl" method="_on_button_settings_pressed"]
+[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_exited"]
-[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl" method="_on_button_exit_pressed"]
+[connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]

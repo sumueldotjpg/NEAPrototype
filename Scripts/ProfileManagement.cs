@@ -17,7 +17,15 @@ public partial class ProfileManagement : Control
 		ButtonProfile3 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3");
 		ButtonProfile4 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4");
 
-		ButtonProfile1.Text =  $"{AllObjects.allProfiles[0]}";
+		
+	}
+
+	public void DisplayProfiles()
+	{
+		ButtonProfile1.Text = "123";
+		GD.Print(ButtonProfile1.Text);
+		GD.Print(AllObjects.allProfiles[0].Title);
+		ButtonProfile1.Text = AllObjects.allProfiles[0].Title;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

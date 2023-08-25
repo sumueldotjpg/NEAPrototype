@@ -8,7 +8,7 @@ namespace Main
 {
 	public class MainCreation
 	{
-		public static void Main()
+		public static void Load()
 		{			
 			//POI Creation
 			AllObjects.allPOIs.Add(new POI("Google","Invades privacy, knows too much, and tracks your life.",1));
@@ -25,6 +25,13 @@ namespace Main
 			AllObjects.allPOIs.Add(new POI("Tesla","Overhyped electric cars, questionable self-driving claims, stock market circus.",12));
 			AllObjects.allPOIs.Add(new POI("Nvidia","Pricey graphics cards, mining frenzy enabler, gaming elitism symbol.",13));
 
+			//ProfileCreation
+				//ProfileLoading
+				SaveManager.LoadProfiles();
+				//SaveManager.SaveProfiles();
+				//ProfileDisplaying
+				ProfileManagement profileManagement = new ProfileManagement();
+				profileManagement.DisplayProfiles();
 
 			//PuzzleCreation
 			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n----------\nCCCCC","travel over seas"));

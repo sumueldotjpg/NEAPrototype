@@ -11,7 +11,6 @@ public partial class ConsoleInputHandler : LineEdit
 	{
 		consoleRichTextLabel = GetNode<RichTextLabel>("ConsoleRichTextLabel");
 		consoleRichTextLabel.PushColor(new Color(0, 255, 0, 1));
-		MainCreation.Main();
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

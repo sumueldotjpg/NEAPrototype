@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Variables;
 using Main;
 
-public class MainMenu : CanvasLayer
+public partial class MainMenu : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
 	Control MainMenuNode = null;
@@ -30,17 +30,17 @@ public class MainMenu : CanvasLayer
 	{
 	}
 
-	private void _on_button_play_pressed()
+	public void _on_button_play_pressed()
 	{
+		MainCreation.Load();
+
 		MainMenuNode.Visible = false;
 		ProfilesNode.Visible = true;
         SettingsNode.Visible = false;
-
-        
 	}
 
 	//settings buttons
-	private void _on_button_setttings_pressed()
+	private void _on_button_settings_pressed()
 	{
 		MainMenuNode.Visible = false;
 		ProfilesNode.Visible = false;
