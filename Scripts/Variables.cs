@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Variables
 {
+	(MONEYMADE-UTILITYCOSTS)*NPCMULTIPLIERS = MONEYADDEDPERSECOND
 	/// <summary>
 	/// Stores all objects in lists
 	/// </summary>
@@ -86,8 +87,41 @@ namespace Variables
 			ActionTime = actiontime;
 			IsUnlocked = false;
 		}
-		public void NPCAction()
+		public virtual void NPCAction()
 		{
+		}
+	}
+
+	public class Investor : NPC
+	{
+		public int InvestAmount {get; private set; }
+		public int CurrentNetWorth {get; private set; }
+		public Investor(string npcname,int npcid, int actiontime, int investamount)
+		{
+			NpcName = npcname;
+			NpcId = npcid;
+			ActionTime = actiontime;
+			IsUnlocked = false;
+
+			InvestAmount = investamount;
+		}
+
+		public override void NPCAction()
+		{
+			//buy equivelant of {invest amount} or sell all crypto owned 
+		}
+	}
+	public class IdleNPC : NPC
+	{
+		public int EarnRate {get; private set;}
+		public IdleNPC(string npcname,int npcid, int actiontime, int earnrate)
+		{
+			NpcName = npcname;
+			NpcId = npcid;
+			ActionTime = actiontime;
+			IsUnlocked = false;
+
+			EarnRate = earnrate; 
 		}
 	}
 	/// <summary>
