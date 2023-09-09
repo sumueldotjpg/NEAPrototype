@@ -35,7 +35,7 @@ public partial class MainMenu : CanvasLayer
 
 		MainMenuNode.Visible = false;
 		ProfilesNode.Visible = true;
-        SettingsNode.Visible = false;
+		SettingsNode.Visible = false;
 	}
 
 	//settings buttons

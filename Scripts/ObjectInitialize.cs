@@ -31,6 +31,7 @@ namespace Main
 				//SaveManager.SaveProfiles();
 				//ProfileDisplaying
 				ProfileManagement profileManagement = new ProfileManagement();
+				GD.Print("ObjectInitialize: ButtonProfile1 is " + profileManagement.ButtonProfile1);
 				profileManagement.DisplayProfiles();
 
 			//PuzzleCreation

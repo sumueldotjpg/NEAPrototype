@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Variables
 {
-	(MONEYMADE-UTILITYCOSTS)*NPCMULTIPLIERS = MONEYADDEDPERSECOND
+	//(MONEYMADE-UTILITYCOSTS)*NPCMULTIPLIERS = MONEYADDEDPERSECOND
 	/// <summary>
 	/// Stores all objects in lists
 	/// </summary>
@@ -76,10 +76,10 @@ namespace Variables
 	/// <summary>
 	public class NPC
 	{
-		public string NpcName { get; private set; }
-		public int NpcId { get; private set; }
-		public int ActionTime { get; private set; }
-		public bool IsUnlocked {get; private set;}
+		public string NpcName { get; protected set; }
+		public int NpcId { get; protected set; }
+		public int ActionTime { get; protected set; }
+		public bool IsUnlocked {get; protected set;}
 		public NPC(string npcname,int  npcid, int actiontime)
 		{
 			NpcName = npcname;
@@ -96,7 +96,7 @@ namespace Variables
 	{
 		public int InvestAmount {get; private set; }
 		public int CurrentNetWorth {get; private set; }
-		public Investor(string npcname,int npcid, int actiontime, int investamount)
+		public Investor(string npcname, int npcid, int actiontime, int investamount) : base(npcname, npcid, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -114,7 +114,7 @@ namespace Variables
 	public class IdleNPC : NPC
 	{
 		public int EarnRate {get; private set;}
-		public IdleNPC(string npcname,int npcid, int actiontime, int earnrate)
+		public IdleNPC(string npcname,int npcid, int actiontime, int earnrate) : base(npcname, npcid, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
