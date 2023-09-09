@@ -13,12 +13,7 @@ public partial class ProfileManagement : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		string relativePath = GetPath().ToString();
-		string absolutePath = 
-		GD.Print("Absolute Path: ");
-
 		ButtonProfile1 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1");
-		GD.Print(GetPathTo(ButtonProfile1));
 		GD.Print("First" + ButtonProfile1);
 		ButtonProfile2 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2");
 		ButtonProfile3 = GetNode<Button>("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3");
@@ -27,7 +22,11 @@ public partial class ProfileManagement : Control
 
 	public void DisplayProfiles()
 	{
-		GD.Print(GetPath());
+		PackedScene MainMenuScene = (PackedScene)GD.Load("res://Scenes/MainMenuScene.tscn");
+		MainMenuScene.Instantiate();
+		Script ProfileManagementScript = (Script)ResourceLoader.Load("res://Scripts/ProfileManagement.cs");
+		//need to SetScript(ProfileManagmentScript) on the Profiles Control Node somehow
+
 		GD.Print(ButtonProfile1);
 		GD.Print(AllObjects.allProfiles[0].Title);
 		ButtonProfile1.Text = AllObjects.allProfiles[0].Title;

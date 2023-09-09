@@ -123,7 +123,12 @@ namespace Variables
 
 			EarnRate = earnrate; 
 		}
-	}
+
+        public override void NPCAction()
+        {
+            //pay the player for worked time
+        }
+    }
 	/// <summary>
 	///Points of interest on the globe
 	/// </summary>
