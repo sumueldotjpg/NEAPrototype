@@ -16,7 +16,7 @@ namespace Variables
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
-		public void ProfileLoad(List<SaveProfile> allSaveProfiles)
+		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
 			allProfiles = allSaveProfiles;
 		}

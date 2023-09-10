@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>NEAPrototype2</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NewtonSoft.Json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

@@ -1,9 +1,6 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization.Metadata;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using Variables;
@@ -16,24 +13,38 @@ namespace Main
         public static void SaveProfiles()
         {
             string filePath = @"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json";
-            List<string> savingProfiles = new List<string>();
+            string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles);
 
-            foreach(SaveProfile profile in AllObjects.allProfiles)
-            {
-                string jsonString = JsonSerializer.Serialize(profile);
-                savingProfiles.Add(jsonString);
-            }
-
-            File.AppendAllLines(filePath,savingProfiles);
+            File.AppendAllText(filePath,jsonProfiles);
+            GD.Print("Saved");
         }
 
         public static void LoadProfiles()
         {
+            string filePath = @"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json";
 
-            using (StreamReader r = new StreamReader(@"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json"))
+            if(!File.Exists(filePath))
             {
-                string json = r.ReadToEnd();
-                AllObjects.ProfileLoad(JsonSerializer.Deserialize<List<SaveProfile>>(json,options));
+                using (StreamWriter sw = File.CreateText(filePath))
+                {
+                    List<SaveProfile> newProfiles = new List<SaveProfile>(){
+                    new SaveProfile("New Profile 1" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
+                    new SaveProfile("New Profile 2" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
+                    new SaveProfile("New Profile 3" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
+                    new SaveProfile("New Profile 4" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
+                    };      
+                    
+                    sw.Write(JsonConvert.SerializeObject(newProfiles));
+                } 
+            }
+            else
+            {
+                string jsonProfiles = File.ReadAllText(filePath);
+
+                List<SaveProfile> deserializedProfiles = (List<SaveProfile>)JsonConvert.DeserializeObject(jsonProfiles);
+
+                AllObjects.ProfileLoad(deserializedProfiles);
+                GD.Print("Loaded");
             }
         }
     }
