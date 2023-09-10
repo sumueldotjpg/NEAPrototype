@@ -67,6 +67,7 @@ public partial class MainMenu : CanvasLayer
 
 	private void _on_button_quit_pressed()
 	{
+		SaveManager.SaveProfiles();
 		GetTree().Quit();
 	}
 }

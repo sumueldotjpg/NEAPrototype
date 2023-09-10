@@ -1,6 +1,9 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization.Metadata;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using Variables;
@@ -12,17 +15,26 @@ namespace Main
     {
         public static void SaveProfiles()
         {
-            SaveProfile test = new SaveProfile("sam",20000000,null,null,null);
-
-            string jsonString = JsonSerializer.Serialize(test);
             string filePath = @"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json";
+            List<string> savingProfiles = new List<string>();
 
-            File.WriteAllText(filePath, jsonString);
+            foreach(SaveProfile profile in AllObjects.allProfiles)
+            {
+                string jsonString = JsonSerializer.Serialize(profile);
+                savingProfiles.Add(jsonString);
+            }
+
+            File.AppendAllLines(filePath,savingProfiles);
         }
 
         public static void LoadProfiles()
         {
-            AllObjects.allProfiles.Add(new SaveProfile("This Profile",200000000,null,null,null));
+
+            using (StreamReader r = new StreamReader(@"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json"))
+            {
+                string json = r.ReadToEnd();
+                AllObjects.ProfileLoad(JsonSerializer.Deserialize<List<SaveProfile>>(json,options));
+            }
         }
     }
 }

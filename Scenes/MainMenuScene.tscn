@@ -70,7 +70,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 36
 text = "Quit"
 
-[node name="Profiles" type="Control" parent="CanvasLayer"]
+[node name="Profiles" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("ButtonProfile1", "ButtonProfile2", "ButtonProfile3", "ButtonProfile4")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -79,6 +79,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_yto7r")
+ButtonProfile1 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1")
+ButtonProfile2 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2")
+ButtonProfile3 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3")
+ButtonProfile4 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Profiles"]
 custom_minimum_size = Vector2(1880, 1040)

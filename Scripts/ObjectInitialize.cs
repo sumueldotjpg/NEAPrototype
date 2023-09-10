@@ -25,20 +25,12 @@ namespace Main
 			AllObjects.allPOIs.Add(new POI("Tesla","Overhyped electric cars, questionable self-driving claims, stock market circus.",12));
 			AllObjects.allPOIs.Add(new POI("Nvidia","Pricey graphics cards, mining frenzy enabler, gaming elitism symbol.",13));
 
-			//ProfileCreation
-				//ProfileLoading
-				SaveManager.LoadProfiles();
-				//SaveManager.SaveProfiles();
-				//ProfileDisplaying
-				ProfileManagement profileManagement = new ProfileManagement();
-				GD.Print("ObjectInitialize: ButtonProfile1 is " + profileManagement.ButtonProfile1);
-				profileManagement.DisplayProfiles();
-
 			//PuzzleCreation
 			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n----------\nCCCCC","travel over seas"));
 
 			//NPCCreation
-			AllObjects.allNPC.Add(new NPC("Agent Siaros", 1, 30));
+			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, 30));
+			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, 500, 2000));
 
 			//UpgradeCreation
 			AllObjects.allUpgrades.Add(new Upgrade(1,"Increases rewards by 50%", 50000));

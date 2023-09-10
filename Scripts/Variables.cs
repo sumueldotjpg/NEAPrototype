@@ -15,6 +15,11 @@ namespace Variables
 		public static List<NPC> allNPC  { get; private set; } = new List<NPC>{};
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
+
+		public void ProfileLoad(List<SaveProfile> allSaveProfiles)
+		{
+			allProfiles = allSaveProfiles;
+		}
 	}
 	/// <summary>
 	///Profile for storing game save data
@@ -129,6 +134,22 @@ namespace Variables
             //pay the player for worked time
         }
     }
+	public class Agent : NPC
+	{
+		public Agent(string npcname,int npcid, int actiontime) : base(npcname, npcid, actiontime)
+		{
+			NpcName = npcname;
+			NpcId = npcid;
+			ActionTime = actiontime;
+			IsUnlocked = false;
+		}
+
+        public override void NPCAction()
+        {
+            //decrease difficulty of puzzle
+        }
+    }
+
 	/// <summary>
 	///Points of interest on the globe
 	/// </summary>
