@@ -52,6 +52,11 @@ namespace Variables
 			Title = title;
 		}
 
+		public void AddMoney(int amount)
+		{
+			MoneyBalance += amount;
+		}
+
 	}
 	/// <summary>
 	///Game Puzzles

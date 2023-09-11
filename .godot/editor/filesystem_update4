@@ -1,5 +1,5 @@
-res://Scenes/MainMenuScene.tscn
 res://Scenes/GlobeScene.tscn
+res://Scenes/MainMenuScene.tscn
 res://Scripts/ConsoleInputHandler.cs
 res://Scripts/LowPolyEarthRotation.cs
 res://Scripts/MainMenu.cs

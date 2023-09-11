@@ -13,10 +13,10 @@ namespace Main
         public static void SaveProfiles()
         {
             string filePath = @"Saves/Profiles.json";
+            
             string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles);
-
+            File.WriteAllText(filePath,string.Empty);
             File.AppendAllText(filePath,jsonProfiles);
-            GD.Print("Saved");
         }
 
         public static void LoadProfiles()
@@ -36,7 +36,9 @@ namespace Main
                     };      
                     
                     sw.Write(JsonConvert.SerializeObject(newProfiles));
-                } 
+                }
+
+                
                 AllObjects.ProfileLoad(newProfiles);
             }
             else
@@ -46,7 +48,6 @@ namespace Main
                 List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles);
 
                 AllObjects.ProfileLoad(deserializedProfiles);
-                GD.Print("Loaded");
             }
         }
     }

@@ -1,4 +1,5 @@
 using Godot;
+using Main;
 using System;
 using Variables;
 
@@ -12,6 +13,10 @@ public partial class StartupScript : Node2D
 
 	[Export]
 	Label BalanceText;
+
+	[Export]
+	Button addMoneyButton;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -33,12 +38,16 @@ public partial class StartupScript : Node2D
 	{
 		BalanceText.Text = $"Balance = {AllObjects.CurrentProfile.MoneyBalance}";
 	}
+	private void _on_add_money_button_pressed()
+	{
+		AllObjects.CurrentProfile.AddMoney(1);
+	}
 	
 	private void _on_button_globe_pressed()
 	{
 		GlobeNode.Visible = true;
 		ConsoleNode.Visible = false;
-//		UpsgradesNode.Visible = false;
+		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
 	}
 	private void _on_button_console_pressed()
@@ -62,6 +71,7 @@ public partial class StartupScript : Node2D
 	}
 	private void _on_button_exit_pressed()
 	{
+		SaveManager.SaveProfiles();
 		GetTree().Quit();
 	}
 }

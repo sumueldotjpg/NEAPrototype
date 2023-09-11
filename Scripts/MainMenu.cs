@@ -69,7 +69,6 @@ public partial class MainMenu : CanvasLayer
 	private void _on_button_quit_pressed()
 	{
 		SaveManager.SaveProfiles();
-		GD.Print("Hopefully Saved");
 		GetTree().Quit();
 	}
 }

@@ -35,4 +35,19 @@ public partial class ProfileManagement : Control
 		AllObjects.SetCurrentProfile(AllObjects.allProfiles[0]);
 		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
 	}
+	private void _on_button_profile_2_pressed()
+	{
+		AllObjects.SetCurrentProfile(AllObjects.allProfiles[1]);
+		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
+	}
+	private void _on_button_profile_3_pressed()
+	{
+		AllObjects.SetCurrentProfile(AllObjects.allProfiles[2]);
+		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
+	}
+	private void _on_button_profile_4_pressed()
+	{
+		AllObjects.SetCurrentProfile(AllObjects.allProfiles[3]);
+		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
+	}
 }
