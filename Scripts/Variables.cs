@@ -16,9 +16,16 @@ namespace Variables
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
+		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,null,null,null);
+
 		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
 			allProfiles = allSaveProfiles;
+		}
+
+		public static void SetCurrentProfile(SaveProfile current)
+		{
+			CurrentProfile = current;
 		}
 	}
 	/// <summary>

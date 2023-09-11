@@ -1,8 +1,8 @@
-Button
-HBoxContainer
-VBoxContainer
-PanelContainer
 Label
+VBoxContainer
+HBoxContainer
+Button
+PanelContainer
 MarginContainer
 Control
 Path2D

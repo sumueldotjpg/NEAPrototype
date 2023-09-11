@@ -12,7 +12,7 @@ namespace Main
     {
         public static void SaveProfiles()
         {
-            string filePath = @"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json";
+            string filePath = @"Saves/Profiles.json";
             string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles);
 
             File.AppendAllText(filePath,jsonProfiles);
@@ -21,13 +21,14 @@ namespace Main
 
         public static void LoadProfiles()
         {
-            string filePath = @"D:\NEA Stuff\Project Folder\NEAPrototype\Saves\Profiles.json";
+            string filePath = @"Saves/Profiles.json";
 
             if(!File.Exists(filePath))
             {
+                List<SaveProfile> newProfiles = new List<SaveProfile>();
                 using (StreamWriter sw = File.CreateText(filePath))
                 {
-                    List<SaveProfile> newProfiles = new List<SaveProfile>(){
+                    newProfiles = new List<SaveProfile>(){
                     new SaveProfile("New Profile 1" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
                     new SaveProfile("New Profile 2" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
                     new SaveProfile("New Profile 3" , 0, new List<POI>(), new List<NPC>(), new List<Upgrade>()),
@@ -36,12 +37,13 @@ namespace Main
                     
                     sw.Write(JsonConvert.SerializeObject(newProfiles));
                 } 
+                AllObjects.ProfileLoad(newProfiles);
             }
             else
             {
                 string jsonProfiles = File.ReadAllText(filePath);
 
-                List<SaveProfile> deserializedProfiles = (List<SaveProfile>)JsonConvert.DeserializeObject(jsonProfiles);
+                List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles);
 
                 AllObjects.ProfileLoad(deserializedProfiles);
                 GD.Print("Loaded");
