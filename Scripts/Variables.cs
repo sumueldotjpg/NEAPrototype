@@ -189,6 +189,24 @@ namespace Variables
 			}
 			throw new Exception("There isnt any POIs with that name");
 		}
+		public static void UnlockPOI(POI poi)
+		{
+			poi.IsUnlocked = false;
+		}
+	}
+	public class FarmingPOI : POI
+	{
+		public int Cooldown {get; private set;}
+		public int Reward {get; private set;}
+		public FarmingPOI(string name, string description, int puzzleid, int cooldown, int reward) :  base(name, description, puzzleid)
+		{
+			Cooldown = cooldown;
+			Reward = reward;
+		}
+		public void Payout()
+		{
+			AllObjects.CurrentProfile.AddMoney(Reward);
+		}
 	}
 	/// <summary>
 	///Help speed up gameplay

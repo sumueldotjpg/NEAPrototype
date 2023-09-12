@@ -67,8 +67,19 @@ surface_material_override/47 = ExtResource("3_2b6m6")
 surface_material_override/48 = ExtResource("3_2b6m6")
 script = ExtResource("2_nbyrn")
 
-[node name="Label3D" type="Label3D" parent="LowPolyEarth"]
+[node name="Google" type="Label3D" parent="LowPolyEarth"]
 transform = Transform3D(-0.050378, -0.505838, 0.861157, -0.0295412, 0.862629, 0.504975, -0.998294, 4.03274e-09, -0.0584005, 139.927, 103.246, 0)
 pixel_size = 0.25
 text = "Google
 "
+
+[node name="Microsoft" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.364647, -0.193367, 0.910848, -0.123724, 0.959465, 0.253219, -0.922891, -0.205029, 0.325942, 153.338, 43.6528, 59.4199)
+pixel_size = 0.25
+text = "Microsoft
+"
+
+[node name="AMD" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.988058, -0.0512323, 0.14532, -0.0295412, 0.862629, 0.504975, -0.151228, -0.503237, 0.850814, 26.3688, 56.7288, 156.156)
+pixel_size = 0.25
+text = "AMD"

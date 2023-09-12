@@ -21,9 +21,9 @@ namespace Main
 			AllObjects.allPOIs.Add(new POI("IBM","Dinosaur of tech, barely relevant, labyrinthine products and services.",8));
 			AllObjects.allPOIs.Add(new POI("Uber","Exploits drivers, surge pricing, surge of bad publicity.",9));
 			AllObjects.allPOIs.Add(new POI("Adobe","Subscription trap for basic software, endless security vulnerabilities.",10));
-			AllObjects.allPOIs.Add(new POI("AMD","Riding on Intel's coattails, occasional performance bursts, chip instability.",11));
-			AllObjects.allPOIs.Add(new POI("Tesla","Overhyped electric cars, questionable self-driving claims, stock market circus.",12));
-			AllObjects.allPOIs.Add(new POI("Nvidia","Pricey graphics cards, mining frenzy enabler, gaming elitism symbol.",13));
+			AllObjects.allPOIs.Add(new FarmingPOI("AMD","Riding on Intel's coattails, occasional performance bursts, chip instability.",11,60,1000));
+			AllObjects.allPOIs.Add(new FarmingPOI("Tesla","Overhyped electric cars, questionable self-driving claims, stock market circus.",12,300,50000));
+			AllObjects.allPOIs.Add(new FarmingPOI("Nvidia","Pricey graphics cards, mining frenzy enabler, gaming elitism symbol.",13,600,2000000));
 
 			//PuzzleCreation
 			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n----------\nCCCCC","travel over seas"));

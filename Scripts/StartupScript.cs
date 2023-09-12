@@ -1,31 +1,60 @@
 using Godot;
 using Main;
 using System;
+using System.Collections.Generic;
 using Variables;
 
 public partial class StartupScript : Node2D
 {
+	[Export]
 	Control TabNode = null;
+	[Export]
 	Control GlobeNode = null;
+	[Export]
 	Control ConsoleNode = null;
+	[Export]
 	Control UpgradesNode = null;
+	[Export]
 	Control NPCsNode = null;
-
+	
 	[Export]
 	Label BalanceText;
 
 	[Export]
 	Button addMoneyButton;
 
+	[Export]
+	Node3D Globe;
+
+	protected List<Label3D> AllPOILabels = new List<Label3D>();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		TabNode = GetNode<Control>("TabButtonControl");
-		GlobeNode = GetNode<Control>("Globe");
-		ConsoleNode = GetNode<Control>("Console");
-		UpgradesNode = GetNode<Control>("Upgrades");
-		NPCsNode = GetNode<Control>("NPCs");
-		
+		foreach(Node node in Globe.GetChild(2).GetChildren())
+		{	
+			Label3D currentLabel = (Label3D)node;
+			string nodeType = Convert.ToString(node.GetType());
+			if(nodeType == "Godot.Label3D")
+			{
+				string poiName = node.Name;
+				POI labelPOI = POI.GetPOI(poiName);
+
+				if(Convert.ToString(labelPOI.GetType()) == "Variables.FarmingPOI")
+				{
+					currentLabel.Modulate = new Color(1,1,0);
+				}
+				else if(labelPOI.IsUnlocked)
+				{
+					currentLabel.Modulate = new Color(0,1,0);
+				}
+				else
+				{
+					currentLabel.Modulate = new Color(1,0,0);
+				}
+			}
+		}
+
 		TabNode.Visible = true;
 		GlobeNode.Visible = true;
 		ConsoleNode.Visible = false;
