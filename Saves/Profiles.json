@@ -1,1 +1,30 @@
-[{"Title":"New Profile 1","MoneyBalance":20,"UnlockedPOIs":[],"UnlockedNPCs":[],"UnlockedUpgrades":[]},{"Title":"New Profile 2","MoneyBalance":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UnlockedUpgrades":[]},{"Title":"New Profile 3","MoneyBalance":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UnlockedUpgrades":[]},{"Title":"New Profile 4","MoneyBalance":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UnlockedUpgrades":[]}]
+[
+    {
+        "Title": "New Profile 1",
+        "MoneyBalance": 38,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UnlockedUpgrades": []
+    },
+    {
+        "Title": "New Profile 2",
+        "MoneyBalance": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UnlockedUpgrades": []
+    },
+    {
+        "Title": "New Profile 3",
+        "MoneyBalance": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UnlockedUpgrades": []
+    },
+    {
+        "Title": "New Profile 4",
+        "MoneyBalance": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UnlockedUpgrades": []
+    }
+]

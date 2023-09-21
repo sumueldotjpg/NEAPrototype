@@ -1,7 +1,9 @@
-Button
 Label
-VBoxContainer
+RichTextLabel
 HBoxContainer
+VBoxContainer
+ScrollContainer
+Button
 PanelContainer
 MarginContainer
 Control
@@ -15,4 +17,3 @@ TextureRect
 Node
 AudioStreamPlayer2D
 Panel
-ScrollContainer

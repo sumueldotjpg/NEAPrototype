@@ -31,6 +31,7 @@ public partial class ConsoleInputHandler : LineEdit
 	}
 	private void InputResponse(List<string> input)
 	{
+		//abbreviations of commands to simplify game
 		switch (input[0].ToLower())
 		{
 			case "":

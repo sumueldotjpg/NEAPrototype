@@ -7,21 +7,18 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode = null;
+	Control TabNode;
 	[Export]
-	Control GlobeNode = null;
+	Control GlobeNode;
 	[Export]
-	Control ConsoleNode = null;
+	Control ConsoleNode;
 	[Export]
-	Control UpgradesNode = null;
+	Control UpgradesNode;
 	[Export]
-	Control NPCsNode = null;
+	Control NPCsNode;
 	
 	[Export]
 	Label BalanceText;
-
-	[Export]
-	Button addMoneyButton;
 
 	[Export]
 	Node3D Globe;
