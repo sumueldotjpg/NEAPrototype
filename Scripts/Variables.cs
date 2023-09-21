@@ -80,7 +80,7 @@ namespace Variables
 			POI currentPOI = POI.GetPOI(poiName);
 			foreach(Puzzle puzzle in AllObjects.allPuzzles)
 			{
-				if (currentPOI.PuzzleId == puzzle.PuzzleId)
+				if (currentPOI.Id == puzzle.PuzzleId)
 				{
 					return puzzle;
 				}
@@ -169,13 +169,13 @@ namespace Variables
 	{
 		public string Name {get; private set;}
 		public string Description {get; private set;}
-		public int PuzzleId { get; private set; }
+		public int Id { get; private set; }
 		public bool IsUnlocked {get; private set;}
 		public POI(string name, string description, int puzzleid)
 		{
 			Name = name;
 			Description = description;
-			PuzzleId = puzzleid;
+			Id = puzzleid;
 			IsUnlocked = false;
 		}
 		public static POI GetPOI(string poiName)
@@ -187,7 +187,20 @@ namespace Variables
 					return poi;
 				}
 			}
+			GD.Print(poiName);
 			throw new Exception("There isnt any POIs with that name");
+		}
+		public static POI GetPOIwID(int poiID)
+		{
+			foreach(POI poi in AllObjects.allPOIs)
+			{
+				if (poi.Id == poiID)
+				{
+					return poi;
+				}
+			}
+			GD.Print(poiID);
+			throw new Exception("There isnt any POIs with that ID");
 		}
 		public static void UnlockPOI(POI poi)
 		{
@@ -226,6 +239,29 @@ namespace Variables
 			cost = Cost;
 			level = 1;
 			isUnlocked = false;
+		}
+	}
+	class TreeNode
+	{
+		List<int> ChildrenIds = new List<int>();
+		int Id;
+		string Name;    
+
+		public TreeNode(List<int> childrenids, int id)
+		{
+			Id = id;
+			ChildrenIds = childrenids;
+		}
+		public int GetChildID(int i)
+		{
+			foreach(int id in this.ChildrenIds)
+			{
+				if (id == i)
+				{
+					return id;
+				}
+			}
+			throw new Exception("No child with this id");
 		}
 	}
 }
