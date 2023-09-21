@@ -31,6 +31,7 @@ public partial class ConsoleInputHandler : LineEdit
 	}
 	private void InputResponse(List<string> input)
 	{
+		//abbreviations of commands to simplify game
 		switch (input[0].ToLower())
 		{
 			case "":
@@ -55,6 +56,9 @@ public partial class ConsoleInputHandler : LineEdit
 				{
 					OutputToConsole(string.Join(" ", input), "What would you like to hack?");
 				}
+				break;
+			case "help":
+				OutputToConsole(string.Join(" ", input), "-hack <POI> <Virus>\n-hello\n-help");
 				break;
 			default:
 				OutputToConsole(string.Join(" ", input), "That isnt a command.");

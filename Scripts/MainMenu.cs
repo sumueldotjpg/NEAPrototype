@@ -9,15 +9,14 @@ using Main;
 public partial class MainMenu : CanvasLayer
 {
 	// Called when the node enters the scene tree for the first time.
-	Control MainMenuNode = null;
-	Control ProfilesNode = null;
-	Control SettingsNode  = null;
+	[Export]
+	Control MainMenuNode;
+	[Export]
+	Control ProfilesNode;
+	[Export]
+	Control SettingsNode;
 	public override void _Ready()
 	{
-		MainMenuNode = GetNode<Control>("Main");
-		ProfilesNode = GetNode<Control>("Profiles");
-		SettingsNode = GetNode<Control>("Settings");
-
 		MainMenuNode.Visible = true;
 		ProfilesNode.Visible = false;
 		SettingsNode.Visible = false;
