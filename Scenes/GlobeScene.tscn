@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=13 format=3 uid="uid://4qtro0aeiqq4"]
 
 [ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
+[ext_resource type="Texture2D" uid="uid://fgejbgpkc7er" path="res://Rescources/world.png" id="3_6basy"]
+[ext_resource type="Texture2D" uid="uid://dhrnrgk68xbtd" path="res://Rescources/terminal.png" id="4_3pol0"]
 [ext_resource type="Script" path="res://Scripts/TabMovement.cs" id="4_j1mad"]
 [ext_resource type="Script" path="res://Scripts/ConsoleInputHandler.cs" id="5_ay06t"]
+[ext_resource type="Texture2D" uid="uid://nh7kjp5nj0qx" path="res://Rescources/setting.png" id="5_qb4of"]
+[ext_resource type="Texture2D" uid="uid://br52nvrjr5i6p" path="res://Rescources/user.png" id="6_gfr2s"]
+[ext_resource type="Texture2D" uid="uid://2ae7aklw2nyt" path="res://Rescources/logout.png" id="7_k0ma3"]
+[ext_resource type="Texture2D" uid="uid://bd11xb0hklwk1" path="res://Rescources/forward.png" id="8_2eacl"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
 _data = {
@@ -52,8 +58,9 @@ text = "Globe            "
 alignment = 2
 
 [node name="World" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonGlobe"]
-position = Vector2(276, 15)
-scale = Vector2(0.052, 0.052)
+position = Vector2(281, 15)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_6basy")
 
 [node name="ButtonConsole" type="Button" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer"]
 layout_mode = 2
@@ -61,8 +68,9 @@ text = "Console            "
 alignment = 2
 
 [node name="Terminal" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonConsole"]
-position = Vector2(276, 16)
-scale = Vector2(0.052, 0.052)
+position = Vector2(281, 15)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_3pol0")
 
 [node name="ButtonUpgrades" type="Button" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer"]
 layout_mode = 2
@@ -70,8 +78,9 @@ text = "Upgrades            "
 alignment = 2
 
 [node name="Forward" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonUpgrades"]
-position = Vector2(276, 16)
-scale = Vector2(0.0521923, 0.0521923)
+position = Vector2(281, 16)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("8_2eacl")
 
 [node name="ButtonNPCs" type="Button" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer"]
 layout_mode = 2
@@ -79,8 +88,9 @@ text = "NPCs            "
 alignment = 2
 
 [node name="User" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonNPCs"]
-position = Vector2(276, 16)
-scale = Vector2(0.052, 0.052)
+position = Vector2(281, 16)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_gfr2s")
 
 [node name="ButtonSettings" type="Button" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer"]
 layout_mode = 2
@@ -88,8 +98,9 @@ text = "Settings            "
 alignment = 2
 
 [node name="Setting" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonSettings"]
-position = Vector2(276, 16)
-scale = Vector2(0.052, 0.052)
+position = Vector2(281, 16)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_qb4of")
 
 [node name="ButtonExit" type="Button" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer"]
 layout_mode = 2
@@ -97,8 +108,9 @@ text = "Exit            "
 alignment = 2
 
 [node name="Logout" type="Sprite2D" parent="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit"]
-position = Vector2(276, 16)
-scale = Vector2(0.052, 0.052)
+position = Vector2(281, 15)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_k0ma3")
 
 [node name="Globe" type="Control" parent="."]
 visible = false
