@@ -52,6 +52,11 @@ public partial class StartupScript : Node2D
 			}
 		}
 
+		//Update POI colours
+		
+
+
+
 		TabNode.Visible = true;
 		GlobeNode.Visible = true;
 		ConsoleNode.Visible = false;

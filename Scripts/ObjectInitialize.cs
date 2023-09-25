@@ -54,6 +54,11 @@ namespace Main
 			//UpgradeCreation
 			AllObjects.allUpgrades.Add(new Upgrade(1,"Increases rewards by 50%", 50000));
 			AllObjects.allUpgrades.Add(new Upgrade(2,"Reduces the cooldown on NPCs", 100000));
+
+			//LoadProfiles
+			SaveManager.LoadProfiles();
+
+			GD.Print(AllObjects.allProfiles.Count);
 		}
 	}
 }

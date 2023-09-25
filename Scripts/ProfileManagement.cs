@@ -18,7 +18,10 @@ public partial class ProfileManagement : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SaveManager.LoadProfiles();
+		MainCreation.Load();
+
+		GD.Print(AllObjects.allPOIs[0]);
+
 		ButtonProfile1.Text = AllObjects.allProfiles[0].Title;
 		ButtonProfile2.Text = AllObjects.allProfiles[1].Title;
 		ButtonProfile3.Text = AllObjects.allProfiles[2].Title;
@@ -32,6 +35,7 @@ public partial class ProfileManagement : Control
 
 	private void _on_button_profile_1_pressed()
 	{
+
 		AllObjects.SetCurrentProfile(AllObjects.allProfiles[0]);
 		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
 	}
