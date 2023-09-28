@@ -83,3 +83,8 @@ text = "Microsoft
 transform = Transform3D(0.988058, -0.0512323, 0.14532, -0.0295412, 0.862629, 0.504975, -0.151228, -0.503237, 0.850814, 26.3688, 56.7288, 156.156)
 pixel_size = 0.25
 text = "AMD"
+
+[node name="GenuineSolutions" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.96422, 0.157748, -0.213067, -0.0295412, 0.862629, 0.504975, 0.263456, -0.480612, 0.836424, -26.4061, 114.358, 119.903)
+pixel_size = 0.25
+text = "GenuineSolutions"

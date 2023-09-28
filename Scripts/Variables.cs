@@ -171,12 +171,21 @@ namespace Variables
 		public string Description {get; private set;}
 		public int Id { get; private set; }
 		public bool IsUnlocked {get; private set;}
-		public POI(string name, string description, int puzzleid)
+		public List<int> Children {get; private set;}
+		public POI(string name, string description, int puzzleid, List<int> children)
 		{
 			Name = name;
 			Description = description;
 			Id = puzzleid;
-			IsUnlocked = false;
+			Children = children;
+			if (Name == "GenuineSolutions")
+			{
+				IsUnlocked = true;
+			}
+			else
+			{
+				IsUnlocked = false;
+			}
 		}
 		public static POI GetPOI(string poiName)
 		{
@@ -211,7 +220,7 @@ namespace Variables
 	{
 		public int Cooldown {get; private set;}
 		public int Reward {get; private set;}
-		public FarmingPOI(string name, string description, int puzzleid, int cooldown, int reward) :  base(name, description, puzzleid)
+		public FarmingPOI(string name, string description, int puzzleid, List<int> children, int cooldown, int reward) :  base(name, description, puzzleid, children)
 		{
 			Cooldown = cooldown;
 			Reward = reward;
@@ -239,29 +248,6 @@ namespace Variables
 			cost = Cost;
 			level = 1;
 			isUnlocked = false;
-		}
-	}
-	class TreeNode
-	{
-		List<int> ChildrenIds = new List<int>();
-		int Id;
-		string Name;    
-
-		public TreeNode(List<int> childrenids, int id)
-		{
-			Id = id;
-			ChildrenIds = childrenids;
-		}
-		public int GetChildID(int i)
-		{
-			foreach(int id in this.ChildrenIds)
-			{
-				if (id == i)
-				{
-					return id;
-				}
-			}
-			throw new Exception("No child with this id");
 		}
 	}
 }

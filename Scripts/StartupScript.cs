@@ -39,14 +39,17 @@ public partial class StartupScript : Node2D
 
 				if(Convert.ToString(labelPOI.GetType()) == "Variables.FarmingPOI")
 				{
+					//yellow
 					currentLabel.Modulate = new Color(1,1,0);
 				}
 				else if(labelPOI.IsUnlocked)
 				{
+					//blue
 					currentLabel.Modulate = new Color(0,1,0);
 				}
 				else
 				{
+					//red
 					currentLabel.Modulate = new Color(1,0,0);
 				}
 			}
