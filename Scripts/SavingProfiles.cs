@@ -29,10 +29,10 @@ namespace Main
                 using (StreamWriter sw = File.CreateText(filePath))
                 {
                     newProfiles = new List<SaveProfile>(){
-                    new SaveProfile("New Profile 1" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>()),
-                    new SaveProfile("New Profile 2" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>()),
-                    new SaveProfile("New Profile 3" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>()),
-                    new SaveProfile("New Profile 4" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>()),
+                    new SaveProfile("New Profile 1" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>(),new List<Attack>(){AllObjects.allAttacks[0]}),
+                    new SaveProfile("New Profile 2" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>(),new List<Attack>(){AllObjects.allAttacks[0]}),
+                    new SaveProfile("New Profile 3" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>(),new List<Attack>(){AllObjects.allAttacks[0]}),
+                    new SaveProfile("New Profile 4" , 0, new List<POI>(){AllObjects.allPOIs[0]}, new List<NPC>(), new List<Upgrade>(),new List<Attack>(){AllObjects.allAttacks[0]}),
                     };      
                     
                     sw.Write(JsonConvert.SerializeObject(newProfiles));
@@ -49,7 +49,6 @@ namespace Main
 
                 AllObjects.ProfileLoad(deserializedProfiles);
             }
-            GD.Print(AllObjects.allProfiles.Count);
         }
     }
 }

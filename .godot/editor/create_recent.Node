@@ -1,9 +1,10 @@
-Label
+Timer
+VBoxContainer
 RichTextLabel
 HBoxContainer
-VBoxContainer
-ScrollContainer
 Button
+Label
+ScrollContainer
 PanelContainer
 MarginContainer
 Control

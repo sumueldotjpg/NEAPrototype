@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Variables
 {
@@ -14,9 +15,10 @@ namespace Variables
 		public static List<SaveProfile> allProfiles { get; private set; } = new List<SaveProfile>{};
 		public static List<NPC> allNPC  { get; private set; } = new List<NPC>{};
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
+		public static List<Attack> allAttacks { get; private set;} = new List<Attack>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
-		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,null,null,null);
+		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,null,null,null,null);
 
 		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
@@ -38,14 +40,16 @@ namespace Variables
 		public List<POI> UnlockedPOIs { get; private set; }
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UnlockedUpgrades { get; private set; }
+		public List<Attack> UnlockedAttacks {get; private set;}
 		
-		public SaveProfile(string title, int moneybalance, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades)
+		public SaveProfile(string title, int moneybalance, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
 			UnlockedPOIs = unlockedpois;
 			UnlockedNPCs = unlockednpcs;
 			UnlockedUpgrades = unlockedupgrades;
+			UnlockedAttacks = unlockedattacks;
 		}
 		public void SetTitle(string title)
 		{
@@ -170,13 +174,15 @@ namespace Variables
 		public string Name {get; private set;}
 		public string Description {get; private set;}
 		public int Id { get; private set; }
+		public int Strength { get; private set;}
 		public bool IsUnlocked {get; private set;}
 		public List<int> Children {get; private set;}
-		public POI(string name, string description, int puzzleid, List<int> children)
+		public POI(string name, string description, int puzzleid, int strength, List<int> children)
 		{
 			Name = name;
 			Description = description;
 			Id = puzzleid;
+			Strength = strength;
 			Children = children;
 			if (Name == "GenuineSolutions")
 			{
@@ -215,12 +221,17 @@ namespace Variables
 		{
 			poi.IsUnlocked = false;
 		}
+		public void Unlock()
+		{
+			IsUnlocked = true;
+			AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
+		}
 	}
 	public class FarmingPOI : POI
 	{
 		public int Cooldown {get; private set;}
 		public int Reward {get; private set;}
-		public FarmingPOI(string name, string description, int puzzleid, List<int> children, int cooldown, int reward) :  base(name, description, puzzleid, children)
+		public FarmingPOI(string name, string description, int puzzleid, int strength, List<int> children, int cooldown, int reward) :  base(name, description, strength, puzzleid, children)
 		{
 			Cooldown = cooldown;
 			Reward = reward;
@@ -235,19 +246,43 @@ namespace Variables
 	/// </summary>
 	public class Upgrade
 	{
-		public int upgradeID { get; private set; }
-		public string description { get; private set; }
-		public int cost { get; private set; }
-		public int level { get; private set; }
-		public bool isUnlocked {get; private set;}
+		public int UpgradeID { get; private set; }
+		public string Description { get; private set; }
+		public int Cost { get; private set; }
+		public int Level { get; private set; }
+		public bool IsUnlocked {get; private set;}
 
-		public Upgrade(int upgradeid, string Description, int Cost)
+		public Upgrade(int upgradeid, string description, int cost)
 		{
-			upgradeID = upgradeid;
-			description = Description;
-			cost = Cost;
-			level = 1;
-			isUnlocked = false;
+			UpgradeID = upgradeid;
+			Description = description;
+			Cost = cost;
+			Level = 1;
+			IsUnlocked = false;
+		}
+	}
+	public class Attack
+	{
+		public int AttackID { get; private set;}
+		public string Name { get; private set;}
+		public int Strength { get; private set;}
+		public int Cost { get; private set;}
+		public bool IsUnlocked { get; private set;}
+
+		public Attack(int attackid, string name, int strength, int cost)
+		{
+			AttackID = attackid;
+			Name = name;
+			Strength = strength;
+			Cost = cost;
+			if (Name == "Phishing")
+			{
+				IsUnlocked = true;
+			}
+			else
+			{
+				IsUnlocked = false;
+			}
 		}
 	}
 }

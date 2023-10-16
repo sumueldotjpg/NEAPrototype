@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://fgejbgpkc7er" path="res://Rescources/world.png" id="3_6basy"]
 [ext_resource type="Texture2D" uid="uid://dhrnrgk68xbtd" path="res://Rescources/terminal.png" id="4_3pol0"]
 [ext_resource type="Script" path="res://Scripts/TabMovement.cs" id="4_j1mad"]
-[ext_resource type="Script" path="res://Scripts/ConsoleInputHandler.cs" id="5_ay06t"]
 [ext_resource type="Texture2D" uid="uid://nh7kjp5nj0qx" path="res://Rescources/setting.png" id="5_qb4of"]
 [ext_resource type="Texture2D" uid="uid://br52nvrjr5i6p" path="res://Rescources/user.png" id="6_gfr2s"]
 [ext_resource type="Texture2D" uid="uid://2ae7aklw2nyt" path="res://Rescources/logout.png" id="7_k0ma3"]
 [ext_resource type="Texture2D" uid="uid://bd11xb0hklwk1" path="res://Rescources/forward.png" id="8_2eacl"]
+[ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="10_km35u"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
 _data = {
@@ -160,7 +160,80 @@ render_target_update_mode = 0
 
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
-[node name="Console" type="Control" parent="."]
+[node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "Button1", "Button2", "Button3", "Button4", "Button5")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("10_km35u")
+Console = NodePath("VBoxContainer/TextMarginContainer/RichTextLabel")
+timer = NodePath("ButtonTimer")
+Button1 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption1")
+Button2 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption2")
+Button3 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3")
+Button4 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption4")
+Button5 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Console"]
+layout_mode = 1
+offset_left = 172.0
+offset_top = 108.0
+offset_right = 1792.0
+offset_bottom = 1008.0
+theme_override_constants/separation = 105
+
+[node name="TextMarginContainer" type="MarginContainer" parent="Console/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Console/VBoxContainer/TextMarginContainer"]
+custom_minimum_size = Vector2(0, 680)
+layout_mode = 2
+fit_content = true
+
+[node name="ButtonMarginContainer" type="MarginContainer" parent="Console/VBoxContainer"]
+layout_mode = 2
+
+[node name="FirstHBoxContainer" type="HBoxContainer" parent="Console/VBoxContainer/ButtonMarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 160
+
+[node name="ButtonConsoleOption1" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Unlocked Points
+of Interest"
+
+[node name="ButtonConsoleOption2" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Unlocked
+Viruses"
+
+[node name="ButtonConsoleOption3" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Hack"
+
+[node name="ButtonConsoleOption4" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Next"
+
+[node name="ButtonConsoleOption5" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Select"
+
+[node name="ButtonTimer" type="Timer" parent="Console"]
+
+[node name="Upgrades" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -169,32 +242,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ConsoleLineEdit" type="LineEdit" parent="Console"]
-layout_mode = 0
-offset_left = 216.0
-offset_top = 1028.0
-offset_right = 1727.0
-offset_bottom = 1059.0
-placeholder_text = "Type Here..."
-script = ExtResource("5_ay06t")
-
-[node name="ConsoleRichTextLabel" type="RichTextLabel" parent="Console/ConsoleLineEdit"]
-custom_minimum_size = Vector2(1500, 900)
-layout_mode = 0
-offset_left = -4.0
-offset_top = -1014.0
-offset_right = 1514.0
-offset_bottom = -14.0
-bbcode_enabled = true
-
-[node name="Upgrades" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="NPCs" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(38.149, 0.591363)
@@ -406,3 +455,9 @@ autoplay = true
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_exited"]
 [connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="pressed" from="Globe/AddMoneyButton" to="." method="_on_add_money_button_pressed"]
+[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption1" to="Console" method="_on_button_console_option_1_pressed"]
+[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption2" to="Console" method="_on_button_console_option_2_pressed"]
+[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3" to="Console" method="_on_button_console_option_3_pressed"]
+[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption4" to="Console" method="_on_button_console_option_4_pressed"]
+[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption5" to="Console" method="_on_button_console_option_5_pressed"]
+[connection signal="timeout" from="Console/ButtonTimer" to="Console" method="_on_button_timer_timeout"]

@@ -20,8 +20,6 @@ public partial class ProfileManagement : Control
 	{
 		MainCreation.Load();
 
-		GD.Print(AllObjects.allPOIs[0]);
-
 		ButtonProfile1.Text = AllObjects.allProfiles[0].Title;
 		ButtonProfile2.Text = AllObjects.allProfiles[1].Title;
 		ButtonProfile3.Text = AllObjects.allProfiles[2].Title;
