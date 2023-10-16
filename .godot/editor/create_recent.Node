@@ -1,6 +1,9 @@
 Timer
-VBoxContainer
 RichTextLabel
+Area3D
+StaticBody3D
+CollisionShape3D
+VBoxContainer
 HBoxContainer
 Button
 Label

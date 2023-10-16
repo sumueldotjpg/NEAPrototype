@@ -168,6 +168,6 @@ public partial class ConsoleButtonHandler : Control
 		{
 			OutputText($"You are not strong enough to hack {poi.Name} yet");
 		}
-		
 	}
+
 }
