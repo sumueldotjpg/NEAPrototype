@@ -1,3 +1,5 @@
+TextEdit
+Label
 TabBar
 TabContainer
 Timer
@@ -8,7 +10,6 @@ CollisionShape3D
 VBoxContainer
 HBoxContainer
 Button
-Label
 ScrollContainer
 PanelContainer
 MarginContainer

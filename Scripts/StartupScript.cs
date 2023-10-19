@@ -79,7 +79,15 @@ public partial class StartupScript : Node2D
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
 
-		foreach(Tab)
+		foreach(TabBar Tab in poiTabs.GetChildren())
+		{
+			GD.Print(Tab.GetTabTitle(0).Replace(" ",""));
+			string tabName = POI.GetPOI(Tab.GetTabTitle(0).Replace(" ","")).Name;
+
+			TextEdit text = (TextEdit)Tab.GetChildren()[0];
+			text.Text = $"Name: {tabName}";
+			GD.Print(tabName);
+		}
 	}
 	private void _on_button_console_pressed()
 	{

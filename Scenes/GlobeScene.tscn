@@ -183,21 +183,22 @@ bbcode_enabled = true
 
 [node name="TabContainer" type="TabContainer" parent="Globe"]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 281.0
+offset_left = 39.0
+offset_top = 295.0
 offset_right = 422.0
-offset_bottom = 1014.0
+offset_bottom = 1030.0
 
 [node name="Genuine Solutions" type="TabBar" parent="Globe/TabContainer"]
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
+tabs_rearrange_group = 1
 
-[node name="Google" type="TabBar" parent="Globe/TabContainer"]
-visible = false
-layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Genuine Solutions"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 688.0
+text = "Description"
 
 [node name="Microsoft" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -205,11 +206,38 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Microsoft"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
+[node name="Google" type="TabBar" parent="Globe/TabContainer"]
+visible = false
+layout_mode = 2
+tab_count = 1
+tab_0/title = "Description                                               "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Google"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Apple" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Apple"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="Amazon" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -217,11 +245,25 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Amazon"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Meta" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Meta"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="Samsung" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -229,11 +271,25 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Samsung"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Intel" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Intel"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="IBM" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -241,11 +297,25 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/IBM"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Uber" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Uber"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="Adobe" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -253,11 +323,25 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Adobe"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="World Wide Web" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/World Wide Web"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="AMD" type="TabBar" parent="Globe/TabContainer"]
 visible = false
@@ -265,17 +349,38 @@ layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/AMD"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Tesla" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
 
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Tesla"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
+
 [node name="Nvidia" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
 tab_count = 1
 tab_0/title = "Description                                                                  "
+
+[node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Nvidia"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 372.0
+offset_bottom = 403.0
+text = "Description"
 
 [node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "Button1", "Button2", "Button3", "Button4", "Button5")]
 visible = false
