@@ -11,8 +11,8 @@ public partial class LowPolyEarthRotation : MeshInstance3D
 
 	public override void _Ready()
 	{
-		infoLabel = GetNode<RichTextLabel>("/root/MainScreen/RichTextLabelInfo");
-		playerLabel = GetNode<RichTextLabel>("/root/MainScreen/RichTextLabelPlayer");
+		infoLabel = GetNode<RichTextLabel>("/root/MainScreen/Globe/RichTextLabelInfo");
+		playerLabel = GetNode<RichTextLabel>("/root/MainScreen/Globe/RichTextLabelPlayer");
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -48,7 +48,7 @@ public partial class LowPolyEarthRotation : MeshInstance3D
 			GD.Print("Looking");
 			if (poi.Name == "Google")
 			{
-				playerLabel.Text = $"Name: {poi.Name} \nDescription: {poi.Description} \nStrength: {poi.Strength}";
+				infoLabel.Text = $"Name: {poi.Name} \nDescription: {poi.Description} \nStrength: {poi.Strength}";
 			}
 		}
 	}

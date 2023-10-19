@@ -7,21 +7,16 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode;
-	[Export]
-	Control GlobeNode;
-	[Export]
-	Control ConsoleNode;
-	[Export]
-	Control UpgradesNode;
-	[Export]
-	Control NPCsNode;
+	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode;
 	
 	[Export]
 	Label BalanceText;
 
 	[Export]
 	Node3D Globe;
+
+	[Export]
+	TabContainer poiTabs;
 
 	protected List<Label3D> AllPOILabels = new List<Label3D>();
 
@@ -83,6 +78,8 @@ public partial class StartupScript : Node2D
 		ConsoleNode.Visible = false;
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
+
+		foreach(Tab)
 	}
 	private void _on_button_console_pressed()
 	{
