@@ -19,7 +19,7 @@ namespace Variables
 		public static List<Attack> allAttacks { get; private set;} = new List<Attack>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
-		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,null,null,null);
+		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,-337,null,null,null,null);
 
 		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
@@ -42,9 +42,9 @@ namespace Variables
 		public List<POI> UnlockedPOIs { get; private set; }
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UnlockedUpgrades { get; private set; }
-		public List<Attack> UnlockedAttacks {get; private set;}
+		public List<Attack> UnlockedAttacks { get; private set;}
 		
-		public SaveProfile(string title, int moneybalance, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades)
+		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
@@ -68,9 +68,9 @@ namespace Variables
 		{
 			MoneyBalance -= amount;
 		}
-		public void DetectionDecrease(int amount)
+		public void DetectionDecrease(float amount)
 		{
-			DetectionPercentage -= DetectionPercentage * amount;
+			DetectionPercentage -= Convert.ToInt32(DetectionPercentage * amount);
 		}
 	}
 	/// <summary>
@@ -128,9 +128,9 @@ namespace Variables
 
 	public class Investor : NPC
 	{
-		public int InvestPercent {get; private set; }
+		public float InvestPercent {get; private set; }
 		public int CurrentNetWorth {get; private set; }
-		public Investor(string npcname, int npcid, string description, int actiontime, int investpercent) : base(npcname, npcid, description, actiontime)
+		public Investor(string npcname, int npcid, string description, int actiontime, float investpercent) : base(npcname, npcid, description, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -147,7 +147,7 @@ namespace Variables
 			//Invests the percentage of money set
 			if (sell)
 			{
-				moneyInvested = AllObjects.CurrentProfile.MoneyBalance*InvestPercent;
+				moneyInvested = Convert.ToInt32(AllObjects.CurrentProfile.MoneyBalance*InvestPercent);
 				AllObjects.CurrentProfile.RemoveMoney(moneyInvested);
 			}
 			//Returns the money invested with a 0.7-15 multiplier 
@@ -178,8 +178,8 @@ namespace Variables
     }
 	public class Agent : NPC
 	{
-		public int DecreaseDetectionRate {get; private set;}
-		public Agent(string npcname,int npcid, string description, int actiontime, int DecreaseDetectionRate) : base(npcname, npcid, description, actiontime)
+		public float DecreaseDetectionRate {get; private set;}
+		public Agent(string npcname,int npcid, string description, int actiontime, float DecreaseDetectionRate) : base(npcname, npcid, description, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -289,7 +289,23 @@ namespace Variables
 			IsUnlocked = false;
 		}
 	}
-	class TreeNode
+	public class Attack
+	{
+		public int AttackID { get; private set; }
+		public string Name { get; private set; }
+		public int Cost { get; private set; }
+		public int Strength { get; private set;}
+		public bool IsUnlocked { get; private set;}
+		public Attack(int attackid, string name, int cost, int strength)
+		{
+			AttackID = attackid;
+			Name = name;
+			Cost = cost;
+			Strength = strength;
+			IsUnlocked = false;
+		}
+	}
+	public class TreeNode
 	{
 		List<int> ChildrenIds = new List<int>();
 		int Id;
