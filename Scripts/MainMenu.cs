@@ -22,6 +22,7 @@ public partial class MainMenu : CanvasLayer
 		SettingsNode.Visible = false;
 		
 		DisplayServer.WindowSetMinSize(new Vector2I(1000,1020));
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,8 +32,6 @@ public partial class MainMenu : CanvasLayer
 
 	public void _on_button_play_pressed()
 	{
-		MainCreation.Load();
-
 		MainMenuNode.Visible = false;
 		ProfilesNode.Visible = true;
 		SettingsNode.Visible = false;

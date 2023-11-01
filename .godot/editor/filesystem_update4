@@ -1,1 +1,11 @@
+res://Scenes/MainMenuScene.tscn
 res://Scenes/GlobeScene.tscn
+res://Scenes/3DGlobeScene.tscn
+res://Scripts/ConsoleButtonHandler.cs
+res://Scripts/LowPolyEarthRotation.cs
+res://Scripts/MainMenu.cs
+res://Scripts/PlayButtonHandler.cs
+res://Scripts/PlayerInfo.cs
+res://Scripts/ProfileManagement.cs
+res://Scripts/StartupScript.cs
+res://Scripts/TabMovement.cs

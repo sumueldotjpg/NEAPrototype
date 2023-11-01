@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmgrpegw0q5ia"]
+[gd_scene load_steps=6 format=3 uid="uid://cmgrpegw0q5ia"]
 
 [ext_resource type="ArrayMesh" uid="uid://dojgflnlme11b" path="res://Rescources/EarthModel.obj" id="1_iop4y"]
 [ext_resource type="Script" path="res://Scripts/LowPolyEarthRotation.cs" id="2_nbyrn"]
 [ext_resource type="Material" uid="uid://doipc4rv2t042" path="res://Rescources/SeaBlue.tres" id="2_tiau0"]
 [ext_resource type="Material" uid="uid://cgny1cj4pxyc0" path="res://Rescources/GrassGreen.tres" id="3_2b6m6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxr1y"]
 
 [node name="GlobeScene" type="Node3D"]
 
@@ -68,13 +70,20 @@ surface_material_override/48 = ExtResource("3_2b6m6")
 script = ExtResource("2_nbyrn")
 
 [node name="Google" type="Label3D" parent="LowPolyEarth"]
-transform = Transform3D(-0.050378, -0.505838, 0.861157, -0.0295412, 0.862629, 0.504975, -0.998294, 4.03274e-09, -0.0584005, 139.927, 103.246, 0)
+transform = Transform3D(-0.050378, -0.505838, 0.861157, -0.0295412, 0.862629, 0.504975, -0.998294, 1.49012e-08, -0.0584006, 139.927, 103.246, 0)
 pixel_size = 0.25
 text = "Google
 "
 
+[node name="Area3D" type="Area3D" parent="LowPolyEarth/Google"]
+transform = Transform3D(30, -4.52987e-06, -2.62268e-06, -4.52987e-06, -30, -5.80997e-08, -2.62268e-06, 5.81001e-08, -30, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LowPolyEarth/Google/Area3D"]
+transform = Transform3D(1, -2.41081e-10, 0, -1.08047e-08, 1, -3.08019e-08, 2.98023e-08, -2.30805e-09, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_xxr1y")
+
 [node name="Microsoft" type="Label3D" parent="LowPolyEarth"]
-transform = Transform3D(0.364647, -0.193367, 0.910848, -0.123724, 0.959465, 0.253219, -0.922891, -0.205029, 0.325942, 153.338, 43.6528, 59.4199)
+transform = Transform3D(0.364647, -0.193367, 0.910848, -0.123724, 0.959465, 0.25322, -0.922891, -0.205029, 0.325942, 153.338, 43.6528, 59.4199)
 pixel_size = 0.25
 text = "Microsoft
 "
@@ -83,3 +92,10 @@ text = "Microsoft
 transform = Transform3D(0.988058, -0.0512323, 0.14532, -0.0295412, 0.862629, 0.504975, -0.151228, -0.503237, 0.850814, 26.3688, 56.7288, 156.156)
 pixel_size = 0.25
 text = "AMD"
+
+[node name="GenuineSolutions" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.96422, 0.157747, -0.213067, -0.0295412, 0.862629, 0.504975, 0.263456, -0.480612, 0.836424, -26.4061, 114.358, 119.903)
+pixel_size = 0.25
+text = "GenuineSolutions"
+
+[connection signal="mouse_entered" from="LowPolyEarth/Google/Area3D" to="LowPolyEarth" method="_on_area_3d_mouse_entered"]

@@ -7,21 +7,16 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode;
-	[Export]
-	Control GlobeNode;
-	[Export]
-	Control ConsoleNode;
-	[Export]
-	Control UpgradesNode;
-	[Export]
-	Control NPCsNode;
+	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode;
 	
 	[Export]
 	Label BalanceText;
 
 	[Export]
 	Node3D Globe;
+
+	[Export]
+	TabContainer poiTabs;
 
 	protected List<Label3D> AllPOILabels = new List<Label3D>();
 
@@ -39,18 +34,26 @@ public partial class StartupScript : Node2D
 
 				if(Convert.ToString(labelPOI.GetType()) == "Variables.FarmingPOI")
 				{
+					//yellow
 					currentLabel.Modulate = new Color(1,1,0);
 				}
 				else if(labelPOI.IsUnlocked)
 				{
+					//blue
 					currentLabel.Modulate = new Color(0,1,0);
 				}
 				else
 				{
+					//red
 					currentLabel.Modulate = new Color(1,0,0);
 				}
 			}
 		}
+
+		//Update POI colours
+		
+
+
 
 		TabNode.Visible = true;
 		GlobeNode.Visible = true;
@@ -75,6 +78,16 @@ public partial class StartupScript : Node2D
 		ConsoleNode.Visible = false;
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
+
+		foreach(TabBar Tab in poiTabs.GetChildren())
+		{
+			GD.Print(Tab.GetTabTitle(0).Replace(" ",""));
+			string tabName = POI.GetPOI(Tab.GetTabTitle(0).Replace(" ","")).Name;
+
+			TextEdit text = (TextEdit)Tab.GetChildren()[0];
+			text.Text = $"Name: {tabName}";
+			GD.Print(tabName);
+		}
 	}
 	private void _on_button_console_pressed()
 	{

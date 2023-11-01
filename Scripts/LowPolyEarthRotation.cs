@@ -1,12 +1,18 @@
 using Godot;
+using Variables;
 
 public partial class LowPolyEarthRotation : MeshInstance3D
 {
+
 	private float rotationSpeed = 0.002f;
 	private bool mouseHeldDown = false;
-	
+	RichTextLabel infoLabel;
+	RichTextLabel playerLabel;
+
 	public override void _Ready()
 	{
+		infoLabel = GetNode<RichTextLabel>("/root/MainScreen/Globe/RichTextLabelInfo");
+		playerLabel = GetNode<RichTextLabel>("/root/MainScreen/Globe/RichTextLabelPlayer");
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -34,5 +40,16 @@ public partial class LowPolyEarthRotation : MeshInstance3D
 	{
 		RotateX(motion.Y * rotationSpeed);
 		RotateY(motion.X * rotationSpeed);
+	}
+	private void _on_area_3d_mouse_entered()
+	{
+		foreach(POI poi in AllObjects.allPOIs)
+		{
+			GD.Print("Looking");
+			if (poi.Name == "Google")
+			{
+				infoLabel.Text = $"Name: {poi.Name} \nDescription: {poi.Description} \nStrength: {poi.Strength}";
+			}
+		}
 	}
 }
