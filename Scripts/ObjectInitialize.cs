@@ -42,8 +42,12 @@ namespace Main
 			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, "Slow Thomas will get you some money kind of slowly", 500, 1000000));
 
 			//UpgradeCreation
-			AllObjects.allUpgrades.Add(new Upgrade(1,"Increases rewards by 50%", 50000));
-			AllObjects.allUpgrades.Add(new Upgrade(2,"Reduces the cooldown on NPCs", 100000));
+			Upgrade EconomyUpgrade = new Upgrade(1,"Decreases price of items and npcs", 10000);
+			Upgrade HackingUpgrade = new Upgrade(2,"Makes the companies easier to hack", 20000);
+			Upgrade NPCUpgrade = new Upgrade(3,"Speeds up the NPC action time", 30000);
+			Upgrade VirusUpgrade = new Upgrade(4,"Increase virus efficiency", 40000);
+
+			AllObjects.allUpgrades.AddRange(new List<Upgrade>() {EconomyUpgrade,HackingUpgrade,NPCUpgrade,VirusUpgrade});
 
 			//LoadProfiles
 			SaveManager.LoadProfiles();

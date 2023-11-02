@@ -2,7 +2,9 @@ using Godot;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
+using System.Globalization;
 
 namespace Variables
 {
@@ -276,20 +278,25 @@ namespace Variables
 	{
 		public int UpgradeID { get; private set; }
 		public string Description { get; private set; }
-		public int Cost { get; private set; }
+		public int BaseCost { get; private set; }
 		public int Level { get; private set; }
 		public bool IsUnlocked {get; private set;}
 
-		public Upgrade(int upgradeid, string description, int cost)
+		public Upgrade(int upgradeid, string description, int basecost)
 		{
 			UpgradeID = upgradeid;
 			Description = description;
-			Cost = cost;
-			Level = 1;
+			BaseCost = basecost;
+			Level = 0;
 			IsUnlocked = false;
 		}
+		
+		public void IncreaseLevel()
+		{
+			Level += 1;
+		}
 	}
-	public class Attack
+    public class Attack
 	{
 		public int AttackID { get; private set; }
 		public string Name { get; private set; }

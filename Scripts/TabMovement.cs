@@ -20,7 +20,7 @@ public partial class TabMovement : VBoxContainer
 	{
 		followPath.ProgressRatio = 1.0f;
 	}
-		private void _on_mouse_entered()
+	private void _on_mouse_entered()
 	{
 		ExtendTabList();
 	}

@@ -1,5 +1,10 @@
-TextEdit
 Label
+MarginContainer
+VBoxContainer
+HBoxContainer
+Button
+Node
+TextEdit
 TabBar
 TabContainer
 Timer
@@ -7,12 +12,8 @@ RichTextLabel
 Area3D
 StaticBody3D
 CollisionShape3D
-VBoxContainer
-HBoxContainer
-Button
 ScrollContainer
 PanelContainer
-MarginContainer
 Control
 Path2D
 PathFollow2D
@@ -21,6 +22,5 @@ CheckButton
 CenterContainer
 CanvasLayer
 TextureRect
-Node
 AudioStreamPlayer2D
 Panel
