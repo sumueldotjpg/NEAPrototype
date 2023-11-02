@@ -98,7 +98,10 @@ public partial class StartupScript : Node2D
 	}
 	private void _on_button_upgrades_pressed()
 	{
-		GetTree().Quit();
+		GlobeNode.Visible = false;
+		ConsoleNode.Visible = false;
+		UpgradesNode.Visible = true;
+		NPCsNode.Visible = false;
 	}
 	private void _on_button_np_cs_pressed()
 	{
