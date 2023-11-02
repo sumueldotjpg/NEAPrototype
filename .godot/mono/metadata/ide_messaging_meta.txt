@@ -1,2 +1,0 @@
-﻿51367
-M:/Visual Studio 2022/Godot_v4.1.2-stable_mono_win64/Godot_v4.1.2-stable_mono_win64/Godot_v4.1.2-stable_mono_win64.exe
