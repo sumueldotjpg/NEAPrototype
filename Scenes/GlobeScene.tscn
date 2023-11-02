@@ -207,6 +207,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Microsoft"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -220,6 +221,7 @@ tab_count = 1
 tab_0/title = "Description                                               "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Google"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -233,6 +235,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Apple"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -246,6 +249,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Amazon"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -259,6 +263,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Meta"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -272,6 +277,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Samsung"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -285,6 +291,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Intel"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -298,6 +305,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/IBM"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -311,6 +319,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Uber"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -324,6 +333,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Adobe"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -337,6 +347,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/World Wide Web"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -350,6 +361,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/AMD"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -363,6 +375,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Tesla"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
@@ -376,6 +389,7 @@ tab_count = 1
 tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Nvidia"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
