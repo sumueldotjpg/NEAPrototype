@@ -1,4 +1,5 @@
 using Godot;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -18,7 +19,7 @@ namespace Variables
 		public static List<Attack> allAttacks { get; private set;} = new List<Attack>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
-		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,null,null,null,null);
+		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,-337,null,null,null,null);
 
 		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
@@ -37,15 +38,17 @@ namespace Variables
 	{
 		public string Title { get; private set; }
 		public int MoneyBalance { get; private set; }
+		public int DetectionPercentage { get; private set; }
 		public List<POI> UnlockedPOIs { get; private set; }
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UnlockedUpgrades { get; private set; }
-		public List<Attack> UnlockedAttacks {get; private set;}
+		public List<Attack> UnlockedAttacks { get; private set;}
 		
-		public SaveProfile(string title, int moneybalance, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
+		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
+			DetectionPercentage = detectionpercentage;
 			UnlockedPOIs = unlockedpois;
 			UnlockedNPCs = unlockednpcs;
 			UnlockedUpgrades = unlockedupgrades;
@@ -61,6 +64,14 @@ namespace Variables
 			MoneyBalance += amount;
 		}
 
+		public void RemoveMoney(int amount)
+		{
+			MoneyBalance -= amount;
+		}
+		public void DetectionDecrease(float amount)
+		{
+			DetectionPercentage -= Convert.ToInt32(DetectionPercentage * amount);
+		}
 	}
 	/// <summary>
 	///Game Puzzles
@@ -99,12 +110,14 @@ namespace Variables
 	{
 		public string NpcName { get; protected set; }
 		public int NpcId { get; protected set; }
+		public string Description { get; protected set; }
 		public int ActionTime { get; protected set; }
 		public bool IsUnlocked {get; protected set;}
-		public NPC(string npcname,int  npcid, int actiontime)
+		public NPC(string npcname,int npcid, string description, int actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
+			Description = description;
 			ActionTime = actiontime;
 			IsUnlocked = false;
 		}
@@ -115,27 +128,39 @@ namespace Variables
 
 	public class Investor : NPC
 	{
-		public int InvestAmount {get; private set; }
+		public float InvestPercent {get; private set; }
 		public int CurrentNetWorth {get; private set; }
-		public Investor(string npcname, int npcid, int actiontime, int investamount) : base(npcname, npcid, actiontime)
+		public Investor(string npcname, int npcid, string description, int actiontime, float investpercent) : base(npcname, npcid, description, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
 			ActionTime = actiontime;
 			IsUnlocked = false;
 
-			InvestAmount = investamount;
+			InvestPercent = investpercent;
 		}
-
 		public override void NPCAction()
 		{
-			//buy equivelant of {invest amount} or sell all crypto owned 
+			Random investProfit = new Random();
+			bool sell = true;
+			int moneyInvested = 0;
+			//Invests the percentage of money set
+			if (sell)
+			{
+				moneyInvested = Convert.ToInt32(AllObjects.CurrentProfile.MoneyBalance*InvestPercent);
+				AllObjects.CurrentProfile.RemoveMoney(moneyInvested);
+			}
+			//Returns the money invested with a 0.7-15 multiplier 
+			else
+			{
+				AllObjects.CurrentProfile.AddMoney(moneyInvested*(investProfit.Next(7,15)/10));
+			}
 		}
 	}
 	public class IdleNPC : NPC
 	{
 		public int EarnRate {get; private set;}
-		public IdleNPC(string npcname,int npcid, int actiontime, int earnrate) : base(npcname, npcid, actiontime)
+		public IdleNPC(string npcname,int npcid, string description, int actiontime, int earnrate) : base(npcname, npcid, description, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -147,12 +172,14 @@ namespace Variables
 
         public override void NPCAction()
         {
-            //pay the player for worked time
+			//Pays player every NPCAction
+            AllObjects.CurrentProfile.AddMoney(EarnRate);
         }
     }
 	public class Agent : NPC
 	{
-		public Agent(string npcname,int npcid, int actiontime) : base(npcname, npcid, actiontime)
+		public float DecreaseDetectionRate {get; private set;}
+		public Agent(string npcname,int npcid, string description, int actiontime, float DecreaseDetectionRate) : base(npcname, npcid, description, actiontime)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -162,7 +189,8 @@ namespace Variables
 
         public override void NPCAction()
         {
-            //decrease difficulty of puzzle
+			//Decrease the progress of getting detected
+            AllObjects.CurrentProfile.DetectionDecrease(DecreaseDetectionRate);
         }
     }
 
@@ -263,26 +291,41 @@ namespace Variables
 	}
 	public class Attack
 	{
-		public int AttackID { get; private set;}
-		public string Name { get; private set;}
+		public int AttackID { get; private set; }
+		public string Name { get; private set; }
+		public int Cost { get; private set; }
 		public int Strength { get; private set;}
-		public int Cost { get; private set;}
 		public bool IsUnlocked { get; private set;}
-
-		public Attack(int attackid, string name, int strength, int cost)
+		public Attack(int attackid, string name, int cost, int strength)
 		{
 			AttackID = attackid;
 			Name = name;
-			Strength = strength;
 			Cost = cost;
-			if (Name == "Phishing")
+			Strength = strength;
+			IsUnlocked = false;
+		}
+	}
+	public class TreeNode
+	{
+		List<int> ChildrenIds = new List<int>();
+		int Id;
+		string Name;    
+
+		public TreeNode(List<int> childrenids, int id)
+		{
+			Id = id;
+			ChildrenIds = childrenids;
+		}
+		public int GetChildID(int i)
+		{
+			foreach(int id in this.ChildrenIds)
 			{
-				IsUnlocked = true;
+				if (id == i)
+				{
+					return id;
+				}
 			}
-			else
-			{
-				IsUnlocked = false;
-			}
+			throw new Exception("No child with this id");
 		}
 	}
 }

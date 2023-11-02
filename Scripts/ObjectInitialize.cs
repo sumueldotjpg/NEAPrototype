@@ -38,8 +38,8 @@ namespace Main
 			AllObjects.allPuzzles.Add(new Puzzle(1,"What is this? \nTravel\n----------\nCCCCC","travel over seas"));
 
 			//NPCCreation
-			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, 30));
-			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, 500, 2000));
+			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, "Agent Siaros will keep the cops at bay and slowly decrease the chance of you being discovered", 3000, 0.05f));
+			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, "Slow Thomas will get you some money kind of slowly", 500, 1000000));
 
 			//UpgradeCreation
 			AllObjects.allUpgrades.Add(new Upgrade(1,"Increases rewards by 50%", 50000));
