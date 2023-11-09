@@ -204,15 +204,15 @@ namespace Variables
 		public string Name {get; private set;}
 		public string Description {get; private set;}
 		public int Id { get; private set; }
-		public int Strength { get; private set;}
+		public int BaseStrength { get; private set;}
 		public bool IsUnlocked {get; private set;}
 		public List<int> Children {get; private set;}
-		public POI(string name, string description, int puzzleid, int strength, List<int> children)
+		public POI(string name, string description, int puzzleid, int basestrength, List<int> children)
 		{
 			Name = name;
 			Description = description;
 			Id = puzzleid;
-			Strength = strength;
+			BaseStrength = basestrength;
 			Children = children;
 			if (Name == "GenuineSolutions")
 			{
