@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=16 format=3 uid="uid://4qtro0aeiqq4"]
 
 [ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bd11xb0hklwk1" path="res://Rescources/forward.png" id="8_2eacl"]
 [ext_resource type="Script" path="res://Scripts/PlayerInfo.cs" id="9_18grk"]
 [ext_resource type="Script" path="res://Scripts/ConsoleButtonHandler.cs" id="10_km35u"]
+[ext_resource type="Script" path="res://Scripts/POIInfoHandler.cs" id="11_sjxpc"]
 [ext_resource type="Script" path="res://Scripts/UpgradeHandler.cs" id="12_a7xni"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
@@ -115,7 +116,6 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_k0ma3")
 
 [node name="Globe" type="Control" parent="." node_paths=PackedStringArray("playerLabel")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,19 +160,11 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="Globe/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1000, 1000)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
 [node name="Timer" type="Timer" parent="Globe"]
-
-[node name="RichTextLabelInfo" type="RichTextLabel" parent="Globe"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 296.0
-offset_right = 436.0
-offset_bottom = 1025.0
-bbcode_enabled = true
 
 [node name="RichTextLabelPlayer" type="RichTextLabel" parent="Globe"]
 layout_mode = 0
@@ -182,12 +174,28 @@ offset_right = 1890.0
 offset_bottom = 1026.0
 bbcode_enabled = true
 
-[node name="TabContainer" type="TabContainer" parent="Globe"]
+[node name="TabContainer" type="TabContainer" parent="Globe" node_paths=PackedStringArray("genuineSolutionsText", "microsoftText", "googleText", "appleText", "amazonText", "metaText", "samsungText", "intelText", "ibmText", "uberText", "adobeText", "wwwText", "amdText", "teslaText", "nvidiaText")]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 295.0
 offset_right = 422.0
 offset_bottom = 1030.0
+script = ExtResource("11_sjxpc")
+genuineSolutionsText = NodePath("Genuine Solutions/POI Info")
+microsoftText = NodePath("Microsoft/POI Info")
+googleText = NodePath("Google/POI Info")
+appleText = NodePath("Apple/POI Info")
+amazonText = NodePath("Amazon/POI Info")
+metaText = NodePath("Meta/POI Info")
+samsungText = NodePath("Samsung/POI Info")
+intelText = NodePath("Intel/POI Info")
+ibmText = NodePath("IBM/POI Info")
+uberText = NodePath("Uber/POI Info")
+adobeText = NodePath("Adobe/POI Info")
+wwwText = NodePath("World Wide Web/POI Info")
+amdText = NodePath("AMD/POI Info")
+teslaText = NodePath("Tesla/POI Info")
+nvidiaText = NodePath("Nvidia/POI Info")
 
 [node name="Genuine Solutions" type="TabBar" parent="Globe/TabContainer"]
 layout_mode = 2
@@ -197,205 +205,196 @@ tabs_rearrange_group = 1
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 688.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Microsoft" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Microsoft"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Google" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                               "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Google"]
+custom_minimum_size = Vector2(355, 677)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
 offset_bottom = 403.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Apple" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Apple"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Amazon" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Amazon"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Meta" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Meta"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Samsung" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Samsung"]
+custom_minimum_size = Vector2(355, 0)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Intel" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Intel"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="IBM" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/IBM"]
+custom_minimum_size = Vector2(355, 677)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
 offset_bottom = 403.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Uber" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Uber"]
+custom_minimum_size = Vector2(355, 677)
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
 offset_right = 372.0
 offset_bottom = 403.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Adobe" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Adobe"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="World Wide Web" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/World Wide Web"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="AMD" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/AMD"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Tesla" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Tesla"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Nvidia" type="TabBar" parent="Globe/TabContainer"]
 visible = false
 layout_mode = 2
-tab_count = 1
-tab_0/title = "Description                                                                  "
 
 [node name="POI Info" type="TextEdit" parent="Globe/TabContainer/Nvidia"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 13.0
-offset_right = 372.0
-offset_bottom = 403.0
+offset_right = 370.0
+offset_bottom = 690.0
 text = "Description"
+wrap_mode = 1
 
 [node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "Button1", "Button2", "Button3", "Button4", "Button5")]
 visible = false
@@ -473,6 +472,7 @@ text = "Select"
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Economy1", "Economy2", "Economy3", "Economy4", "Hacking1", "Hacking2", "Hacking3", "Hacking4", "NPC1", "NPC2", "NPC3", "NPC4", "Virus1", "Virus2", "Virus3", "Virus4")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -498,6 +498,7 @@ Virus3 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button3")
 Virus4 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button4")
 
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades"]
+layout_mode = 0
 offset_left = 95.0
 offset_right = 1920.0
 offset_bottom = 1080.0
