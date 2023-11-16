@@ -108,7 +108,7 @@ public partial class ConsoleButtonHandler : Control
 			{
 				selectCounter = 0;
 			}
-			if (selectedPOI.Strength < AllObjects.CurrentProfile.UnlockedAttacks[AllObjects.CurrentProfile.UnlockedAttacks.Count + 1].Strength)
+			if (selectedPOI.GetStrength() < AllObjects.CurrentProfile.UnlockedAttacks[AllObjects.CurrentProfile.UnlockedAttacks.Count + 1].GetStrength())
 			{
 				OutputText($"[color=red]{AllObjects.allAttacks[selectCounter].Name}[/color]");
 			}
@@ -155,12 +155,12 @@ public partial class ConsoleButtonHandler : Control
 	}
 	public void AttackPOI(POI poi, Attack attack)
 	{
-		if (attack.Strength > poi.Strength && !poi.IsUnlocked)
+		if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
 		{
 			poi.Unlock();
 			OutputText($"You have hacked: {poi.Name}");
 		}
-		else if (attack.Strength > poi.Strength)
+		else if (attack.GetStrength() > poi.GetStrength())
 		{
 			OutputText($"{poi.Name} is already unlocked");
 		}

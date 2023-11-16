@@ -16,7 +16,7 @@ public partial class POIInfoHandler : TabContainer
 		for (int i = 0; i < textEdits.Count; i++)
 		{
 			textEdits[i].Text =
-			$"This is a {AllObjects.allPOIs[i].GetType} \n\n\nThis POI is know for: \n\"{AllObjects.allPOIs[i].Description}\""
+			$"This is a {AllObjects.allPOIs[i].GetType().Name} \n\n\nThis POI is know for: \n\"{AllObjects.allPOIs[i].Description}\""
 			;
 		}
 

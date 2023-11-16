@@ -14,7 +14,6 @@ namespace Variables
 	/// </summary>
 	public class AllObjects
 	{
-		public static List<Puzzle> allPuzzles { get; private set; } = new List<Puzzle>{};
 		public static List<SaveProfile> allProfiles { get; private set; } = new List<SaveProfile>{};
 		public static List<NPC> allNPC  { get; private set; } = new List<NPC>{};
 		public static List<POI> allPOIs  { get; private set; } = new List<POI>{};
@@ -45,8 +44,9 @@ namespace Variables
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UnlockedUpgrades { get; private set; }
 		public List<Attack> UnlockedAttacks { get; private set;}
-		
-		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
+        public List<Multiplier> Multipliers { get; private set;}
+
+        public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
@@ -75,36 +75,6 @@ namespace Variables
 			DetectionPercentage -= Convert.ToInt32(DetectionPercentage * amount);
 		}
 	}
-	/// <summary>
-	///Game Puzzles
-	/// </summary>
-	public class Puzzle
-	{
-		public int PuzzleId { get; private set; }
-		public string Question { get; private set; }
-		public string Answer { get; private set; }
-		public Puzzle(int puzzleid, string question, string answer)
-		{
-			PuzzleId = puzzleid;
-			Question = question;
-			Answer = answer;
-		}
-		/// <summary>
-		/// Gets the puzzle
-		/// </summary>
-		public static Puzzle GetPuzzle(string poiName)
-		{
-			POI currentPOI = POI.GetPOI(poiName);
-			foreach(Puzzle puzzle in AllObjects.allPuzzles)
-			{
-				if (currentPOI.Id == puzzle.PuzzleId)
-				{
-					return puzzle;
-				}
-			}
-			throw new Exception("Puzzle Not Found");
-		}
-	} 
 	/// <summary>
 	///NPC's that help the player
 	/// <summary>
@@ -207,11 +177,10 @@ namespace Variables
 		public int BaseStrength { get; private set;}
 		public bool IsUnlocked {get; private set;}
 		public List<int> Children {get; private set;}
-		public POI(string name, string description, int puzzleid, int basestrength, List<int> children)
+		public POI(string name, string description, int basestrength, List<int> children)
 		{
 			Name = name;
 			Description = description;
-			Id = puzzleid;
 			BaseStrength = basestrength;
 			Children = children;
 			if (Name == "GenuineSolutions")
@@ -256,12 +225,24 @@ namespace Variables
 			IsUnlocked = true;
 			AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
 		}
+		public int GetStrength()
+		{
+			int strength = this.BaseStrength;
+			foreach (Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
+			{
+				if (multiplier.MultiplierType=="POISTRENGTH")
+				{
+					strength += multiplier.MultiplierAmount;
+				}
+			}
+			return strength;
+		}
 	}
 	public class FarmingPOI : POI
 	{
 		public int Cooldown {get; private set;}
 		public int Reward {get; private set;}
-		public FarmingPOI(string name, string description, int puzzleid, int strength, List<int> children, int cooldown, int reward) :  base(name, description, strength, puzzleid, children)
+		public FarmingPOI(string name, string description, int strength, List<int> children, int cooldown, int reward) :  base(name, description, strength, children)
 		{
 			Cooldown = cooldown;
 			Reward = reward;
@@ -301,38 +282,37 @@ namespace Variables
 		public int AttackID { get; private set; }
 		public string Name { get; private set; }
 		public int Cost { get; private set; }
-		public int Strength { get; private set;}
+		public int BaseStrength { get; private set;}
 		public bool IsUnlocked { get; private set;}
-		public Attack(int attackid, string name, int cost, int strength)
+		public Attack(int attackid, string name, int cost, int basestrength)
 		{
 			AttackID = attackid;
 			Name = name;
 			Cost = cost;
-			Strength = strength;
+			BaseStrength = basestrength;
 			IsUnlocked = false;
 		}
-	}
-	public class TreeNode
-	{
-		List<int> ChildrenIds = new List<int>();
-		int Id;
-		string Name;    
-
-		public TreeNode(List<int> childrenids, int id)
+		public int GetStrength()
 		{
-			Id = id;
-			ChildrenIds = childrenids;
-		}
-		public int GetChildID(int i)
-		{
-			foreach(int id in this.ChildrenIds)
+			int strength = this.BaseStrength;
+			foreach (Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
 			{
-				if (id == i)
+				if (multiplier.MultiplierType=="ATTACKSTRENGTH")
 				{
-					return id;
+					strength += multiplier.MultiplierAmount;
 				}
 			}
-			throw new Exception("No child with this id");
+			return strength;
+		}
+	}
+	public class Multiplier
+	{
+		public string MultiplierType { get; private set; }
+		public int MultiplierAmount { get; private set; }
+		public Multiplier(string multipliertype, int multiplieramount)
+		{
+            MultiplierType = multipliertype;
+            MultiplierAmount = multiplieramount; 
 		}
 	}
 }
