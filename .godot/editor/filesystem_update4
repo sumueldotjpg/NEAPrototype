@@ -4,9 +4,9 @@ res://Scripts/LowPolyEarthRotation.cs
 res://Scripts/MainMenu.cs
 res://Scripts/PlayButtonHandler.cs
 res://Scripts/PlayerInfo.cs
+res://Scripts/PlayerInfoHandler.cs
 res://Scripts/POIInfoHandler.cs
 res://Scripts/ProfileManagement.cs
 res://Scripts/StartupScript.cs
 res://Scripts/TabMovement.cs
 res://Scripts/UpgradeHandler.cs
-res://Scripts/PlayerInfoHandler.cs

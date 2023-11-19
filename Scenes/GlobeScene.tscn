@@ -117,6 +117,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_k0ma3")
 
 [node name="Globe" type="Control" parent="." node_paths=PackedStringArray("playerLabel")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,7 +162,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="Globe/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1000, 1000)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
@@ -474,8 +475,7 @@ text = "Select"
 
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
-[node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("Economy1", "Economy2", "Economy3", "Economy4", "Hacking1", "Hacking2", "Hacking3", "Hacking4", "NPC1", "NPC2", "NPC3", "NPC4", "Virus1", "Virus2", "Virus3", "Virus4")]
-visible = false
+[node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("EconomyButton", "HackingButton", "NPCButton", "VirusButton", "EconomyBar", "HackingBar", "NPCBar", "VirusBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,22 +483,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_a7xni")
-Economy1 = NodePath("MarginContainer/HBoxContainer/EconomyVBoxContainer/Button")
-Economy2 = NodePath("MarginContainer/HBoxContainer/EconomyVBoxContainer/Button2")
-Economy3 = NodePath("MarginContainer/HBoxContainer/EconomyVBoxContainer/Button3")
-Economy4 = NodePath("MarginContainer/HBoxContainer/EconomyVBoxContainer/Button4")
-Hacking1 = NodePath("MarginContainer/HBoxContainer/HackingVBoxContainer/Button")
-Hacking2 = NodePath("MarginContainer/HBoxContainer/HackingVBoxContainer/Button2")
-Hacking3 = NodePath("MarginContainer/HBoxContainer/HackingVBoxContainer/Button3")
-Hacking4 = NodePath("MarginContainer/HBoxContainer/HackingVBoxContainer/Button4")
-NPC1 = NodePath("MarginContainer/HBoxContainer/NPCVBoxContainer/Button")
-NPC2 = NodePath("MarginContainer/HBoxContainer/NPCVBoxContainer/Button2")
-NPC3 = NodePath("MarginContainer/HBoxContainer/NPCVBoxContainer/Button3")
-NPC4 = NodePath("MarginContainer/HBoxContainer/NPCVBoxContainer/Button4")
-Virus1 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button")
-Virus2 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button2")
-Virus3 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button3")
-Virus4 = NodePath("MarginContainer/HBoxContainer/VirusVBoxContainer/Button4")
+EconomyButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button")
+HackingButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Button")
+NPCButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/Button")
+VirusButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Button")
+EconomyBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button/ProgressBar")
+HackingBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Button/ProgressBar")
+NPCBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/Button/ProgressBar")
+VirusBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Button/ProgressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades"]
 layout_mode = 0
@@ -510,91 +502,80 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Upgrades/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrades/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 290
 
-[node name="EconomyVBoxContainer" type="VBoxContainer" parent="Upgrades/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Upgrades/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 210
+size_flags_vertical = 6
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/EconomyVBoxContainer"]
+[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "Economy1"
+text = "Economy"
 
-[node name="Button2" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/EconomyVBoxContainer"]
-layout_mode = 2
-text = "Economy2"
+[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer/Button"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -3.0
+offset_right = 1707.0
+offset_bottom = 34.0
+step = 25.0
+show_percentage = false
 
-[node name="Button3" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/EconomyVBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Upgrades/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Economy3"
+size_flags_vertical = 6
 
-[node name="Button4" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/EconomyVBoxContainer"]
+[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "Economy4"
+text = "Hacking"
 
-[node name="HackingVBoxContainer" type="VBoxContainer" parent="Upgrades/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 210
+[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/Button"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -3.0
+offset_right = 1707.0
+offset_bottom = 34.0
+step = 25.0
+show_percentage = false
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/HackingVBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Upgrades/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hacking1"
+size_flags_vertical = 6
 
-[node name="Button2" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/HackingVBoxContainer"]
+[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "Hacking2"
+text = "NPC"
 
-[node name="Button3" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/HackingVBoxContainer"]
-layout_mode = 2
-text = "Hacking3"
+[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3/Button"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -3.0
+offset_right = 1707.0
+offset_bottom = 34.0
+step = 25.0
+show_percentage = false
 
-[node name="Button4" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/HackingVBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Upgrades/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hacking4"
+size_flags_vertical = 6
 
-[node name="NPCVBoxContainer" type="VBoxContainer" parent="Upgrades/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme_override_constants/separation = 210
+text = "Virus"
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/NPCVBoxContainer"]
-layout_mode = 2
-text = "NPC1"
-
-[node name="Button2" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/NPCVBoxContainer"]
-layout_mode = 2
-text = "NPC2"
-
-[node name="Button3" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/NPCVBoxContainer"]
-layout_mode = 2
-text = "NPC3"
-
-[node name="Button4" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/NPCVBoxContainer"]
-layout_mode = 2
-text = "NPC4"
-
-[node name="VirusVBoxContainer" type="VBoxContainer" parent="Upgrades/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 210
-
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/VirusVBoxContainer"]
-layout_mode = 2
-text = "Virus1"
-
-[node name="Button2" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/VirusVBoxContainer"]
-layout_mode = 2
-text = "Virus2"
-
-[node name="Button3" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/VirusVBoxContainer"]
-layout_mode = 2
-text = "Virus3"
-
-[node name="Button4" type="Button" parent="Upgrades/MarginContainer/HBoxContainer/VirusVBoxContainer"]
-layout_mode = 2
-text = "Virus4"
+[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4/Button"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = -3.0
+offset_right = 1707.0
+offset_bottom = 34.0
+step = 25.0
+show_percentage = false
 
 [node name="NPCs" type="Control" parent="."]
 visible = false
