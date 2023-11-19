@@ -17,6 +17,6 @@ public partial class PlayerInfoHandler : RichTextLabel
 		playerLabel.Text=
 		$"Stats:\n" +
 		$"Balance: {AllObjects.CurrentProfile.MoneyBalance}\n" +
-		$"Next POI's to unlock:
+		$"Next POI's to unlock:";
 	}
 }

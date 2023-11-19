@@ -3,6 +3,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Dynamic;
 using System.Globalization;
 
@@ -42,18 +43,18 @@ namespace Variables
 		public int DetectionPercentage { get; private set; }
 		public List<POI> UnlockedPOIs { get; private set; }
 		public List<NPC> UnlockedNPCs { get; private set; }
-		public List<Upgrade> UnlockedUpgrades { get; private set; }
+		public List<Upgrade> UpgradeLevels { get; private set; }
 		public List<Attack> UnlockedAttacks { get; private set;}
         public List<Multiplier> Multipliers { get; private set;}
 
-        public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> unlockedupgrades, List<Attack> unlockedattacks)
+        public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> upgradelevels, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
 			DetectionPercentage = detectionpercentage;
 			UnlockedPOIs = unlockedpois;
 			UnlockedNPCs = unlockednpcs;
-			UnlockedUpgrades = unlockedupgrades;
+			UpgradeLevels = upgradelevels;
 			UnlockedAttacks = unlockedattacks;
 		}
 		public void SetTitle(string title)
@@ -232,7 +233,7 @@ namespace Variables
 			{
 				if (multiplier.MultiplierType=="POISTRENGTH")
 				{
-					strength += multiplier.MultiplierAmount;
+					strength += (int)multiplier.MultiplierAmount;
 				}
 			}
 			return strength;
@@ -258,10 +259,14 @@ namespace Variables
 	public class Upgrade
 	{
 		public int UpgradeID { get; private set; }
-		public string Description { get; private set; }
-		public int BaseCost { get; private set; }
-		public int Level { get; private set; }
-		public bool IsUnlocked {get; private set;}
+		public string Description { get; protected set; }
+		
+		//To calculate cost of Upgrade ==> OriginalBaseCost * (e^Level)
+		//So in order to get cost later on ===> CurrentCost / (e^Level-1) == OriginalBaseCost
+		//Then OriginalBaseCost * (e^Level)
+		//In total the formula is NewCost = OldCost / (e^-1)
+		public int BaseCost { get; protected set; }
+		public int Level { get; protected set; }
 
 		public Upgrade(int upgradeid, string description, int basecost)
 		{
@@ -269,14 +274,165 @@ namespace Variables
 			Description = description;
 			BaseCost = basecost;
 			Level = 0;
-			IsUnlocked = false;
 		}
 		
-		public void IncreaseLevel()
+		public virtual void IncreaseLevel()
 		{
 			Level += 1;
+		
+			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			
+			if (Level == 1)
+			{
+				//Original Base Values
+			}
+			else if(1 < Level && Level < 5)
+			{
+				//Formula for upgrading values
+			}
+			else
+			{
+				throw new Exception("Upgrade upgraded went too far");
+			}
+
+			Description = "";
 		}
 	}
+	/// <summary>
+	/// Economy upgrade that multiplies amount earned every tick
+	/// </summary>
+	public class EconomyUpgrade : Upgrade
+	{
+		public float IncomeIncrease {get; private set;}
+		public EconomyUpgrade(int upgradeid, string description, int basecost) : base(upgradeid, description, basecost)
+		{
+			
+		}
+		public override void IncreaseLevel()
+		{
+			Level += 1;
+
+			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+
+			if (Level == 1)
+			{
+				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("INCOMEINCREASE",0.3f));
+			}
+			else if(1 < Level && Level < 5)
+			{
+				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
+				{
+					if(multiplier.MultiplierAmount == Level-1 * 0.3f && multiplier.MultiplierType == "INCOMEINCREASE")
+					{
+						multiplier.ChangeMultiplierAmount(Level * 0.3f);
+					}
+				}
+			}
+			else
+			{
+				throw new Exception("Upgrade upgraded went too far");
+			}
+
+			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+		}
+	}
+	/// <summary>
+	/// Hacking upgrade that increases the strength of attacks
+	/// </summary>
+	public class HackingUpgrade : Upgrade
+	{
+		public int StrengthIncrease {get; private set;}
+		public HackingUpgrade(int upgradeid, string description, int basecost, int strengthincrease) : base(upgradeid, description, basecost)
+		{
+			StrengthIncrease = strengthincrease;
+		}
+		public override void IncreaseLevel()
+		{
+			Level += 1;
+		
+			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+
+			if (Level == 1)
+			{
+				//Original Base Values
+			}
+			else if(1 < Level && Level < 5)
+			{
+				//Formula for upgrading values
+			}
+			else
+			{
+				throw new Exception("Upgrade upgraded went too far");
+			}
+
+			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+		}
+	}
+	public class NPCUpgrade : Upgrade
+	{
+		public float ActionDecrease {get; private set;}
+		public NPCUpgrade(int upgradeid, string description, int basecost, float actiondecrease) : base(upgradeid, description, basecost)
+		{
+		
+		}
+		public override void IncreaseLevel()
+		{
+			Level += 1;
+		
+			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+
+			if (Level == 1)
+			{
+				//Original Base Values
+			}
+			else if(1 < Level && Level < 5)
+			{
+				//Formula for upgrading values
+			}
+			else
+			{
+				throw new Exception("Upgrade upgraded went too far");
+			}
+
+			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+		}
+	}
+	public class VirusUpgrade : Upgrade
+	{
+		public int StrengthIncrease {get; private set;}
+		public VirusUpgrade(int upgradeid, string description, int basecost, int strengthincrease) : base(upgradeid, description, basecost)
+		{
+			
+		}
+		public override void IncreaseLevel()
+		{
+			Level += 1;
+		
+			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			
+			if (Level == 1)
+			{
+				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("ATTACKSTRENGTH",1));
+			}
+			else if(1 < Level && Level < 5)
+			{
+				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
+				{
+					if(multiplier.MultiplierAmount == Level-1 * 0.3f && multiplier.MultiplierType == "ATTACKSTRENGTH")
+					{
+						multiplier.ChangeMultiplierAmount(Level);
+					}
+				}
+			}
+			else
+			{
+				throw new Exception("Upgrade upgraded went too far");
+			}
+
+			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+		}
+	}
+	
     public class Attack
 	{
 		public int AttackID { get; private set; }
@@ -299,7 +455,7 @@ namespace Variables
 			{
 				if (multiplier.MultiplierType=="ATTACKSTRENGTH")
 				{
-					strength += multiplier.MultiplierAmount;
+					strength += (int)multiplier.MultiplierAmount;
 				}
 			}
 			return strength;
@@ -308,11 +464,15 @@ namespace Variables
 	public class Multiplier
 	{
 		public string MultiplierType { get; private set; }
-		public int MultiplierAmount { get; private set; }
-		public Multiplier(string multipliertype, int multiplieramount)
+		public float MultiplierAmount { get; private set; }
+		public Multiplier(string multipliertype, float multiplieramount)
 		{
             MultiplierType = multipliertype;
             MultiplierAmount = multiplieramount; 
+		}
+		public void ChangeMultiplierAmount(float amount)
+		{
+			MultiplierAmount = amount;
 		}
 	}
 }

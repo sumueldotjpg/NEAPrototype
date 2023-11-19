@@ -39,6 +39,7 @@ namespace Main
 			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, "Agent Siaros will keep the cops at bay and slowly decrease the chance of you being discovered", 3000, 0.05f));
 			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, "Slow Thomas will get you some money kind of slowly", 500, 1000000));
 
+
 			//UpgradeCreation
 			Upgrade EconomyUpgrade = new Upgrade(1,"Decreases price of items and npcs", 10000);
 			Upgrade HackingUpgrade = new Upgrade(2,"Makes the companies easier to hack", 20000);

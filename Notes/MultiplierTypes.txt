@@ -1,0 +1,3 @@
+POISTRENGTH - increases strength of POI
+ATTACKSTRENGTH - increases strength of attacks
+INCOMEINCREASE - increases amount of income every tick

@@ -1,8 +1,9 @@
+ProgressBar
+Button
+HBoxContainer
+VBoxContainer
 Label
 MarginContainer
-VBoxContainer
-HBoxContainer
-Button
 Node
 TextEdit
 TabBar
