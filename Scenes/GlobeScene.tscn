@@ -475,7 +475,7 @@ text = "Select"
 
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
-[node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("EconomyButton", "HackingButton", "NPCButton", "VirusButton", "EconomyBar", "HackingBar", "NPCBar", "VirusBar")]
+[node name="Upgrades" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,14 +483,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_a7xni")
-EconomyButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button")
-HackingButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Button")
-NPCButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/Button")
-VirusButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Button")
-EconomyBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Button/ProgressBar")
-HackingBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Button/ProgressBar")
-NPCBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/Button/ProgressBar")
-VirusBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Button/ProgressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades"]
 layout_mode = 0
@@ -509,12 +501,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonEconomy" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Economy"
 
-[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer/Button"]
+[node name="ProgressBarEconomy" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer/ButtonEconomy"]
 layout_mode = 0
 offset_left = 107.0
 offset_top = -3.0
@@ -527,12 +519,12 @@ show_percentage = false
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ButtonHacking" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Hacking"
 
-[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/Button"]
+[node name="ProgressBarHacking" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking"]
 layout_mode = 0
 offset_left = 107.0
 offset_top = -3.0
@@ -545,12 +537,12 @@ show_percentage = false
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="ButtonNPC" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "NPC"
 
-[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3/Button"]
+[node name="ProgressBarNPC" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3/ButtonNPC"]
 layout_mode = 0
 offset_left = 107.0
 offset_top = -3.0
@@ -563,12 +555,12 @@ show_percentage = false
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="Button" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="ButtonVirus" type="Button" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Virus"
 
-[node name="ProgressBar" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4/Button"]
+[node name="ProgressBarVirus" type="ProgressBar" parent="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4/ButtonVirus"]
 layout_mode = 0
 offset_left = 107.0
 offset_top = -3.0
@@ -796,3 +788,7 @@ autoplay = true
 [connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption4" to="Console" method="_on_button_console_option_4_pressed"]
 [connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption5" to="Console" method="_on_button_console_option_5_pressed"]
 [connection signal="timeout" from="Console/ButtonTimer" to="Console" method="_on_button_timer_timeout"]
+[connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer/ButtonEconomy" to="Upgrades" method="_on_button_economy_pressed"]
+[connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking" to="Upgrades" method="_on_button_hacking_pressed"]
+[connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3/ButtonNPC" to="Upgrades" method="_on_button_npc_pressed"]
+[connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4/ButtonVirus" to="Upgrades" method="_on_button_virus_pressed"]

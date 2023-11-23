@@ -28,5 +28,12 @@ public partial class UpgradeHandler : Control
 	{
 	}
 
-	
+	public void _on_button_pressed_economy()
+	{ }
+    public void _on_button_pressed_hacking()
+    { }
+    public void _on_button_pressed_npc()
+    { }
+    public void _on_button_pressed_virus()
+    { }
 }
