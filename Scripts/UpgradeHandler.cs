@@ -8,7 +8,7 @@ public partial class UpgradeHandler : Control
 {
 
 	[Export]
-    Button EconomyButton, HackingButton, NPCButton, VirusButton;
+	Button EconomyButton, HackingButton, NPCButton, VirusButton;
 	[Export]
 	ProgressBar EconomyBar, HackingBar, NPCBar, VirusBar;
 
@@ -19,6 +19,8 @@ public partial class UpgradeHandler : Control
 
 		for (int i = 0; i < 4; i++)
 		{
+			GD.Print(progressBars[i].Value + "value");
+			GD.Print(AllObjects.CurrentProfile.UpgradeLevels[i].Level);
 			progressBars[i].Value = Convert.ToDouble(AllObjects.CurrentProfile.UpgradeLevels[i].Level)/100;
 		}
 	}
@@ -28,12 +30,32 @@ public partial class UpgradeHandler : Control
 	{
 	}
 
-	public void _on_button_pressed_economy()
-	{ }
-    public void _on_button_pressed_hacking()
-    { }
-    public void _on_button_pressed_npc()
-    { }
-    public void _on_button_pressed_virus()
-    { }
+	public void _on_button_economy_pressed()
+	{
+		if (EconomyBar.Value < 100)
+		{
+			AllObjects.CurrentProfile.UpgradeLevels[0].IncreaseLevel();
+			double newValue = AllObjects.CurrentProfile.UpgradeLevels[1].Level * 0.25;
+			EconomyBar.Value = newValue;
+
+			GD.Print(EconomyBar.Value + "value" + newValue);
+			GD.Print(AllObjects.CurrentProfile.UpgradeLevels[0].Level);
+		}
+		else
+		{
+			throw new Exception("upgraded too much");
+		}
+	}
+	public void _on_button_hacking_pressed()
+	{ 
+
+	}
+	public void _on_button_npc_pressed()
+	{ 
+
+	}
+	public void _on_button_virus_pressed()
+	{ 
+
+	}
 }

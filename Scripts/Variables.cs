@@ -280,13 +280,13 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			BaseCost = BaseCost*((int)Math.E);
 			
-			if (Level == 1)
+			if (Level == 0)
 			{
 				//Original Base Values
 			}
-			else if(1 < Level && Level < 5)
+			else if(0 < Level && Level < 5)
 			{
 				//Formula for upgrading values
 			}
@@ -312,13 +312,13 @@ namespace Variables
 		{
 			Level += 1;
 
-			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			BaseCost = BaseCost*((int)Math.E);
 
-			if (Level == 1)
+			if (Level == 0)
 			{
 				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("INCOMEINCREASE",0.3f));
 			}
-			else if(1 < Level && Level < 5)
+			else if(0 < Level && Level < 5)
 			{
 				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
 				{
@@ -350,13 +350,13 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			BaseCost = BaseCost*((int)Math.E);
 
-			if (Level == 1)
+			if (Level == 0)
 			{
 				//Original Base Values
 			}
-			else if(1 < Level && Level < 5)
+			else if(0 < Level && Level < 5)
 			{
 				//Formula for upgrading values
 			}
@@ -379,13 +379,13 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			BaseCost = BaseCost*((int)Math.E);
 
-			if (Level == 1)
+			if (Level == 0)
 			{
 				//Original Base Values
 			}
-			else if(1 < Level && Level < 5)
+			else if(0 < Level && Level < 5)
 			{
 				//Formula for upgrading values
 			}
@@ -408,13 +408,13 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost/((int)Math.Pow(BaseCost,-1));
+			BaseCost = BaseCost*((int)Math.E);
 			
-			if (Level == 1)
+			if (Level == 0)
 			{
 				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("ATTACKSTRENGTH",1));
 			}
-			else if(1 < Level && Level < 5)
+			else if(0 < Level && Level < 5)
 			{
 				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
 				{

@@ -475,7 +475,7 @@ text = "Select"
 
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
-[node name="Upgrades" type="Control" parent="."]
+[node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("EconomyButton", "HackingButton", "NPCButton", "VirusButton", "EconomyBar", "HackingBar", "NPCBar", "VirusBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,6 +483,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_a7xni")
+EconomyButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ButtonEconomy")
+HackingButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking")
+NPCButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/ButtonNPC")
+VirusButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/ButtonVirus")
+EconomyBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ButtonEconomy/ProgressBarEconomy")
+HackingBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking/ProgressBarHacking")
+NPCBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/ButtonNPC/ProgressBarNPC")
+VirusBar = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/ButtonVirus/ProgressBarVirus")
 
 [node name="MarginContainer" type="MarginContainer" parent="Upgrades"]
 layout_mode = 0
