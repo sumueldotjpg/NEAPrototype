@@ -1,11 +1,11 @@
+Label
+TextEdit
 ProgressBar
 Button
 HBoxContainer
 VBoxContainer
-Label
 MarginContainer
 Node
-TextEdit
 TabBar
 TabContainer
 Timer

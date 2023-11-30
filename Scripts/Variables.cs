@@ -205,7 +205,7 @@ namespace Variables
 			GD.Print(poiName);
 			throw new Exception("There isnt any POIs with that name");
 		}
-		public static POI GetPOIwID(int poiID)
+		public static POI GetPOIID(int poiID)
 		{
 			foreach(POI poi in AllObjects.allPOIs)
 			{
@@ -265,14 +265,14 @@ namespace Variables
 		//So in order to get cost later on ===> CurrentCost / (e^Level-1) == OriginalBaseCost
 		//Then OriginalBaseCost * (e^Level)
 		//In total the formula is NewCost = OldCost / (e^-1)
-		public int BaseCost { get; protected set; }
+		public int Cost { get; protected set; }
 		public int Level { get; protected set; }
 
 		public Upgrade(int upgradeid, string description, int basecost)
 		{
 			UpgradeID = upgradeid;
 			Description = description;
-			BaseCost = basecost;
+			Cost = basecost;
 			Level = 0;
 		}
 		
@@ -280,7 +280,7 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost*((int)Math.E);
+			Cost = Cost*((int)Math.E);
 			
 			if (Level == 0)
 			{
@@ -312,7 +312,7 @@ namespace Variables
 		{
 			Level += 1;
 
-			BaseCost = BaseCost*((int)Math.E);
+			Cost = Cost*((int)Math.E);
 
 			if (Level == 0)
 			{
@@ -333,7 +333,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
 	/// <summary>
@@ -350,7 +350,7 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost*((int)Math.E);
+			Cost = Cost*((int)Math.E);
 
 			if (Level == 0)
 			{
@@ -365,7 +365,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
 	public class NPCUpgrade : Upgrade
@@ -379,7 +379,7 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost*((int)Math.E);
+			Cost = Cost*((int)Math.E);
 
 			if (Level == 0)
 			{
@@ -394,7 +394,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
 	public class VirusUpgrade : Upgrade
@@ -408,7 +408,7 @@ namespace Variables
 		{
 			Level += 1;
 		
-			BaseCost = BaseCost*((int)Math.E);
+			Cost = Cost*((int)Math.E);
 			
 			if (Level == 0)
 			{
@@ -429,7 +429,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {BaseCost}";
+			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
 	
