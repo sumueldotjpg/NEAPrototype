@@ -45,9 +45,9 @@ namespace Variables
 		public List<NPC> UnlockedNPCs { get; private set; }
 		public List<Upgrade> UpgradeLevels { get; private set; }
 		public List<Attack> UnlockedAttacks { get; private set;}
-        public List<Multiplier> Multipliers { get; private set;}
+		public List<Multiplier> Multipliers { get; private set;}
 
-        public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> upgradelevels, List<Attack> unlockedattacks)
+		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> upgradelevels, List<Attack> unlockedattacks)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
@@ -143,12 +143,12 @@ namespace Variables
 			EarnRate = earnrate; 
 		}
 
-        public override void NPCAction()
-        {
+		public override void NPCAction()
+		{
 			//Pays player every NPCAction
-            AllObjects.CurrentProfile.AddMoney(EarnRate);
-        }
-    }
+			AllObjects.CurrentProfile.AddMoney(EarnRate);
+		}
+	}
 	public class Agent : NPC
 	{
 		public float DecreaseDetectionRate {get; private set;}
@@ -160,12 +160,12 @@ namespace Variables
 			IsUnlocked = false;
 		}
 
-        public override void NPCAction()
-        {
+		public override void NPCAction()
+		{
 			//Decrease the progress of getting detected
-            AllObjects.CurrentProfile.DetectionDecrease(DecreaseDetectionRate);
-        }
-    }
+			AllObjects.CurrentProfile.DetectionDecrease(DecreaseDetectionRate);
+		}
+	}
 
 	/// <summary>
 	///Points of interest on the globe
@@ -433,7 +433,7 @@ namespace Variables
 		}
 	}
 	
-    public class Attack
+	public class Attack
 	{
 		public int AttackID { get; private set; }
 		public string Name { get; private set; }
@@ -467,8 +467,8 @@ namespace Variables
 		public float MultiplierAmount { get; private set; }
 		public Multiplier(string multipliertype, float multiplieramount)
 		{
-            MultiplierType = multipliertype;
-            MultiplierAmount = multiplieramount; 
+			MultiplierType = multipliertype;
+			MultiplierAmount = multiplieramount; 
 		}
 		public void ChangeMultiplierAmount(float amount)
 		{
