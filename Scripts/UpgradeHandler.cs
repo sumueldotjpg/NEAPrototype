@@ -23,9 +23,7 @@ public partial class UpgradeHandler : Control
 
 		for (int i = 0;i < 4;i++)
 		{
-			labels[i].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[i].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[i].Description}";
-			GD.Print(AllObjects.CurrentProfile.UpgradeLevels[i].Cost);
-			GD.Print(AllObjects.CurrentProfile.UpgradeLevels[i].UpgradeID);
+			labels[i].Text = AllObjects.CurrentProfile.UpgradeLevels[i].Description;
 		}
 	}
 
@@ -42,7 +40,7 @@ public partial class UpgradeHandler : Control
             AllObjects.CurrentProfile.UpgradeLevels[0].IncreaseLevel();
 			double newValue = AllObjects.CurrentProfile.UpgradeLevels[0].Level * 25;
 			EconomyBar.Value = newValue;
-			labels[0].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[0].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[0].Description}";
+			labels[0].Text = AllObjects.CurrentProfile.UpgradeLevels[0].Description;
 			
 		}
 		else if(EconomyBar.Value >= 100)
@@ -62,7 +60,7 @@ public partial class UpgradeHandler : Control
             AllObjects.CurrentProfile.UpgradeLevels[1].IncreaseLevel();
             double newValue = AllObjects.CurrentProfile.UpgradeLevels[1].Level * 25;
             HackingBar.Value = newValue;
-			labels[1].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[1].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[1].Description}";
+			labels[1].Text = AllObjects.CurrentProfile.UpgradeLevels[1].Description;
         }
         else if (HackingBar.Value >= 100)
         {
@@ -81,7 +79,7 @@ public partial class UpgradeHandler : Control
             AllObjects.CurrentProfile.UpgradeLevels[2].IncreaseLevel();
             double newValue = AllObjects.CurrentProfile.UpgradeLevels[2].Level * 25;
             NPCBar.Value = newValue;
-			labels[2].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[2].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[3].Description}";
+			labels[2].Text = AllObjects.CurrentProfile.UpgradeLevels[3].Description;
         }
         else if (HackingBar.Value >= 100)
         {
@@ -100,7 +98,7 @@ public partial class UpgradeHandler : Control
             AllObjects.CurrentProfile.UpgradeLevels[3].IncreaseLevel();
             double newValue = AllObjects.CurrentProfile.UpgradeLevels[3].Level * 25;
             VirusBar.Value = newValue;
-			labels[3].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[3].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[3].Description}";
+			labels[3].Text = AllObjects.CurrentProfile.UpgradeLevels[3].Description;
         }
         else if (VirusBar.Value >= 100)
         {

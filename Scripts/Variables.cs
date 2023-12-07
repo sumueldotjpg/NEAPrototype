@@ -280,7 +280,7 @@ namespace Variables
 		{
 			Level += 1;
 		
-			Cost = Cost*((int)Math.E);
+			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 			
 			if (Level == 0)
 			{
@@ -295,7 +295,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = "";
+			Description = "base upgrade";
 		}
 	}
 	/// <summary>
