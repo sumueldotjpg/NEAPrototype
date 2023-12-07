@@ -45,13 +45,13 @@ public partial class UpgradeHandler : Control
 			labels[0].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[0].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[0].Description}";
 			
 		}
-		else if(EconomyBar.Value < 100)
+		else if(EconomyBar.Value >= 100)
 		{
-			
-		}
+            EconomyButton.Disabled = true;
+        }
 		else
 		{
-			EconomyButton.Disabled = true;
+			
 		}
 	}
 	public void _on_button_hacking_pressed()
@@ -64,9 +64,13 @@ public partial class UpgradeHandler : Control
             HackingBar.Value = newValue;
 			labels[1].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[1].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[1].Description}";
         }
-        else
+        else if (HackingBar.Value >= 100)
         {
             HackingButton.Disabled = true;
+        }
+        else
+        {
+
         }
     }
 	public void _on_button_npc_pressed()
@@ -79,9 +83,13 @@ public partial class UpgradeHandler : Control
             NPCBar.Value = newValue;
 			labels[2].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[2].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[3].Description}";
         }
+        else if (HackingBar.Value >= 100)
+        {
+            HackingButton.Disabled = true;
+        }
         else
         {
-			NPCButton.Disabled = true;
+
         }
     }
 	public void _on_button_virus_pressed()
@@ -94,9 +102,13 @@ public partial class UpgradeHandler : Control
             VirusBar.Value = newValue;
 			labels[3].Text = $"Current Cost: {AllObjects.CurrentProfile.UpgradeLevels[3].Cost} \n{AllObjects.CurrentProfile.UpgradeLevels[3].Description}";
         }
-        else
+        else if (VirusBar.Value >= 100)
         {
             VirusButton.Disabled = true;
+        }
+        else
+        {
+
         }
     }
 }
