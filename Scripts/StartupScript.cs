@@ -65,7 +65,7 @@ public partial class StartupScript : Node2D
 	}
 	private void _on_add_money_button_pressed()
 	{
-		AllObjects.CurrentProfile.AddMoney(1000);
+		AllObjects.CurrentProfile.AddMoney(100000);
 	}
 	
 	private void _on_button_globe_pressed()

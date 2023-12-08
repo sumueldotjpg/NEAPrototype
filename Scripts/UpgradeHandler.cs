@@ -41,7 +41,6 @@ public partial class UpgradeHandler : Control
 			double newValue = AllObjects.CurrentProfile.UpgradeLevels[0].Level * 25;
 			EconomyBar.Value = newValue;
 			labels[0].Text = AllObjects.CurrentProfile.UpgradeLevels[0].Description;
-			
 		}
 		else if(EconomyBar.Value >= 100)
 		{
@@ -79,7 +78,7 @@ public partial class UpgradeHandler : Control
             AllObjects.CurrentProfile.UpgradeLevels[2].IncreaseLevel();
             double newValue = AllObjects.CurrentProfile.UpgradeLevels[2].Level * 25;
             NPCBar.Value = newValue;
-			labels[2].Text = AllObjects.CurrentProfile.UpgradeLevels[3].Description;
+			labels[2].Text = AllObjects.CurrentProfile.UpgradeLevels[2].Description;
         }
         else if (HackingBar.Value >= 100)
         {

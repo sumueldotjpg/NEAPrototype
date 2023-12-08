@@ -21,7 +21,7 @@ namespace Variables
 		public static List<Attack> allAttacks { get; private set;} = new List<Attack>{};
 		public static List<Upgrade> allUpgrades { get; private set; } = new List<Upgrade>{};
 
-		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,-337,null,null,null,null);
+		public static SaveProfile CurrentProfile { get; private set; } = new SaveProfile("ProfileNotLoaded",-337,-337,null,null,null,null,null);
 
 		public static void ProfileLoad(List<SaveProfile> allSaveProfiles)
 		{
@@ -47,7 +47,7 @@ namespace Variables
 		public List<Attack> UnlockedAttacks { get; private set;}
 		public List<Multiplier> Multipliers { get; private set;}
 
-		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> upgradelevels, List<Attack> unlockedattacks)
+		public SaveProfile(string title, int moneybalance,int detectionpercentage, List<POI> unlockedpois, List<NPC> unlockednpcs, List<Upgrade> upgradelevels, List<Attack> unlockedattacks, List<Multiplier> multipliers)
 		{
 			Title = title;
 			MoneyBalance = moneybalance;
@@ -56,6 +56,7 @@ namespace Variables
 			UnlockedNPCs = unlockednpcs;
 			UpgradeLevels = upgradelevels;
 			UnlockedAttacks = unlockedattacks;
+			Multipliers = multipliers;
 		}
 		public void SetTitle(string title)
 		{
@@ -268,10 +269,9 @@ namespace Variables
 		public int Cost { get; protected set; }
 		public int Level { get; protected set; }
 
-		public Upgrade(int upgradeid, string description, int basecost)
+		public Upgrade(int upgradeid, int basecost)
 		{
 			UpgradeID = upgradeid;
-			Description = description;
 			Cost = basecost;
 			Level = 0;
 		}
@@ -304,9 +304,9 @@ namespace Variables
 	public class EconomyUpgrade : Upgrade
 	{
 		public float IncomeIncrease {get; private set;}
-		public EconomyUpgrade(int upgradeid, string description, int basecost) : base(upgradeid, description, basecost)
+		public EconomyUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
 		{
-			
+			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
 		{
@@ -342,15 +342,16 @@ namespace Variables
 	public class HackingUpgrade : Upgrade
 	{
 		public int StrengthIncrease {get; private set;}
-		public HackingUpgrade(int upgradeid, string description, int basecost, int strengthincrease) : base(upgradeid, description, basecost)
+		public HackingUpgrade(int upgradeid, int basecost, int strengthincrease) : base(upgradeid, basecost)
 		{
 			StrengthIncrease = strengthincrease;
+			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
 		{
 			Level += 1;
 		
-			Cost = Cost*((int)Math.E);
+			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 
 			if (Level == 0)
 			{
@@ -371,15 +372,15 @@ namespace Variables
 	public class NPCUpgrade : Upgrade
 	{
 		public float ActionDecrease {get; private set;}
-		public NPCUpgrade(int upgradeid, string description, int basecost, float actiondecrease) : base(upgradeid, description, basecost)
+		public NPCUpgrade(int upgradeid, int basecost, float actiondecrease) : base(upgradeid, basecost)
 		{
-		
+			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
 		{
 			Level += 1;
 		
-			Cost = Cost*((int)Math.E);
+			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 
 			if (Level == 0)
 			{
@@ -400,15 +401,15 @@ namespace Variables
 	public class VirusUpgrade : Upgrade
 	{
 		public int StrengthIncrease {get; private set;}
-		public VirusUpgrade(int upgradeid, string description, int basecost, int strengthincrease) : base(upgradeid, description, basecost)
+		public VirusUpgrade(int upgradeid, int basecost, int strengthincrease) : base(upgradeid, basecost)
 		{
-			
+			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
 		{
 			Level += 1;
 		
-			Cost = Cost*((int)Math.E);
+			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 			
 			if (Level == 0)
 			{

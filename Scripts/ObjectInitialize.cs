@@ -41,10 +41,10 @@ namespace Main
 
 
 			//UpgradeCreation
-			Upgrade EconomyUpgrade = new Upgrade(1,"Decreases price of items and npcs", 10000);
-			Upgrade HackingUpgrade = new Upgrade(2,"Makes the companies easier to hack", 20000);
-			Upgrade NPCUpgrade = new Upgrade(3,"Speeds up the NPC action time", 30000);
-			Upgrade VirusUpgrade = new Upgrade(4,"Increase virus efficiency", 40000);
+			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 10000);
+			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000, 1);
+			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000, 60f);
+			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000, 2);
 
 			AllObjects.allUpgrades.AddRange(new List<Upgrade>() {EconomyUpgrade,HackingUpgrade,NPCUpgrade,VirusUpgrade});
 
