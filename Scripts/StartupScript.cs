@@ -23,6 +23,21 @@ public partial class StartupScript : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
+		//Update POI colours
+		TabNode.Visible = true;
+		GlobeNode.Visible = true;
+		ConsoleNode.Visible = false;
+		UpgradesNode.Visible = false;
+		NPCsNode.Visible = false;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+	{
+		BalanceText.Text = $"Balance = {AllObjects.CurrentProfile.MoneyBalance}";
+
+		//handle poi colours
 		foreach(Node node in Globe.GetChild(2).GetChildren())
 		{	
 			Label3D currentLabel = (Label3D)node;
@@ -30,7 +45,7 @@ public partial class StartupScript : Node2D
 			if(nodeType == "Godot.Label3D")
 			{
 				string poiName = node.Name;
-				POI labelPOI = POI.GetPOI(poiName);
+				POI labelPOI = AllObjects.GetPOI(poiName);
 
 				if(Convert.ToString(labelPOI.GetType()) == "Variables.FarmingPOI")
 				{
@@ -49,19 +64,6 @@ public partial class StartupScript : Node2D
 				}
 			}
 		}
-
-		//Update POI colours
-		TabNode.Visible = true;
-		GlobeNode.Visible = true;
-		ConsoleNode.Visible = false;
-		UpgradesNode.Visible = false;
-		NPCsNode.Visible = false;
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-	{
-		BalanceText.Text = $"Balance = {AllObjects.CurrentProfile.MoneyBalance}";
 	}
 	private void _on_add_money_button_pressed()
 	{
@@ -78,7 +80,7 @@ public partial class StartupScript : Node2D
 		foreach(TabBar Tab in poiTabs.GetChildren())
 		{
 			GD.Print(Tab.GetTabTitle(0).Replace(" ",""));
-			string tabName = POI.GetPOI(Tab.GetTabTitle(0).Replace(" ","")).Name;
+			string tabName = AllObjects.GetPOI(Tab.GetTabTitle(0).Replace(" ","")).Name;
 
 			TextEdit text = (TextEdit)Tab.GetChildren()[0];
 			text.Text = $"Name: {tabName}";

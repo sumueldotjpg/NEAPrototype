@@ -30,10 +30,10 @@ namespace Main
 			AllObjects.allPOIs.AddRange(new List<POI>(){GenuineSolutions,Google,Microsoft,Apple,Amazon,Meta,Samsung,Intel,IBM,Uber,Adobe,WorldWideWeb,AMD,Tesla,Nvidia});
 
 			//AttackCreation
-			Attack Phishing = new Attack(1,"Phishing", 5, 10);
-			Attack Spoofing = new Attack(2, "Spoofing", 10000, 20);
+			Attack Phishing = new Attack(1,"Phishing", 5, 1);
+			Attack Spoofing = new Attack(2, "Spoofing", 10000, 2);
 
-			AllObjects.allAttacks.AddRange(new List<Attack>(){Phishing});
+			AllObjects.allAttacks.AddRange(new List<Attack>(){Phishing,Spoofing});
 
 			//NPCCreation
 			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, "Agent Siaros will keep the cops at bay and slowly decrease the chance of you being discovered", 3000, 0.05f));

@@ -401,7 +401,7 @@ offset_bottom = 690.0
 text = "Description"
 wrap_mode = 1
 
-[node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "Button1", "Button2", "Button3", "Button4", "Button5")]
+[node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "HackButton", "POIList", "AttackList")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -414,11 +414,9 @@ size_flags_vertical = 3
 script = ExtResource("10_km35u")
 Console = NodePath("VBoxContainer/TextMarginContainer/RichTextLabel")
 timer = NodePath("ButtonTimer")
-Button1 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption1")
-Button2 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption2")
-Button3 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3")
-Button4 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption4")
-Button5 = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption5")
+HackButton = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3")
+POIList = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ItemList")
+AttackList = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ItemList2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Console"]
 layout_mode = 1
@@ -427,16 +425,6 @@ offset_top = 108.0
 offset_right = 1792.0
 offset_bottom = 1008.0
 theme_override_constants/separation = 105
-
-[node name="TextMarginContainer" type="MarginContainer" parent="Console/VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Console/VBoxContainer/TextMarginContainer"]
-custom_minimum_size = Vector2(0, 680)
-layout_mode = 2
-bbcode_enabled = true
-fit_content = true
 
 [node name="ButtonMarginContainer" type="MarginContainer" parent="Console/VBoxContainer"]
 layout_mode = 2
@@ -447,32 +435,28 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 160
 
-[node name="ButtonConsoleOption1" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "Unlocked Points
-of Interest"
-
-[node name="ButtonConsoleOption2" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "Unlocked
-Viruses"
-
 [node name="ButtonConsoleOption3" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Hack"
 
-[node name="ButtonConsoleOption4" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="ItemList" type="ItemList" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-text = "Next"
 
-[node name="ButtonConsoleOption5" type="Button" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="ItemList2" type="ItemList" parent="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-text = "Select"
+
+[node name="TextMarginContainer" type="MarginContainer" parent="Console/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Console/VBoxContainer/TextMarginContainer"]
+custom_minimum_size = Vector2(0, 680)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
 
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
@@ -602,6 +586,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="NPCs" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(38.149, 0.591363)
@@ -813,11 +798,7 @@ autoplay = true
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_exited"]
 [connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="pressed" from="Globe/AddMoneyButton" to="." method="_on_add_money_button_pressed"]
-[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption1" to="Console" method="_on_button_console_option_1_pressed"]
-[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption2" to="Console" method="_on_button_console_option_2_pressed"]
 [connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3" to="Console" method="_on_button_console_option_3_pressed"]
-[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption4" to="Console" method="_on_button_console_option_4_pressed"]
-[connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption5" to="Console" method="_on_button_console_option_5_pressed"]
 [connection signal="timeout" from="Console/ButtonTimer" to="Console" method="_on_button_timer_timeout"]
 [connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer/ButtonEconomy" to="Upgrades" method="_on_button_economy_pressed"]
 [connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking" to="Upgrades" method="_on_button_hacking_pressed"]

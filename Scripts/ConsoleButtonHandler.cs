@@ -12,7 +12,9 @@ public partial class ConsoleButtonHandler : Control
 	[Export]
 	Timer timer;
 	[Export]
-	Button Button1, Button2, Button3, Button4, Button5;
+	Button HackButton;
+	[Export]
+	ItemList POIList, AttackList;
 
 	bool hackSelection = false;
 	POI selectedPOI;
@@ -22,123 +24,29 @@ public partial class ConsoleButtonHandler : Control
 
 	public override void _Ready()
 	{
-		Button4.Disabled = true;
-		Button5.Disabled = true;
+		foreach(POI poi in AllObjects.allPOIs)
+		{
+			POIList.AddItem(poi.Name);
+		}
+		foreach(Attack attack in AllObjects.CurrentProfile.UnlockedAttacks)
+		{
+			AttackList.AddItem(attack.Name);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
-
-	public void _on_button_console_option_1_pressed()
-	{
-		string Hackables = "You can hack: ";
-		foreach(POI poi in AllObjects.allPOIs)
+		foreach(POI poi in AllObjects.CurrentProfile.UnlockedPOIs)
 		{
-			if(poi.IsUnlocked)
-			{
-				Hackables += poi.Name + ", ";
-			}
 		}
-		OutputText(Hackables);
-		Button1.Disabled = true;
-		timer.Start(2);
-	}
-	public void _on_button_console_option_2_pressed()
-	{
-		string Hackables = "You have attacks: ";
-		foreach(Attack attack in AllObjects.allAttacks)
-		{
-			if(attack.IsUnlocked)
-			{
-				Hackables += attack.Name + ", ";
-			}
-		}
-		OutputText(Hackables);
-		Button2.Disabled = true;
-		timer.Start(2);
 	}
 	public void _on_button_console_option_3_pressed()
 	{
-		hackSelection = true;
-		string selection = "Points of Interest: ";
-		foreach(POI poi in AllObjects.allPOIs)
-		{
-			if(poi.IsUnlocked)
-			{
-				selection += poi.Name + ", ";
-			}
-		}
-		selection += "\nAttacks: ";
-		foreach(Attack attack in AllObjects.allAttacks)
-		{
-			if(attack.IsUnlocked)
-			{
-				selection += attack.Name + ", ";
-			}
-		}
-		Button3.Disabled = true;
-		Button4.Disabled = false;
-		Button5.Disabled = false;
-		OutputText(selection);
-		OutputText("\n" + AllObjects.allPOIs[0].Name);
-	}
-	public void _on_button_console_option_4_pressed()
-	{
-		if (selectType)
-		{ 
-			if((selectCounter += 1) > AllObjects.allPOIs.Count)
-			{
-				selectCounter += 1;
-			}
-			else
-			{
-				selectCounter = 0;
-			}
-			OutputText($"[color=red]{AllObjects.allPOIs[selectCounter].Name}[/color]");
-		}
-		else
-		{
-			if((selectCounter += 1) > AllObjects.allAttacks.Count)
-			{
-				selectCounter += 1;
-			}
-			else
-			{
-				selectCounter = 0;
-			}
-			if (selectedPOI.GetStrength() < AllObjects.CurrentProfile.UnlockedAttacks[AllObjects.CurrentProfile.UnlockedAttacks.Count + 1].GetStrength())
-			{
-				OutputText($"[color=red]{AllObjects.allAttacks[selectCounter].Name}[/color]");
-			}
-			else
-			{
-				OutputText(AllObjects.allAttacks[selectCounter].Name);
-			}
-		}
-	}
-	public void _on_button_console_option_5_pressed()
-	{
-		if(selectType)
-		{
-			selectedPOI = AllObjects.allPOIs[selectCounter];
-			OutputText($"You have selected {selectedPOI.Name}");
-			selectType = false;
-			selectCounter = 0;
-		}
-		else
-		{
-			selectedAttack = AllObjects.allAttacks[selectCounter];
-			OutputText($"You have selected {selectedAttack.Name}");
-			selectType = true;
-			selectCounter = 0;
-
-			AttackPOI(selectedPOI,selectedAttack);
-			Button4.Disabled = true;
-			Button5.Disabled = true;
-			Button3.Disabled = false;
-		}
+		selectedPOI = AllObjects.GetPOI(POIList.GetItemText(POIList.GetSelectedItems()[0]));
+		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
+		OutputText($"Hacking {selectedPOI.Name} using {selectedAttack.Name} attack(Not actually that needs to be synced up)");
+		AttackPOI(selectedPOI,selectedAttack);
 	}
 	public void OutputText(string output)
 	{
@@ -148,10 +56,7 @@ public partial class ConsoleButtonHandler : Control
 
 	public void _on_button_timer_timeout()
 	{
-		Button1.Disabled = false;
-		Button2.Disabled = false;
-		Button3.Disabled = false;
-		Button4.Disabled = false;
+		HackButton.Disabled = false;
 	}
 	public void AttackPOI(POI poi, Attack attack)
 	{

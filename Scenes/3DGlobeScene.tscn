@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmgrpegw0q5ia"]
+[gd_scene load_steps=5 format=3 uid="uid://cmgrpegw0q5ia"]
 
 [ext_resource type="ArrayMesh" uid="uid://dojgflnlme11b" path="res://Rescources/EarthModel.obj" id="1_iop4y"]
 [ext_resource type="Script" path="res://Scripts/LowPolyEarthRotation.cs" id="2_nbyrn"]
 [ext_resource type="Material" uid="uid://doipc4rv2t042" path="res://Rescources/SeaBlue.tres" id="2_tiau0"]
 [ext_resource type="Material" uid="uid://cgny1cj4pxyc0" path="res://Rescources/GrassGreen.tres" id="3_2b6m6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xxr1y"]
 
 [node name="GlobeScene" type="Node3D"]
 
@@ -69,18 +67,16 @@ surface_material_override/47 = ExtResource("3_2b6m6")
 surface_material_override/48 = ExtResource("3_2b6m6")
 script = ExtResource("2_nbyrn")
 
+[node name="GenuineSolutions" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.96422, 0.157747, -0.213067, -0.0295412, 0.862629, 0.504975, 0.263456, -0.480612, 0.836424, -26.4061, 114.358, 119.903)
+pixel_size = 0.25
+text = "Genuine Solutions"
+
 [node name="Google" type="Label3D" parent="LowPolyEarth"]
 transform = Transform3D(-0.050378, -0.505838, 0.861157, -0.0295412, 0.862629, 0.504975, -0.998294, 1.49012e-08, -0.0584006, 139.927, 103.246, 0)
 pixel_size = 0.25
 text = "Google
 "
-
-[node name="Area3D" type="Area3D" parent="LowPolyEarth/Google"]
-transform = Transform3D(30, -4.52987e-06, -2.62268e-06, -4.52987e-06, -30, -5.80997e-08, -2.62268e-06, 5.81001e-08, -30, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LowPolyEarth/Google/Area3D"]
-transform = Transform3D(1, -2.41081e-10, 0, -1.08047e-08, 1, -3.08019e-08, 2.98023e-08, -2.30805e-09, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_xxr1y")
 
 [node name="Microsoft" type="Label3D" parent="LowPolyEarth"]
 transform = Transform3D(0.364647, -0.193367, 0.910848, -0.123724, 0.959465, 0.25322, -0.922891, -0.205029, 0.325942, 153.338, 43.6528, 59.4199)
@@ -88,14 +84,67 @@ pixel_size = 0.25
 text = "Microsoft
 "
 
+[node name="Apple" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.547838, -0.248872, 0.798711, -0.0270315, 0.948962, 0.314231, -0.83615, -0.193737, 0.51315, 127.755, 79.2464, 77.5592)
+pixel_size = 0.25
+text = "Apple
+"
+
+[node name="Amazon" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.955417, 0.164416, 0.24525, -0.0802072, 0.943904, -0.320334, -0.284161, 0.286381, 0.915009, 38.3237, -37.1148, 160.597)
+pixel_size = 0.25
+text = "Amazon
+"
+
+[node name="Meta" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(-0.547476, 0.0303806, 0.836271, -0.244626, 0.949878, -0.194655, -0.80027, -0.311141, -0.512603, 139.753, -31.8694, -96.6959)
+pixel_size = 0.25
+text = "Meta
+"
+
+[node name="Samsung" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.639985, 0.673181, -0.370471, 0.0149243, 0.471159, 0.881924, 0.768245, -0.569946, 0.291487, -61.8466, 147.041, 45.6765)
+pixel_size = 0.25
+text = "Samsung"
+
+[node name="Intel" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.792328, -0.500228, 0.349272, -0.0239285, 0.546566, 0.837076, -0.609629, -0.671595, 0.421089, 72.0554, 116.977, 97.7873)
+pixel_size = 0.25
+text = "Intel
+"
+
+[node name="IBM" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.994816, -0.0259869, 0.09833, -0.00125529, 0.963597, 0.26736, -0.101698, -0.266097, 0.958568, -22.8153, 43.6528, 161.845)
+pixel_size = 0.25
+text = "IBM"
+
+[node name="Uber" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.0241175, -0.252197, 0.967377, -0.123724, 0.959465, 0.25322, -0.992025, -0.125794, -0.00806263, 165.351, 39.9808, -20.7487)
+pixel_size = 0.25
+text = "Uber"
+
+[node name="Adobe" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(-0.645368, 0.289418, -0.706923, -0.0492758, 0.907744, 0.416622, 0.762283, 0.303708, -0.571568, -94.3385, 120.27, -77.7283)
+pixel_size = 0.25
+text = "Adobe"
+
+[node name="WorldWideWeb" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.770004, -0.636031, 0.0506105, 0.0204343, 0.103864, 0.994383, -0.637715, -0.764642, 0.0929727, 2.15381, 167.103, -2.18559)
+pixel_size = 0.25
+text = "World Wide Web
+"
+
 [node name="AMD" type="Label3D" parent="LowPolyEarth"]
 transform = Transform3D(0.988058, -0.0512323, 0.14532, -0.0295412, 0.862629, 0.504975, -0.151228, -0.503237, 0.850814, 26.3688, 56.7288, 156.156)
 pixel_size = 0.25
 text = "AMD"
 
-[node name="GenuineSolutions" type="Label3D" parent="LowPolyEarth"]
-transform = Transform3D(0.96422, 0.157747, -0.213067, -0.0295412, 0.862629, 0.504975, 0.263456, -0.480612, 0.836424, -26.4061, 114.358, 119.903)
+[node name="Tesla" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(-0.439216, 0.442609, -0.781786, -0.0295412, 0.862629, 0.504975, 0.897896, 0.244888, -0.365805, -129.628, 87.935, -71.144)
 pixel_size = 0.25
-text = "GenuineSolutions"
+text = "Tesla"
 
-[connection signal="mouse_entered" from="LowPolyEarth/Google/Area3D" to="LowPolyEarth" method="_on_area_3d_mouse_entered"]
+[node name="Nvidia" type="Label3D" parent="LowPolyEarth"]
+transform = Transform3D(0.438016, -0.0575896, -0.897122, 0.00302984, 0.998036, -0.0625887, 0.898963, 0.0246965, 0.43733, -150.294, -30.081, 69.9957)
+pixel_size = 0.25
+text = "Nvidia"

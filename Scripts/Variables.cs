@@ -32,6 +32,51 @@ namespace Variables
 		{
 			CurrentProfile = current;
 		}
+		public static Attack GetAttack(string attackName)
+		{
+			foreach(Attack attack in AllObjects.allAttacks)
+			{
+				if (attack.Name.ToLower() == attackName.ToLower())
+				{
+					return attack;
+				}
+			}
+			throw new Exception("There isnt any Attacks with that name");
+		}
+	    public static POI GetPOI(string poiName)
+		{
+			foreach(POI poi in AllObjects.allPOIs)
+			{
+				if (poi.Name.ToLower() == poiName.ToLower())
+				{
+					return poi;
+				}
+			}
+			throw new Exception("There isnt any POIs with that name");
+		}
+		public static POI GetPOIID(int poiID)
+		{
+			foreach(POI poi in AllObjects.allPOIs)
+			{
+				if (poi.Id == poiID)
+				{
+					return poi;
+				}
+			}
+			throw new Exception("There isnt any POIs with that ID");
+		}
+		public static float Multiply(int originalValue, string multiplierType)
+		{
+			float multiplier = 1;
+			foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
+			{
+				if(mp.MultiplierType == multiplierType)
+				{
+					multiplier += mp.MultiplierAmount;
+				}
+			}
+			return multiplier;
+		}
 	}
 	/// <summary>
 	///Profile for storing game save data
@@ -185,41 +230,12 @@ namespace Variables
 			Description = description;
 			BaseStrength = basestrength;
 			Children = children;
-			if (Name == "GenuineSolutions")
-			{
-				IsUnlocked = true;
-			}
-			else
-			{
-				IsUnlocked = false;
-			}
-		}
-		public static POI GetPOI(string poiName)
-		{
-			foreach(POI poi in AllObjects.allPOIs)
-			{
-				if (poi.Name.ToLower() == poiName.ToLower())
-				{
-					return poi;
-				}
-			}
-			GD.Print(poiName);
-			throw new Exception("There isnt any POIs with that name");
-		}
-		public static POI GetPOIID(int poiID)
-		{
-			foreach(POI poi in AllObjects.allPOIs)
-			{
-				if (poi.Id == poiID)
-				{
-					return poi;
-				}
-			}
-			GD.Print(poiID);
-			throw new Exception("There isnt any POIs with that ID");
+			IsUnlocked = false;
 		}
 		public static void UnlockPOI(POI poi)
 		{
+			int reward = //*Math.E*
+			AllObjects.CurrentProfile.AddMoney();
 			poi.IsUnlocked = false;
 		}
 		public void Unlock()
@@ -355,7 +371,7 @@ namespace Variables
 
 			if (Level == 0)
 			{
-				//Original Base Values
+				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("REWARDINCREASE",0.1f));
 			}
 			else if(0 < Level && Level < 5)
 			{
@@ -366,7 +382,7 @@ namespace Variables
 				throw new Exception("Upgrade upgraded went too far");
 			}
 
-			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
+			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
 	public class NPCUpgrade : Upgrade
