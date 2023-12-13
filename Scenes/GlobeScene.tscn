@@ -461,7 +461,6 @@ fit_content = true
 [node name="ButtonTimer" type="Timer" parent="Console"]
 
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("EconomyButton", "HackingButton", "NPCButton", "VirusButton", "EconomyBar", "HackingBar", "NPCBar", "VirusBar", "EconomyLabel", "HackingLabel", "NPCLabel", "VirusLabel")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
