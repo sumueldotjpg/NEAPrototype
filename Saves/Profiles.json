@@ -1,1 +1,239 @@
-[{"Title":"Profile 1","MoneyBalance":54281,"DetectionPercentage":0,"UnlockedPOIs":[{"Name":"GenuineSolutions","Description":"Lacking innovation, poor customer service, struggling reputation.","Id":0,"BaseStrength":0,"IsUnlocked":true,"Children":[1,2]}],"UnlockedNPCs":[],"UpgradeLevels":[{"IncomeIncrease":0.0,"UpgradeID":1,"Description":"This is an economy upgrade to increase your money earnt.\nCurrent Level: 3\nCost to Upgrade: 200857","Cost":200857,"Level":3},{"StrengthIncrease":1,"UpgradeID":2,"Description":"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 2\nCost to Upgrade: 147782","Cost":147782,"Level":2},{"ActionDecrease":0.0,"UpgradeID":3,"Description":"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 2\nCost to Upgrade: 221670","Cost":221670,"Level":2},{"StrengthIncrease":0,"UpgradeID":4,"Description":"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 2\nCost to Upgrade: 295562","Cost":295562,"Level":2}],"UnlockedAttacks":[{"AttackID":1,"Name":"Phishing","Cost":5,"BaseStrength":1,"IsUnlocked":false}],"Multipliers":[]},{"Title":"Profile 2","MoneyBalance":0,"DetectionPercentage":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UpgradeLevels":[{"IncomeIncrease":0.0,"UpgradeID":1,"Description":"This is an economy upgrade to increase your money earnt.\nCurrent Level: 3\nCost to Upgrade: 200857","Cost":200857,"Level":3},{"StrengthIncrease":1,"UpgradeID":2,"Description":"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 2\nCost to Upgrade: 147782","Cost":147782,"Level":2},{"ActionDecrease":0.0,"UpgradeID":3,"Description":"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 2\nCost to Upgrade: 221670","Cost":221670,"Level":2},{"StrengthIncrease":0,"UpgradeID":4,"Description":"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 2\nCost to Upgrade: 295562","Cost":295562,"Level":2}],"UnlockedAttacks":[{"AttackID":1,"Name":"Phishing","Cost":5,"BaseStrength":1,"IsUnlocked":false}],"Multipliers":[]},{"Title":"Profile 3","MoneyBalance":0,"DetectionPercentage":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UpgradeLevels":[{"IncomeIncrease":0.0,"UpgradeID":1,"Description":"This is an economy upgrade to increase your money earnt.\nCurrent Level: 3\nCost to Upgrade: 200857","Cost":200857,"Level":3},{"StrengthIncrease":1,"UpgradeID":2,"Description":"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 2\nCost to Upgrade: 147782","Cost":147782,"Level":2},{"ActionDecrease":0.0,"UpgradeID":3,"Description":"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 2\nCost to Upgrade: 221670","Cost":221670,"Level":2},{"StrengthIncrease":0,"UpgradeID":4,"Description":"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 2\nCost to Upgrade: 295562","Cost":295562,"Level":2}],"UnlockedAttacks":[{"AttackID":1,"Name":"Phishing","Cost":5,"BaseStrength":1,"IsUnlocked":false}],"Multipliers":[]},{"Title":"Profile 4","MoneyBalance":0,"DetectionPercentage":0,"UnlockedPOIs":[],"UnlockedNPCs":[],"UpgradeLevels":[{"IncomeIncrease":0.0,"UpgradeID":1,"Description":"This is an economy upgrade to increase your money earnt.\nCurrent Level: 3\nCost to Upgrade: 200857","Cost":200857,"Level":3},{"StrengthIncrease":1,"UpgradeID":2,"Description":"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 2\nCost to Upgrade: 147782","Cost":147782,"Level":2},{"ActionDecrease":0.0,"UpgradeID":3,"Description":"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 2\nCost to Upgrade: 221670","Cost":221670,"Level":2},{"StrengthIncrease":0,"UpgradeID":4,"Description":"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 2\nCost to Upgrade: 295562","Cost":295562,"Level":2}],"UnlockedAttacks":[{"AttackID":1,"Name":"Phishing","Cost":5,"BaseStrength":1,"IsUnlocked":false}],"Multipliers":[]}]
+[
+    {
+        "Title": "Profile 1",
+        "MoneyBalance": 180714,
+        "DetectionPercentage": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UpgradeLevels": [
+            {
+                "IncomeIncrease": 0.0,
+                "UpgradeID": 1,
+                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
+                "Cost": 545986,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 1,
+                "UpgradeID": 2,
+                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
+                "Cost": 1091969,
+                "Level": 4
+            },
+            {
+                "ActionDecrease": 0.0,
+                "UpgradeID": 3,
+                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
+                "Cost": 1637933,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 0,
+                "UpgradeID": 4,
+                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
+                "Cost": 2183925,
+                "Level": 4
+            }
+        ],
+        "UnlockedAttacks": [
+            {
+                "AttackID": 1,
+                "Name": "Phishing",
+                "Cost": 5,
+                "BaseStrength": 1,
+                "IsUnlocked": false
+            }
+        ],
+        "Multipliers": [
+            {
+                "MultiplierType": "INCOMEINCREASE",
+                "MultiplierAmount": 0.3
+            },
+            {
+                "MultiplierType": "INCOMEINCREASE",
+                "MultiplierAmount": 0.3
+            },
+            {
+                "MultiplierType": "INCOMEINCREASE",
+                "MultiplierAmount": 0.3
+            },
+            {
+                "MultiplierType": "INCOMEINCREASE",
+                "MultiplierAmount": 0.3
+            },
+            {
+                "MultiplierType": "REWARDINCREASE",
+                "MultiplierAmount": 0.1
+            },
+            {
+                "MultiplierType": "REWARDINCREASE",
+                "MultiplierAmount": 0.1
+            },
+            {
+                "MultiplierType": "REWARDINCREASE",
+                "MultiplierAmount": 0.1
+            },
+            {
+                "MultiplierType": "REWARDINCREASE",
+                "MultiplierAmount": 0.1
+            },
+            {
+                "MultiplierType": "ATTACKSTRENGTH",
+                "MultiplierAmount": 1.0
+            },
+            {
+                "MultiplierType": "ATTACKSTRENGTH",
+                "MultiplierAmount": 1.0
+            },
+            {
+                "MultiplierType": "ATTACKSTRENGTH",
+                "MultiplierAmount": 1.0
+            },
+            {
+                "MultiplierType": "ATTACKSTRENGTH",
+                "MultiplierAmount": 1.0
+            }
+        ]
+    },
+    {
+        "Title": "Profile 2",
+        "MoneyBalance": 0,
+        "DetectionPercentage": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UpgradeLevels": [
+            {
+                "IncomeIncrease": 0.0,
+                "UpgradeID": 1,
+                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
+                "Cost": 545986,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 1,
+                "UpgradeID": 2,
+                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
+                "Cost": 1091969,
+                "Level": 4
+            },
+            {
+                "ActionDecrease": 0.0,
+                "UpgradeID": 3,
+                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
+                "Cost": 1637933,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 0,
+                "UpgradeID": 4,
+                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
+                "Cost": 2183925,
+                "Level": 4
+            }
+        ],
+        "UnlockedAttacks": [
+            {
+                "AttackID": 1,
+                "Name": "Phishing",
+                "Cost": 5,
+                "BaseStrength": 1,
+                "IsUnlocked": false
+            }
+        ],
+        "Multipliers": []
+    },
+    {
+        "Title": "Profile 3",
+        "MoneyBalance": 0,
+        "DetectionPercentage": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UpgradeLevels": [
+            {
+                "IncomeIncrease": 0.0,
+                "UpgradeID": 1,
+                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
+                "Cost": 545986,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 1,
+                "UpgradeID": 2,
+                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
+                "Cost": 1091969,
+                "Level": 4
+            },
+            {
+                "ActionDecrease": 0.0,
+                "UpgradeID": 3,
+                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
+                "Cost": 1637933,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 0,
+                "UpgradeID": 4,
+                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
+                "Cost": 2183925,
+                "Level": 4
+            }
+        ],
+        "UnlockedAttacks": [
+            {
+                "AttackID": 1,
+                "Name": "Phishing",
+                "Cost": 5,
+                "BaseStrength": 1,
+                "IsUnlocked": false
+            }
+        ],
+        "Multipliers": []
+    },
+    {
+        "Title": "Profile 4",
+        "MoneyBalance": 0,
+        "DetectionPercentage": 0,
+        "UnlockedPOIs": [],
+        "UnlockedNPCs": [],
+        "UpgradeLevels": [
+            {
+                "IncomeIncrease": 0.0,
+                "UpgradeID": 1,
+                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
+                "Cost": 545986,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 1,
+                "UpgradeID": 2,
+                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
+                "Cost": 1091969,
+                "Level": 4
+            },
+            {
+                "ActionDecrease": 0.0,
+                "UpgradeID": 3,
+                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
+                "Cost": 1637933,
+                "Level": 4
+            },
+            {
+                "StrengthIncrease": 0,
+                "UpgradeID": 4,
+                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
+                "Cost": 2183925,
+                "Level": 4
+            }
+        ],
+        "UnlockedAttacks": [
+            {
+                "AttackID": 1,
+                "Name": "Phishing",
+                "Cost": 5,
+                "BaseStrength": 1,
+                "IsUnlocked": false
+            }
+        ],
+        "Multipliers": []
+    }
+]

@@ -509,7 +509,7 @@ offset_left = 107.0
 offset_top = -3.0
 offset_right = 1707.0
 offset_bottom = 34.0
-step = 25.0
+step = 20.0
 show_percentage = false
 
 [node name="EconomyLabel" type="Label" parent="Upgrades/MarginContainer/VBoxContainer"]
@@ -533,7 +533,7 @@ offset_left = 107.0
 offset_top = -3.0
 offset_right = 1707.0
 offset_bottom = 34.0
-step = 25.0
+step = 20.0
 show_percentage = false
 
 [node name="HackingLabel" type="Label" parent="Upgrades/MarginContainer/VBoxContainer"]
@@ -555,7 +555,7 @@ offset_left = 107.0
 offset_top = -3.0
 offset_right = 1707.0
 offset_bottom = 34.0
-step = 25.0
+step = 20.0
 show_percentage = false
 
 [node name="NPCLabel" type="Label" parent="Upgrades/MarginContainer/VBoxContainer"]
@@ -577,7 +577,7 @@ offset_left = 107.0
 offset_top = -3.0
 offset_right = 1707.0
 offset_bottom = 34.0
-step = 25.0
+step = 20.0
 show_percentage = false
 
 [node name="VirusLabel" type="Label" parent="Upgrades/MarginContainer/VBoxContainer"]

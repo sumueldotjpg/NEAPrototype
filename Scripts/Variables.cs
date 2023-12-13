@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Dynamic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Variables
 {
@@ -67,15 +68,31 @@ namespace Variables
 		}
 		public static float Multiply(int originalValue, string multiplierType)
 		{
-			float multiplier = 1;
-			foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
+			float multiplier;
+			switch (multiplierType)
 			{
-				if(mp.MultiplierType == multiplierType)
-				{
-					multiplier += mp.MultiplierAmount;
-				}
+				case "ATTACKSTENGTH":
+					multiplier = 0;
+					foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
+					{
+						if(mp.MultiplierType == multiplierType)
+						{
+							multiplier += mp.MultiplierAmount;
+						}
+					}
+				return originalValue + multiplier;
+				
+				default:
+					multiplier = 1;
+					foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
+					{
+						if(mp.MultiplierType == multiplierType)
+						{
+							multiplier += mp.MultiplierAmount;
+						}
+					}
+				return originalValue*multiplier;
 			}
-			return multiplier;
 		}
 	}
 	/// <summary>
@@ -232,10 +249,11 @@ namespace Variables
 			Children = children;
 			IsUnlocked = false;
 		}
-		public static void UnlockPOI(POI poi)
+		public void UnlockPOI(POI poi)
 		{
-			int reward = //*Math.E*
-			AllObjects.CurrentProfile.AddMoney();
+			int BaseReward = 9000;
+			int UnlockReward = Convert.ToInt32(BaseReward*Math.Pow(Math.E,BaseStrength-1));
+			AllObjects.CurrentProfile.AddMoney(UnlockReward);
 			poi.IsUnlocked = false;
 		}
 		public void Unlock()
@@ -330,19 +348,9 @@ namespace Variables
 
 			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 
-			if (Level == 0)
+			if(0 < Level && Level < 6)
 			{
 				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("INCOMEINCREASE",0.3f));
-			}
-			else if(0 < Level && Level < 5)
-			{
-				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
-				{
-					if(multiplier.MultiplierAmount == Level-1 * 0.3f && multiplier.MultiplierType == "INCOMEINCREASE")
-					{
-						multiplier.ChangeMultiplierAmount(Level * 0.3f);
-					}
-				}
 			}
 			else
 			{
@@ -361,7 +369,7 @@ namespace Variables
 		public HackingUpgrade(int upgradeid, int basecost, int strengthincrease) : base(upgradeid, basecost)
 		{
 			StrengthIncrease = strengthincrease;
-			Description = $"This is a hacking upgrade to do smthn.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
+			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
 		{
@@ -369,13 +377,9 @@ namespace Variables
 		
 			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 
-			if (Level == 0)
+			if(0 < Level && Level < 6)
 			{
 				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("REWARDINCREASE",0.1f));
-			}
-			else if(0 < Level && Level < 5)
-			{
-				//Formula for upgrading values
 			}
 			else
 			{
@@ -398,13 +402,9 @@ namespace Variables
 		
 			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 
-			if (Level == 0)
+			if(0 < Level && Level < 6)
 			{
-				//Original Base Values
-			}
-			else if(0 < Level && Level < 5)
-			{
-				//Formula for upgrading values
+				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("NPCDECREASE",0.02f));
 			}
 			else
 			{
@@ -427,19 +427,9 @@ namespace Variables
 		
 			Cost = Convert.ToInt32((float)Cost*((float)Math.E));
 			
-			if (Level == 0)
+			if(0 < Level && Level < 6)
 			{
 				AllObjects.CurrentProfile.Multipliers.Add(new Multiplier("ATTACKSTRENGTH",1));
-			}
-			else if(0 < Level && Level < 5)
-			{
-				foreach(Multiplier multiplier in AllObjects.CurrentProfile.Multipliers)
-				{
-					if(multiplier.MultiplierAmount == Level-1 * 0.3f && multiplier.MultiplierType == "ATTACKSTRENGTH")
-					{
-						multiplier.ChangeMultiplierAmount(Level);
-					}
-				}
 			}
 			else
 			{
