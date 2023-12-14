@@ -1,239 +1,288 @@
-[
+{
+  "$type": "System.Collections.Generic.List`1[[Variables.SaveProfile, NEA Prototype 2]], System.Private.CoreLib",
+  "$values": [
     {
-        "Title": "Profile 1",
-        "MoneyBalance": 180714,
-        "DetectionPercentage": 0,
-        "UnlockedPOIs": [],
-        "UnlockedNPCs": [],
-        "UpgradeLevels": [
-            {
-                "IncomeIncrease": 0.0,
-                "UpgradeID": 1,
-                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
-                "Cost": 545986,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 1,
-                "UpgradeID": 2,
-                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
-                "Cost": 1091969,
-                "Level": 4
-            },
-            {
-                "ActionDecrease": 0.0,
-                "UpgradeID": 3,
-                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
-                "Cost": 1637933,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 0,
-                "UpgradeID": 4,
-                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
-                "Cost": 2183925,
-                "Level": 4
-            }
-        ],
-        "UnlockedAttacks": [
-            {
-                "AttackID": 1,
-                "Name": "Phishing",
-                "Cost": 5,
-                "BaseStrength": 1,
-                "IsUnlocked": false
-            }
-        ],
-        "Multipliers": [
-            {
-                "MultiplierType": "INCOMEINCREASE",
-                "MultiplierAmount": 0.3
-            },
-            {
-                "MultiplierType": "INCOMEINCREASE",
-                "MultiplierAmount": 0.3
-            },
-            {
-                "MultiplierType": "INCOMEINCREASE",
-                "MultiplierAmount": 0.3
-            },
-            {
-                "MultiplierType": "INCOMEINCREASE",
-                "MultiplierAmount": 0.3
-            },
-            {
-                "MultiplierType": "REWARDINCREASE",
-                "MultiplierAmount": 0.1
-            },
-            {
-                "MultiplierType": "REWARDINCREASE",
-                "MultiplierAmount": 0.1
-            },
-            {
-                "MultiplierType": "REWARDINCREASE",
-                "MultiplierAmount": 0.1
-            },
-            {
-                "MultiplierType": "REWARDINCREASE",
-                "MultiplierAmount": 0.1
-            },
-            {
-                "MultiplierType": "ATTACKSTRENGTH",
-                "MultiplierAmount": 1.0
-            },
-            {
-                "MultiplierType": "ATTACKSTRENGTH",
-                "MultiplierAmount": 1.0
-            },
-            {
-                "MultiplierType": "ATTACKSTRENGTH",
-                "MultiplierAmount": 1.0
-            },
-            {
-                "MultiplierType": "ATTACKSTRENGTH",
-                "MultiplierAmount": 1.0
-            }
+      "$type": "Variables.SaveProfile, NEA Prototype 2",
+      "Title": "Profile 1",
+      "MoneyBalance": 888926,
+      "DetectionPercentage": 0,
+      "UnlockedPOIs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.POI, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
         ]
+      },
+      "UnlockedNPCs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.NPC, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UpgradeLevels": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Upgrade, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.EconomyUpgrade, NEA Prototype 2",
+            "UpgradeID": 1,
+            "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.HackingUpgrade, NEA Prototype 2",
+            "UpgradeID": 2,
+            "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.NPCUpgrade, NEA Prototype 2",
+            "UpgradeID": 3,
+            "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.VirusUpgrade, NEA Prototype 2",
+            "UpgradeID": 4,
+            "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          }
+        ]
+      },
+      "UnlockedAttacks": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Attack, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.Attack, NEA Prototype 2",
+            "AttackID": 1,
+            "Name": "Phishing",
+            "Cost": 5,
+            "BaseStrength": 1,
+            "IsUnlocked": false
+          }
+        ]
+      },
+      "Multipliers": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Multiplier, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.Multiplier, NEA Prototype 2",
+            "MultiplierType": "INCOMEINCREASE",
+            "MultiplierAmount": 0.3
+          },
+          {
+            "$type": "Variables.Multiplier, NEA Prototype 2",
+            "MultiplierType": "INCOMEINCREASE",
+            "MultiplierAmount": 0.3
+          },
+          {
+            "$type": "Variables.Multiplier, NEA Prototype 2",
+            "MultiplierType": "INCOMEINCREASE",
+            "MultiplierAmount": 0.3
+          }
+        ]
+      }
     },
     {
-        "Title": "Profile 2",
-        "MoneyBalance": 0,
-        "DetectionPercentage": 0,
-        "UnlockedPOIs": [],
-        "UnlockedNPCs": [],
-        "UpgradeLevels": [
-            {
-                "IncomeIncrease": 0.0,
-                "UpgradeID": 1,
-                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
-                "Cost": 545986,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 1,
-                "UpgradeID": 2,
-                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
-                "Cost": 1091969,
-                "Level": 4
-            },
-            {
-                "ActionDecrease": 0.0,
-                "UpgradeID": 3,
-                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
-                "Cost": 1637933,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 0,
-                "UpgradeID": 4,
-                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
-                "Cost": 2183925,
-                "Level": 4
-            }
-        ],
-        "UnlockedAttacks": [
-            {
-                "AttackID": 1,
-                "Name": "Phishing",
-                "Cost": 5,
-                "BaseStrength": 1,
-                "IsUnlocked": false
-            }
-        ],
-        "Multipliers": []
+      "$type": "Variables.SaveProfile, NEA Prototype 2",
+      "Title": "Profile 2",
+      "MoneyBalance": 0,
+      "DetectionPercentage": 0,
+      "UnlockedPOIs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.POI, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UnlockedNPCs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.NPC, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UpgradeLevels": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Upgrade, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.EconomyUpgrade, NEA Prototype 2",
+            "UpgradeID": 1,
+            "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.HackingUpgrade, NEA Prototype 2",
+            "UpgradeID": 2,
+            "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.NPCUpgrade, NEA Prototype 2",
+            "UpgradeID": 3,
+            "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.VirusUpgrade, NEA Prototype 2",
+            "UpgradeID": 4,
+            "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          }
+        ]
+      },
+      "UnlockedAttacks": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Attack, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.Attack, NEA Prototype 2",
+            "AttackID": 1,
+            "Name": "Phishing",
+            "Cost": 5,
+            "BaseStrength": 1,
+            "IsUnlocked": false
+          }
+        ]
+      },
+      "Multipliers": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Multiplier, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      }
     },
     {
-        "Title": "Profile 3",
-        "MoneyBalance": 0,
-        "DetectionPercentage": 0,
-        "UnlockedPOIs": [],
-        "UnlockedNPCs": [],
-        "UpgradeLevels": [
-            {
-                "IncomeIncrease": 0.0,
-                "UpgradeID": 1,
-                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
-                "Cost": 545986,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 1,
-                "UpgradeID": 2,
-                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
-                "Cost": 1091969,
-                "Level": 4
-            },
-            {
-                "ActionDecrease": 0.0,
-                "UpgradeID": 3,
-                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
-                "Cost": 1637933,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 0,
-                "UpgradeID": 4,
-                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
-                "Cost": 2183925,
-                "Level": 4
-            }
-        ],
-        "UnlockedAttacks": [
-            {
-                "AttackID": 1,
-                "Name": "Phishing",
-                "Cost": 5,
-                "BaseStrength": 1,
-                "IsUnlocked": false
-            }
-        ],
-        "Multipliers": []
+      "$type": "Variables.SaveProfile, NEA Prototype 2",
+      "Title": "Profile 3",
+      "MoneyBalance": 0,
+      "DetectionPercentage": 0,
+      "UnlockedPOIs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.POI, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UnlockedNPCs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.NPC, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UpgradeLevels": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Upgrade, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.EconomyUpgrade, NEA Prototype 2",
+            "UpgradeID": 1,
+            "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.HackingUpgrade, NEA Prototype 2",
+            "UpgradeID": 2,
+            "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.NPCUpgrade, NEA Prototype 2",
+            "UpgradeID": 3,
+            "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.VirusUpgrade, NEA Prototype 2",
+            "UpgradeID": 4,
+            "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          }
+        ]
+      },
+      "UnlockedAttacks": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Attack, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.Attack, NEA Prototype 2",
+            "AttackID": 1,
+            "Name": "Phishing",
+            "Cost": 5,
+            "BaseStrength": 1,
+            "IsUnlocked": false
+          }
+        ]
+      },
+      "Multipliers": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Multiplier, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      }
     },
     {
-        "Title": "Profile 4",
-        "MoneyBalance": 0,
-        "DetectionPercentage": 0,
-        "UnlockedPOIs": [],
-        "UnlockedNPCs": [],
-        "UpgradeLevels": [
-            {
-                "IncomeIncrease": 0.0,
-                "UpgradeID": 1,
-                "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 4\nCost to Upgrade: 545986",
-                "Cost": 545986,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 1,
-                "UpgradeID": 2,
-                "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 4\nCost to Upgrade: 1091969",
-                "Cost": 1091969,
-                "Level": 4
-            },
-            {
-                "ActionDecrease": 0.0,
-                "UpgradeID": 3,
-                "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 4\nCost to Upgrade: 1637933",
-                "Cost": 1637933,
-                "Level": 4
-            },
-            {
-                "StrengthIncrease": 0,
-                "UpgradeID": 4,
-                "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 4\nCost to Upgrade: 2183925",
-                "Cost": 2183925,
-                "Level": 4
-            }
-        ],
-        "UnlockedAttacks": [
-            {
-                "AttackID": 1,
-                "Name": "Phishing",
-                "Cost": 5,
-                "BaseStrength": 1,
-                "IsUnlocked": false
-            }
-        ],
-        "Multipliers": []
+      "$type": "Variables.SaveProfile, NEA Prototype 2",
+      "Title": "Profile 4",
+      "MoneyBalance": 0,
+      "DetectionPercentage": 0,
+      "UnlockedPOIs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.POI, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UnlockedNPCs": {
+        "$type": "System.Collections.Generic.List`1[[Variables.NPC, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      },
+      "UpgradeLevels": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Upgrade, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.EconomyUpgrade, NEA Prototype 2",
+            "UpgradeID": 1,
+            "Description": "This is an economy upgrade to increase your money earnt.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.HackingUpgrade, NEA Prototype 2",
+            "UpgradeID": 2,
+            "Description": "This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.NPCUpgrade, NEA Prototype 2",
+            "UpgradeID": 3,
+            "Description": "This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          },
+          {
+            "$type": "Variables.VirusUpgrade, NEA Prototype 2",
+            "UpgradeID": 4,
+            "Description": "This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: 0\nCost to Upgrade: 0",
+            "Cost": 0,
+            "Level": 0
+          }
+        ]
+      },
+      "UnlockedAttacks": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Attack, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "Variables.Attack, NEA Prototype 2",
+            "AttackID": 1,
+            "Name": "Phishing",
+            "Cost": 5,
+            "BaseStrength": 1,
+            "IsUnlocked": false
+          }
+        ]
+      },
+      "Multipliers": {
+        "$type": "System.Collections.Generic.List`1[[Variables.Multiplier, NEA Prototype 2]], System.Private.CoreLib",
+        "$values": [
+        ]
+      }
     }
-]
+  ]
+}

@@ -42,8 +42,9 @@ public partial class UpgradeHandler : Control
 			EconomyBar.Value = newValue;
 			labels[0].Text = AllObjects.CurrentProfile.UpgradeLevels[0].Description;
 		}
-		else if(EconomyBar.Value >= 80)
+		else if(EconomyBar.Value >= 80 && AllObjects.CurrentProfile.MoneyBalance >= AllObjects.CurrentProfile.UpgradeLevels[0].Cost)
 		{
+            EconomyBar.Value = 100;
             EconomyButton.Disabled = true;
             labels[0].Text = "This is an economy upgrade to increase your money earnt.\nThis upgrade has been maxed out";
         }
@@ -62,8 +63,9 @@ public partial class UpgradeHandler : Control
             HackingBar.Value = newValue;
 			labels[1].Text = AllObjects.CurrentProfile.UpgradeLevels[1].Description;
         }
-        else if (HackingBar.Value >= 80)
+        else if (HackingBar.Value >= 80 && AllObjects.CurrentProfile.MoneyBalance >= AllObjects.CurrentProfile.UpgradeLevels[1].Cost)
         {
+            HackingBar.Value = 100;
             HackingButton.Disabled = true;
             labels[1].Text = "This is a hacking upgrade to increase reward on hacking places.\nThis upgrade has been maxed out";
         }
@@ -82,8 +84,9 @@ public partial class UpgradeHandler : Control
             NPCBar.Value = newValue;
 			labels[2].Text = AllObjects.CurrentProfile.UpgradeLevels[2].Description;
         }
-        else if (HackingBar.Value >= 80)
+        else if (HackingBar.Value >= 80 && AllObjects.CurrentProfile.MoneyBalance >= AllObjects.CurrentProfile.UpgradeLevels[2].Cost)
         {
+            NPCBar.Value = 100;
             NPCButton.Disabled = true;
             labels[2].Text = "This is an NPC upgrade to descrease the action time of your NPCs.\nThis upgrade has been maxed out";
         }
@@ -102,8 +105,9 @@ public partial class UpgradeHandler : Control
             VirusBar.Value = newValue;
 			labels[3].Text = AllObjects.CurrentProfile.UpgradeLevels[3].Description;
         }
-        else if (VirusBar.Value >= 80)
+        else if (VirusBar.Value >= 80 && AllObjects.CurrentProfile.MoneyBalance >= AllObjects.CurrentProfile.UpgradeLevels[3].Cost)
         {
+            VirusBar.Value = 100;
             VirusButton.Disabled = true;
             labels[3].Text = "This is a virus upgrade to increase the strength of your attacks.\nThis upgrade has been maxed out";
         }

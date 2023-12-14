@@ -309,8 +309,14 @@ namespace Variables
 			Cost = basecost;
 			Level = 0;
 		}
-		
-		public virtual void IncreaseLevel()
+
+		public Upgrade()
+		{
+			
+		}
+
+
+        public virtual void IncreaseLevel()
 		{
 			Level += 1;
 		
@@ -337,7 +343,6 @@ namespace Variables
 	/// </summary>
 	public class EconomyUpgrade : Upgrade
 	{
-		public float IncomeIncrease {get; private set;}
 		public EconomyUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
 		{
 			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
@@ -365,10 +370,8 @@ namespace Variables
 	/// </summary>
 	public class HackingUpgrade : Upgrade
 	{
-		public int StrengthIncrease {get; private set;}
-		public HackingUpgrade(int upgradeid, int basecost, int strengthincrease) : base(upgradeid, basecost)
+		public HackingUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
 		{
-			StrengthIncrease = strengthincrease;
 			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 		public override void IncreaseLevel()
@@ -391,8 +394,7 @@ namespace Variables
 	}
 	public class NPCUpgrade : Upgrade
 	{
-		public float ActionDecrease {get; private set;}
-		public NPCUpgrade(int upgradeid, int basecost, float actiondecrease) : base(upgradeid, basecost)
+		public NPCUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
 		{
 			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
@@ -416,8 +418,7 @@ namespace Variables
 	}
 	public class VirusUpgrade : Upgrade
 	{
-		public int StrengthIncrease {get; private set;}
-		public VirusUpgrade(int upgradeid, int basecost, int strengthincrease) : base(upgradeid, basecost)
+		public VirusUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
 		{
 			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}

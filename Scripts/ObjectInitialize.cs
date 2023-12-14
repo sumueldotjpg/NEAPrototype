@@ -42,9 +42,9 @@ namespace Main
 
 			//UpgradeCreation
 			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 10000);
-			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000, 1);
-			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000, 60f);
-			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000, 2);
+			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000);
+			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000);
+			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000);
 
 			AllObjects.allUpgrades.AddRange(new List<Upgrade>() {EconomyUpgrade,HackingUpgrade,NPCUpgrade,VirusUpgrade});
 
