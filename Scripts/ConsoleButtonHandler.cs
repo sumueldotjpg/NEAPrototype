@@ -12,6 +12,8 @@ public partial class ConsoleButtonHandler : Control
 	[Export]
 	Timer timer;
 	[Export]
+	ProgressBar progressBar;
+	[Export]
 	Button HackButton;
 	[Export]
 	ItemList POIList, AttackList;
@@ -37,41 +39,49 @@ public partial class ConsoleButtonHandler : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		foreach(POI poi in AllObjects.CurrentProfile.UnlockedPOIs)
-		{
-		}
+		progressBar.Value = timer.TimeLeft/timer.WaitTime*100;
 	}
 	public void _on_button_console_option_3_pressed()
 	{
 		selectedPOI = AllObjects.GetPOI(POIList.GetItemText(POIList.GetSelectedItems()[0]));
 		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
-		OutputText($"Hacking {selectedPOI.Name} using {selectedAttack.Name} attack(Not actually that needs to be synced up)");
 		AttackPOI(selectedPOI,selectedAttack);
 	}
 	public void OutputText(string output)
 	{
 		Console.BbcodeEnabled = true;
-		Console.AddText($"\n{output}");
+		Console.AddText($"[color=green]s[/color]\n{output}");
 	}
 
 	public void _on_button_timer_timeout()
 	{
+		OutputText($"You have hacked {selectedPOI.Name} here is your reward {selectedPOI.Reward}");
 		HackButton.Disabled = false;
 	}
 	public void AttackPOI(POI poi, Attack attack)
 	{
-		if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
+		if(timer.IsStopped())
 		{
-			poi.Unlock();
-			OutputText($"You have hacked: {poi.Name}");
-		}
-		else if (attack.GetStrength() > poi.GetStrength())
-		{
-			OutputText($"{poi.Name} is already unlocked");
+			if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
+			{
+				poi.Unlock();
+				OutputText($"You have begin to hack: {poi.Name} using: {attack.Name}");
+				HackButton.Disabled = true;
+
+				timer.Start(10f);
+			}
+			else if (attack.GetStrength() > poi.GetStrength())
+			{
+				OutputText($"[color=red]{poi.Name} is already unlocked[/color]");
+			}
+			else
+			{
+				OutputText($"[color=red]You are not strong enough to hack {poi.Name} yet[/color]");
+			}
 		}
 		else
 		{
-			OutputText($"You are not strong enough to hack {poi.Name} yet");
+			OutputText($"You have not finished hacking the previous POI yet.");
 		}
 	}
 

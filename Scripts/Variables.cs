@@ -241,6 +241,7 @@ namespace Variables
 		public int BaseStrength { get; private set;}
 		public bool IsUnlocked {get; private set;}
 		public List<int> Children {get; private set;}
+		public int Reward{get; protected set;}
 		public POI(string name, string description, int basestrength, List<int> children)
 		{
 			Name = name;
@@ -255,6 +256,7 @@ namespace Variables
 			int UnlockReward = Convert.ToInt32(BaseReward*Math.Pow(Math.E,BaseStrength-1));
 			AllObjects.CurrentProfile.AddMoney(UnlockReward);
 			poi.IsUnlocked = false;
+			Reward = UnlockReward;
 		}
 		public void Unlock()
 		{
@@ -277,7 +279,6 @@ namespace Variables
 	public class FarmingPOI : POI
 	{
 		public int Cooldown {get; private set;}
-		public int Reward {get; private set;}
 		public FarmingPOI(string name, string description, int strength, List<int> children, int cooldown, int reward) :  base(name, description, strength, children)
 		{
 			Cooldown = cooldown;
