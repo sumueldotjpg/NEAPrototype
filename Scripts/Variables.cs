@@ -7,6 +7,7 @@ using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace Variables
 {
@@ -294,7 +295,7 @@ namespace Variables
 	/// </summary>
 	public class Upgrade
 	{
-		public int UpgradeID { get; private set; }
+		public int UpgradeID { get; protected set; }
 		public string Description { get; protected set; }
 		
 		//To calculate cost of Upgrade ==> OriginalBaseCost * (e^Level)
@@ -310,13 +311,14 @@ namespace Variables
 			Cost = basecost;
 			Level = 0;
 		}
-
-		public Upgrade()
-		{
-			
-		}
-
-
+        [JsonConstructor]
+        public Upgrade(int upgradeid, string description, int cost, int level)
+        {
+            UpgradeID = upgradeid;
+            Description = description;
+            Cost = cost;
+            Level = level;
+        }
         public virtual void IncreaseLevel()
 		{
 			Level += 1;
@@ -348,7 +350,15 @@ namespace Variables
 		{
 			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-		public override void IncreaseLevel()
+        [JsonConstructor]
+        public EconomyUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid,description, cost,level)
+        {
+            UpgradeID = upgradeid;
+			Description = description;
+            Cost = cost;
+            Level = level;
+        }
+        public override void IncreaseLevel()
 		{
 			Level += 1;
 
@@ -375,7 +385,15 @@ namespace Variables
 		{
 			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-		public override void IncreaseLevel()
+        [JsonConstructor]
+        public HackingUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
+        {
+            UpgradeID = upgradeid;
+            Description = description;
+            Cost = cost;
+            Level = level;
+        }
+        public override void IncreaseLevel()
 		{
 			Level += 1;
 		
@@ -399,7 +417,15 @@ namespace Variables
 		{
 			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-		public override void IncreaseLevel()
+        [JsonConstructor]
+        public NPCUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
+        {
+            UpgradeID = upgradeid;
+            Description = description;
+            Cost = cost;
+            Level = level;
+        }
+        public override void IncreaseLevel()
 		{
 			Level += 1;
 		
@@ -423,7 +449,15 @@ namespace Variables
 		{
 			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-		public override void IncreaseLevel()
+		[JsonConstructor]
+        public VirusUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
+        {
+            UpgradeID = upgradeid;
+            Description = description;
+            Cost = cost;
+            Level = level;
+        }
+        public override void IncreaseLevel()
 		{
 			Level += 1;
 		

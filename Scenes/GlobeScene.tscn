@@ -401,7 +401,7 @@ offset_bottom = 690.0
 text = "Description"
 wrap_mode = 1
 
-[node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "progressBar", "HackButton", "POIList", "AttackList")]
+[node name="Console" type="Control" parent="." node_paths=PackedStringArray("Console", "timer", "HackButton", "POIList", "AttackList")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -413,7 +413,6 @@ size_flags_vertical = 3
 script = ExtResource("10_km35u")
 Console = NodePath("VBoxContainer/TextMarginContainer/RichTextLabel")
 timer = NodePath("ButtonTimer")
-progressBar = NodePath("BoxContainer/ProgressBar")
 HackButton = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3")
 POIList = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ItemList")
 AttackList = NodePath("VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ItemList2")
