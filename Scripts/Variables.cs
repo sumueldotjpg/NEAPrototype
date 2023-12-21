@@ -1,4 +1,5 @@
 using Godot;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Text.Json.Serialization;
 
 namespace Variables
 {
@@ -305,20 +305,22 @@ namespace Variables
 		public int Cost { get; protected set; }
 		public int Level { get; protected set; }
 
+		[JsonConstructor]
+        public Upgrade(int upgradeid, int cost, int level)
+        {
+			UpgradeID = upgradeid;
+			Cost = cost;
+			Level = level;
+			GD.Print(0);
+	    }
 		public Upgrade(int upgradeid, int basecost)
 		{
 			UpgradeID = upgradeid;
 			Cost = basecost;
 			Level = 0;
+
+			GD.Print(1);
 		}
-        [JsonConstructor]
-        public Upgrade(int upgradeid, string description, int cost, int level)
-        {
-            UpgradeID = upgradeid;
-            Description = description;
-            Cost = cost;
-            Level = level;
-        }
         public virtual void IncreaseLevel()
 		{
 			Level += 1;
@@ -346,18 +348,10 @@ namespace Variables
 	/// </summary>
 	public class EconomyUpgrade : Upgrade
 	{
-		public EconomyUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
+		public EconomyUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
 		{
 			Description = $"This is an economy upgrade to increase your money earnt.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-        [JsonConstructor]
-        public EconomyUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid,description, cost,level)
-        {
-            UpgradeID = upgradeid;
-			Description = description;
-            Cost = cost;
-            Level = level;
-        }
         public override void IncreaseLevel()
 		{
 			Level += 1;
@@ -381,18 +375,10 @@ namespace Variables
 	/// </summary>
 	public class HackingUpgrade : Upgrade
 	{
-		public HackingUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
+		public HackingUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
 		{
 			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-        [JsonConstructor]
-        public HackingUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
-        {
-            UpgradeID = upgradeid;
-            Description = description;
-            Cost = cost;
-            Level = level;
-        }
         public override void IncreaseLevel()
 		{
 			Level += 1;
@@ -413,18 +399,10 @@ namespace Variables
 	}
 	public class NPCUpgrade : Upgrade
 	{
-		public NPCUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
+		public NPCUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
 		{
 			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-        [JsonConstructor]
-        public NPCUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
-        {
-            UpgradeID = upgradeid;
-            Description = description;
-            Cost = cost;
-            Level = level;
-        }
         public override void IncreaseLevel()
 		{
 			Level += 1;
@@ -445,18 +423,10 @@ namespace Variables
 	}
 	public class VirusUpgrade : Upgrade
 	{
-		public VirusUpgrade(int upgradeid, int basecost) : base(upgradeid, basecost)
+		public VirusUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
 		{
 			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
-		[JsonConstructor]
-        public VirusUpgrade(int upgradeid, string description, int cost, int level) : base(upgradeid, description, cost, level)
-        {
-            UpgradeID = upgradeid;
-            Description = description;
-            Cost = cost;
-            Level = level;
-        }
         public override void IncreaseLevel()
 		{
 			Level += 1;

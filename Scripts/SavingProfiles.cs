@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using Newtonsoft.Json;
-using System.Text.Json;
 using System.Collections;
 using System.Collections.Generic;
 using Variables;
@@ -11,13 +10,13 @@ namespace Main
 {
     public class SaveManager
     {
+        static JsonSerializerSettings settings = new JsonSerializerSettings{TypeNameHandling = TypeNameHandling.Objects};
         public static void SaveProfiles()
         {
             string filePath = @"Saves/Profiles.json";
             
-            string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles, new JsonSerializerSettings() {TypeNameHandling = TypeNameHandling.All});
-            File.WriteAllText(filePath,string.Empty);
-            File.AppendAllText(filePath,jsonProfiles);
+            string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles, settings);
+            File.WriteAllText(filePath,jsonProfiles);
         }
 
         public static void LoadProfiles()
@@ -36,21 +35,19 @@ namespace Main
                     new SaveProfile("Profile 4" , 0, 0,new List<POI>(){}, new List<NPC>(), new List<Upgrade>(){AllObjects.allUpgrades[0],AllObjects.allUpgrades[1],AllObjects.allUpgrades[2],AllObjects.allUpgrades[3]},new List<Attack>(){AllObjects.allAttacks[0]},new List<Multiplier>{}),
                     };      
                     
-                    sw.Write(JsonConvert.SerializeObject(newProfiles, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All }));
+                    sw.Write(JsonConvert.SerializeObject(newProfiles));
                 }
                 AllObjects.ProfileLoad(newProfiles);
             }
             else
             {
                 string jsonProfiles = File.ReadAllText(filePath);
+                settings.TypeNameHandling = TypeNameHandling.Auto;
+                List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles,settings);
+                settings.TypeNameHandling = TypeNameHandling.Objects; // Preventing a possible future 
 
-                List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto});
-
-                var economyupgrade = (EconomyUpgrade)(deserializedProfiles[0].UpgradeLevels[0]);
-                GD.Print(economyupgrade.GetType());
-                GD.Print(deserializedProfiles[0].UpgradeLevels[0]);
-                GD.Print(deserializedProfiles[0].UpgradeLevels[0].Description);
-                GD.Print("First");
+                GD.Print("Cost:"+deserializedProfiles[0].UpgradeLevels[0].Cost);
+                GD.Print(deserializedProfiles[0].UpgradeLevels[0].GetType());
 
                 AllObjects.ProfileLoad(deserializedProfiles);
             }

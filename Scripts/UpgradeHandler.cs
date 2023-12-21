@@ -24,6 +24,7 @@ public partial class UpgradeHandler : Control
 		for (int i = 0;i < 4;i++)
 		{
 			labels[i].Text = AllObjects.CurrentProfile.UpgradeLevels[i].Description;
+            progressBars[i].Value = AllObjects.CurrentProfile.UpgradeLevels[i].Level * 20;
 		}
 	}
 

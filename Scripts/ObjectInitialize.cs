@@ -39,12 +39,11 @@ namespace Main
 			AllObjects.allNPC.Add(new Agent("Agent Siaros", 1, "Agent Siaros will keep the cops at bay and slowly decrease the chance of you being discovered", 3000, 0.05f));
 			AllObjects.allNPC.Add(new IdleNPC("Slow Thomas", 2, "Slow Thomas will get you some money kind of slowly", 500, 1000000));
 
-
 			//UpgradeCreation
-			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 10000);
-			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000);
-			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000);
-			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000);
+			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 10000, 0);
+			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000, 0);
+			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000, 0);
+			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000, 0);
 
 			AllObjects.allUpgrades.AddRange(new List<Upgrade>() {EconomyUpgrade,HackingUpgrade,NPCUpgrade,VirusUpgrade});
 

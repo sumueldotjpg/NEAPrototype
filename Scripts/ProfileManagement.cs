@@ -33,7 +33,6 @@ public partial class ProfileManagement : Control
 
 	private void _on_button_profile_1_pressed()
 	{
-		GD.Print("After");
 		AllObjects.SetCurrentProfile(AllObjects.allProfiles[0]);
 		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
 	}
