@@ -251,18 +251,25 @@ namespace Variables
 			Children = children;
 			IsUnlocked = false;
 		}
-		public void UnlockPOI(POI poi)
+		public void UnlockPOI()
 		{
-			int BaseReward = 9000;
-			int UnlockReward = Convert.ToInt32(BaseReward*Math.Pow(Math.E,BaseStrength-1));
-			AllObjects.CurrentProfile.AddMoney(UnlockReward);
-			poi.IsUnlocked = false;
+			int BaseReward = Convert.ToInt32(AllObjects.Multiply(9000,"REWARDINCREASE"));
+			int UnlockReward;
+
+			//Reward Money
+			if (BaseStrength == 0)
+			{
+				UnlockReward = BaseReward;
+				AllObjects.CurrentProfile.AddMoney(UnlockReward);
+			}
+			else
+			{
+				UnlockReward = Convert.ToInt32(BaseReward*Math.Pow(Math.E,BaseStrength-1));
+				AllObjects.CurrentProfile.AddMoney(UnlockReward);
+			}
+
+			IsUnlocked = false;
 			Reward = UnlockReward;
-		}
-		public void Unlock()
-		{
-			IsUnlocked = true;
-			AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
 		}
 		public int GetStrength()
 		{
@@ -450,14 +457,12 @@ namespace Variables
 	{
 		public int AttackID { get; private set; }
 		public string Name { get; private set; }
-		public int Cost { get; private set; }
 		public int BaseStrength { get; private set;}
 		public bool IsUnlocked { get; private set;}
-		public Attack(int attackid, string name, int cost, int basestrength)
+		public Attack(int attackid, string name, int basestrength)
 		{
 			AttackID = attackid;
 			Name = name;
-			Cost = cost;
 			BaseStrength = basestrength;
 			IsUnlocked = false;
 		}

@@ -47,15 +47,24 @@ public partial class ConsoleButtonHandler : Control
 		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
 		AttackPOI(selectedPOI,selectedAttack);
 	}
-	public void OutputText(string output)
+	public void OutputText(string output,string colour)
 	{
 		Console.BbcodeEnabled = true;
-		Console.AddText($"[color=green]s[/color]\n{output}");
+		Console.AppendText($"\n[color={colour}]{output}[/color]");
 	}
 
 	public void _on_button_timer_timeout()
 	{
-		OutputText($"You have hacked {selectedPOI.Name} here is your reward {selectedPOI.Reward}");
+		OutputText($"You have hacked {selectedPOI.Name} here is your reward {selectedPOI.Reward}","green");
+		
+		if(RewardPOI(selectedPOI) == "")
+		{
+
+		}
+		else
+		{
+			OutputText($"You have discovered how to use the {RewardPOI(selectedPOI)} cyber attack","green");
+		}
 		HackButton.Disabled = false;
 	}
 	public void AttackPOI(POI poi, Attack attack)
@@ -64,25 +73,45 @@ public partial class ConsoleButtonHandler : Control
 		{
 			if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
 			{
-				poi.Unlock();
-				OutputText($"You have begin to hack: {poi.Name} using: {attack.Name}");
+				poi.UnlockPOI();
+				OutputText($"You have begun to hack: {poi.Name} using: {attack.Name}","green");
 				HackButton.Disabled = true;
 
 				timer.Start(10f);
 			}
 			else if (attack.GetStrength() > poi.GetStrength())
 			{
-				OutputText($"[color=red]{poi.Name} is already unlocked[/color]");
+				OutputText($"[color=red]{poi.Name} is already unlocked[/color]","red");
 			}
 			else
 			{
-				OutputText($"[color=red]You are not strong enough to hack {poi.Name} yet[/color]");
+				OutputText($"[color=red]You are not strong enough to hack {poi.Name} yet[/color]","red");
 			}
 		}
 		else
 		{
-			OutputText($"You have not finished hacking the previous POI yet.");
+			OutputText($"You have not finished hacking the previous POI yet.","red");
 		}
 	}
-
+	public string RewardPOI(POI poi)
+	{
+		//Reward new Attack if required
+		switch(poi.BaseStrength)
+		{
+			case 2:
+			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[1]);
+			return "Phishing";
+			case 4:
+			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[2]);
+			return "Spoofing";
+			case 6:
+			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[3]);
+			return "Key Logger";
+			case 8:
+			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[4]);
+			return "SQL Injection";
+			default:
+			return "";
+		}	
+	}
 }
