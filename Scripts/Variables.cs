@@ -8,6 +8,7 @@ using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Variables
 {
@@ -150,16 +151,28 @@ namespace Variables
 		public string Description { get; protected set; }
 		public int ActionTime { get; protected set; }
 		public bool IsUnlocked {get; protected set;}
-		public NPC(string npcname,int npcid, string description, int actiontime)
+		public int Cost {get; private set;}
+		public NPC(string npcname,int npcid, string description, int actiontime, int cost)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
 			Description = description;
 			ActionTime = actiontime;
+			Cost = cost;
 			IsUnlocked = false;
 		}
 		public virtual void NPCAction()
 		{
+		}
+		public void Unlock()
+		{
+            Timer timer = new Timer
+            {
+                WaitTime = ActionTime,
+                OneShot = false,
+				Autostart = true
+            };
+			timer.Connect("timeout", new Callable(timer, nameof(NPCAction)));
 		}
 	}
 
@@ -167,7 +180,7 @@ namespace Variables
 	{
 		public float InvestPercent {get; private set; }
 		public int CurrentNetWorth {get; private set; }
-		public Investor(string npcname, int npcid, string description, int actiontime, float investpercent) : base(npcname, npcid, description, actiontime)
+		public Investor(string npcname, int npcid, string description, int actiontime, int cost, float investpercent) : base(npcname, npcid, description, actiontime, cost)
 		{
 			NpcName = npcname;
 			NpcId = npcid;
@@ -197,8 +210,9 @@ namespace Variables
 	public class IdleNPC : NPC
 	{
 		public int EarnRate {get; private set;}
-		public IdleNPC(string npcname,int npcid, string description, int actiontime, int earnrate) : base(npcname, npcid, description, actiontime)
+		public IdleNPC(string npcname,int npcid, string description, int actiontime, int cost, int earnrate) : base(npcname, npcid, description, actiontime, cost)
 		{
+			GD.Print("IdleNPC Action");
 			NpcName = npcname;
 			NpcId = npcid;
 			ActionTime = actiontime;
@@ -216,7 +230,7 @@ namespace Variables
 	public class Agent : NPC
 	{
 		public float DecreaseDetectionRate {get; private set;}
-		public Agent(string npcname,int npcid, string description, int actiontime, float DecreaseDetectionRate) : base(npcname, npcid, description, actiontime)
+		public Agent(string npcname,int npcid, string description, int actiontime, int cost, float DecreaseDetectionRate) : base(npcname, npcid, description, actiontime, cost)
 		{
 			NpcName = npcname;
 			NpcId = npcid;

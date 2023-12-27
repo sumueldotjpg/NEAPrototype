@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=27 format=3 uid="uid://4qtro0aeiqq4"]
 
 [ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
@@ -14,6 +14,16 @@
 [ext_resource type="Script" path="res://Scripts/POIInfoHandler.cs" id="11_sjxpc"]
 [ext_resource type="Script" path="res://Scripts/PlayerInfoHandler.cs" id="11_tehsl"]
 [ext_resource type="Script" path="res://Scripts/UpgradeHandler.cs" id="12_a7xni"]
+[ext_resource type="Texture2D" uid="uid://dwpk6ub1f2xca" path="res://Rescources/Icon1.png" id="15_1h3fi"]
+[ext_resource type="Script" path="res://Scripts/NPCHandler.cs" id="15_3o1u2"]
+[ext_resource type="Texture2D" uid="uid://dxjxkinamng7n" path="res://Rescources/Icon2.png" id="16_h7ngt"]
+[ext_resource type="Texture2D" uid="uid://xxvdtsgii2bx" path="res://Rescources/Icon3.png" id="17_v55ei"]
+[ext_resource type="Texture2D" uid="uid://cuacjjlu62ja2" path="res://Rescources/Icon4.png" id="18_w14ji"]
+[ext_resource type="Texture2D" uid="uid://cdacdpxi02qqf" path="res://Rescources/Icon5.png" id="19_g0ga7"]
+[ext_resource type="Texture2D" uid="uid://b1loij2cico3w" path="res://Rescources/Icon6.png" id="20_wxcsc"]
+[ext_resource type="Texture2D" uid="uid://1vajk0j2x142" path="res://Rescources/Icon7.png" id="21_iuvee"]
+[ext_resource type="Texture2D" uid="uid://dqh7s06em4ijv" path="res://Rescources/Icon8.png" id="22_lhwy2"]
+[ext_resource type="Texture2D" uid="uid://mqncad3kembp" path="res://Rescources/Icon9.png" id="23_oofee"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
 _data = {
@@ -118,6 +128,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_k0ma3")
 
 [node name="Globe" type="Control" parent="." node_paths=PackedStringArray("playerLabel")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +173,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="Globe/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1000, 1000)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
@@ -599,11 +610,38 @@ show_percentage = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="NPCs" type="Control" parent="."]
-visible = false
+[node name="NPCs" type="Control" parent="." node_paths=PackedStringArray("NPCDescription1", "NPCDescription2", "NPCDescription3", "NPCDescription4", "NPCDescription5", "NPCDescription6", "NPCDescription7", "NPCDescription8", "NPCDescription9", "NPCButton1", "NPCButton2", "NPCButton3", "NPCButton4", "NPCButton5", "NPCButton6", "NPCButton7", "NPCButton8", "NPCButton9", "NPCProgress1", "NPCProgress2", "NPCProgress3", "NPCProgress4", "NPCProgress5", "NPCProgress6", "NPCProgress7", "NPCProgress8", "NPCProgress9")]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(38.149, 0.591363)
+script = ExtResource("15_3o1u2")
+NPCDescription1 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer1/VBoxContainer1/NPCDescription1")
+NPCDescription2 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/NPCDescription2")
+NPCDescription3 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer3/NPCDescription3")
+NPCDescription4 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer4/NPCDescription4")
+NPCDescription5 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer5/NPCDescription5")
+NPCDescription6 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer6/NPCDescription6")
+NPCDescription7 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer7/NPCDescription7")
+NPCDescription8 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer8/VBoxContainer8/NPCDescription8")
+NPCDescription9 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer9/VBoxContainer9/NPCDescription9")
+NPCButton1 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer1/Button1")
+NPCButton2 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer2/Button2")
+NPCButton3 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer3/Button3")
+NPCButton4 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer4/Button4")
+NPCButton5 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer5/Button5")
+NPCButton6 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer6/Button6")
+NPCButton7 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer7/Button7")
+NPCButton8 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer8/Button8")
+NPCButton9 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer9/Button9")
+NPCProgress1 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer1/VBoxContainer1/ProgressBar1")
+NPCProgress2 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ProgressBar2")
+NPCProgress3 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer3/ProgressBar3")
+NPCProgress4 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer4/ProgressBar4")
+NPCProgress5 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer5/ProgressBar5")
+NPCProgress6 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer6/ProgressBar6")
+NPCProgress7 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer7/ProgressBar7")
+NPCProgress8 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer8/VBoxContainer8/ProgressBar8")
+NPCProgress9 = NodePath("ScrollContainer/VBoxContainer/HBoxContainer9/VBoxContainer9/ProgressBar9")
 metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NPCs"]
@@ -622,170 +660,267 @@ scale = Vector2(0.0262131, 1.69158)
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect1" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
-text = "
+texture = ExtResource("15_1h3fi")
 
+[node name="VBoxContainer1" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription1" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1/VBoxContainer1"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Description"
 
+[node name="ProgressBar1" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1/VBoxContainer1"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button1" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect2" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "
+texture = ExtResource("16_h7ngt")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription2" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar2" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button2" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect3" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-text = "
+texture = ExtResource("17_v55ei")
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription3" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer3"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar3" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3/VBoxContainer3"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button3" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4"]
+[node name="TextureRect4" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-text = "
+texture = ExtResource("18_w14ji")
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription4" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer4"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar4" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4/VBoxContainer4"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button4" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5"]
+[node name="TextureRect5" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-text = "
+texture = ExtResource("19_g0ga7")
 
+[node name="VBoxContainer5" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription5" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer5"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar5" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer5"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button5" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6"]
+[node name="TextureRect6" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-text = "
+texture = ExtResource("20_wxcsc")
 
+[node name="VBoxContainer6" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription6" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer6"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar6" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6/VBoxContainer6"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button6" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7"]
+[node name="TextureRect7" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
-text = "
+texture = ExtResource("21_iuvee")
 
+[node name="VBoxContainer7" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription7" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer7"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar7" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7/VBoxContainer7"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button7" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8"]
+[node name="TextureRect8" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8"]
 layout_mode = 2
-text = "
+texture = ExtResource("22_lhwy2")
 
+[node name="VBoxContainer8" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
+[node name="NPCDescription8" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8/VBoxContainer8"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Description"
 
+[node name="ProgressBar8" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8/VBoxContainer8"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
 
-
-"
+[node name="Button8" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1800, 0)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9"]
+[node name="TextureRect9" type="TextureRect" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-text = "
+texture = ExtResource("23_oofee")
 
-
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
-
-
-
-"
-
-[node name="HBoxContainer10" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer9" type="VBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-size_flags_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer10"]
+[node name="NPCDescription9" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9/VBoxContainer9"]
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
-text = "
+text = "Description"
 
-
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
-
-
-
-"
-
-[node name="HBoxContainer11" type="HBoxContainer" parent="NPCs/ScrollContainer/VBoxContainer"]
+[node name="ProgressBar9" type="ProgressBar" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9/VBoxContainer9"]
+custom_minimum_size = Vector2(1200, 0)
 layout_mode = 2
-size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer11"]
+[node name="Button9" type="Button" parent="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-text = "
-
-
-This is the Image                               This is the description.............................................................................................................................................................................................................................................                                  This is the price
-
-
-
-"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buy NPC: {Cost}"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamMP3_wbkwv")
@@ -818,3 +953,12 @@ autoplay = true
 [connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer2/ButtonHacking" to="Upgrades" method="_on_button_hacking_pressed"]
 [connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer3/ButtonNPC" to="Upgrades" method="_on_button_npc_pressed"]
 [connection signal="pressed" from="Upgrades/MarginContainer/VBoxContainer/HBoxContainer4/ButtonVirus" to="Upgrades" method="_on_button_virus_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer1/Button1" to="NPCs" method="_on_button_1_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer2/Button2" to="NPCs" method="_on_button_2_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer3/Button3" to="NPCs" method="_on_button_3_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer4/Button4" to="NPCs" method="_on_button_4_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer5/Button5" to="NPCs" method="_on_button_5_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer6/Button6" to="NPCs" method="_on_button_6_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer7/Button7" to="NPCs" method="_on_button_7_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer8/Button8" to="NPCs" method="_on_button_8_pressed"]
+[connection signal="pressed" from="NPCs/ScrollContainer/VBoxContainer/HBoxContainer9/Button9" to="NPCs" method="_on_button_9_pressed"]

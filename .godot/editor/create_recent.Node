@@ -1,13 +1,14 @@
+VBoxContainer
+ProgressBar
+HBoxContainer
+MarginContainer
+Label
+Button
+TextureRect
 BoxContainer
 Container
-ProgressBar
 ItemList
-Label
 TextEdit
-Button
-HBoxContainer
-VBoxContainer
-MarginContainer
 Node
 TabBar
 TabContainer
@@ -25,6 +26,5 @@ AnimationPlayer
 CheckButton
 CenterContainer
 CanvasLayer
-TextureRect
 AudioStreamPlayer2D
 Panel
