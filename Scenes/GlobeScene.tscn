@@ -128,7 +128,6 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_k0ma3")
 
 [node name="Globe" type="Control" parent="." node_paths=PackedStringArray("playerLabel")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,7 +172,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="Globe/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1000, 1000)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="GlobeScene" parent="Globe/SubViewportContainer/SubViewport" instance=ExtResource("1_ve86q")]
 
@@ -611,6 +610,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="NPCs" type="Control" parent="." node_paths=PackedStringArray("NPCDescription1", "NPCDescription2", "NPCDescription3", "NPCDescription4", "NPCDescription5", "NPCDescription6", "NPCDescription7", "NPCDescription8", "NPCDescription9", "NPCButton1", "NPCButton2", "NPCButton3", "NPCButton4", "NPCButton5", "NPCButton6", "NPCButton7", "NPCButton8", "NPCButton9", "NPCProgress1", "NPCProgress2", "NPCProgress3", "NPCProgress4", "NPCProgress5", "NPCProgress6", "NPCProgress7", "NPCProgress8", "NPCProgress9")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(38.149, 0.591363)

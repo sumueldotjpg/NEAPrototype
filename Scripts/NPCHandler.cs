@@ -25,6 +25,7 @@ public partial class NPCHandler : Control
 
 		for (int i = 0; i < 9; i++)
 		{
+			buttons[i].Text = "Buy NPC: " + AllObjects.allNPC[i].Cost;
 			labels[i].Text = AllObjects.allNPC[i].NpcName + "\n\n" + AllObjects.allNPC[i].Description;
 		}
 		foreach(ProgressBar progressBar in progressBars)
@@ -36,6 +37,13 @@ public partial class NPCHandler : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		for (int i = 0; i < 9; i++)
+		{
+			if(progressBars[i].Visible == true)
+			{
+				progressBars[i].Value = NPC.CheckTimer(i+1);
+			}
+		}
 	}
 
 	private void _on_button_1_pressed()
@@ -80,9 +88,17 @@ public partial class NPCHandler : Control
 
 		if(AllObjects.CurrentProfile.MoneyBalance >= currentNPC.Cost)
 		{
+			buttons[npcID].Text = "NPC Bought";
+			buttons[npcID].Disabled = true;
 			progressBars[npcID].Show();
+			progressBars[npcID].MaxValue = AllObjects.GetNPCID(npcID+1).ActionTime;
 			AllObjects.CurrentProfile.RemoveMoney(currentNPC.Cost);
-			currentNPC.Unlock();
+			currentNPC.Unlock(GetNode<NPCHandler>("/root/MainScreen/NPCs"));
 		}
+	}
+	public void NPCAction(int NpcId)
+	{
+		GD.Print(NpcId);
+		AllObjects.CurrentProfile.UnlockedNPCs[NpcId-1].NPCAction();
 	}
 }

@@ -1,12 +1,13 @@
+Label
+Control
+Container
 VBoxContainer
 ProgressBar
 HBoxContainer
 MarginContainer
-Label
 Button
 TextureRect
 BoxContainer
-Container
 ItemList
 TextEdit
 Node
@@ -19,7 +20,6 @@ StaticBody3D
 CollisionShape3D
 ScrollContainer
 PanelContainer
-Control
 Path2D
 PathFollow2D
 AnimationPlayer

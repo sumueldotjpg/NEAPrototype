@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
+
 namespace Variables
 {
 	//(MONEYMADE-UTILITYCOSTS)*NPCMULTIPLIERS = MONEYADDEDPERSECOND
@@ -67,6 +68,17 @@ namespace Variables
 				}
 			}
 			throw new Exception("There isnt any POIs with that ID");
+		}
+		public static NPC GetNPCID(int npcid)
+		{
+			foreach(NPC npc in AllObjects.allNPC)
+			{
+				if(npc.NpcId == npcid)
+				{
+					return npc;
+				}
+			}
+			throw new Exception("There isnt any NPCs with that ID");
 		}
 		public static float Multiply(int originalValue, string multiplierType)
 		{
@@ -152,6 +164,8 @@ namespace Variables
 		public int ActionTime { get; protected set; }
 		public bool IsUnlocked {get; protected set;}
 		public int Cost {get; private set;}
+		public Timer timer {get; private set;}
+		private NPCHandler NpcHandler;
 		public NPC(string npcname,int npcid, string description, int actiontime, int cost)
 		{
 			NpcName = npcname;
@@ -164,15 +178,32 @@ namespace Variables
 		public virtual void NPCAction()
 		{
 		}
-		public void Unlock()
+		public void Unlock(NPCHandler nPCHandler)
 		{
-            Timer timer = new Timer
+			AllObjects.CurrentProfile.UnlockedNPCs.Add(this);
+			timer = new Timer
             {
+				Name = NpcName + "Timer",
                 WaitTime = ActionTime,
                 OneShot = false,
 				Autostart = true
             };
-			timer.Connect("timeout", new Callable(timer, nameof(NPCAction)));
+			nPCHandler.AddChild(timer);
+			timer.Start();
+			timer.Timeout += OnTimerTimeout;
+
+			NpcHandler = nPCHandler;
+		}
+		public void OnTimerTimeout()
+		{
+			Callable callNPC = new(NpcHandler , nameof(NpcHandler.NPCAction));
+			callNPC.Call(NpcId);
+		}
+		public static double CheckTimer(int npcid)
+		{
+			NPC npc = AllObjects.GetNPCID(npcid);
+			double timeLeftPercentage = npc.timer.WaitTime-npc.timer.TimeLeft;
+			return timeLeftPercentage;
 		}
 	}
 
@@ -200,17 +231,17 @@ namespace Variables
 				moneyInvested = Convert.ToInt32(AllObjects.CurrentProfile.MoneyBalance*InvestPercent);
 				AllObjects.CurrentProfile.RemoveMoney(moneyInvested);
 			}
-			//Returns the money invested with a 0.7-15 multiplier 
+			//Returns the money invested within a +- 0.1 of investment multiplier 
 			else
 			{
-				AllObjects.CurrentProfile.AddMoney(moneyInvested*(investProfit.Next(7,15)/10));
+				AllObjects.CurrentProfile.AddMoney(moneyInvested*investProfit.Next(Convert.ToInt32((InvestPercent-0.1)*100),Convert.ToInt32((InvestPercent+0.1)*100))/100);
 			}
 		}
 	}
 	public class IdleNPC : NPC
 	{
-		public int EarnRate {get; private set;}
-		public IdleNPC(string npcname,int npcid, string description, int actiontime, int cost, int earnrate) : base(npcname, npcid, description, actiontime, cost)
+		public int EarnAmount {get; private set;}
+		public IdleNPC(string npcname,int npcid, string description, int actiontime, int cost, int earnamount) : base(npcname, npcid, description, actiontime, cost)
 		{
 			GD.Print("IdleNPC Action");
 			NpcName = npcname;
@@ -218,13 +249,13 @@ namespace Variables
 			ActionTime = actiontime;
 			IsUnlocked = false;
 
-			EarnRate = earnrate; 
+			EarnAmount = earnamount; 
 		}
 
 		public override void NPCAction()
 		{
 			//Pays player every NPCAction
-			AllObjects.CurrentProfile.AddMoney(EarnRate);
+			AllObjects.CurrentProfile.AddMoney(EarnAmount);
 		}
 	}
 	public class Agent : NPC

@@ -43,7 +43,7 @@ namespace Main
 			Investor investorVictoria = new Investor("Victoria \"Value Maven\" Valdez", 6, "Investment Strategy: Conservative and long-term. Prefers stable, blue-chip stocks and bonds.\nBackground: Finance expert with a knack for predicting market trends. Known for her patience.", 210, 25000, 0.07f);
 			Investor investorGordon = new Investor("Gordon \"Growth Guru\" Greene", 9, "Investment Strategy: Focuses on rapid growth opportunities. Enjoys technology and innovative companies.\nBackground: Tech-savvy entrepreneur turned investor, always looking for the next big thing.", 300, 55000, 0.10f);
 
-			IdleNPC idleOlivia = new IdleNPC("Olivia \"The Overtime Overachiever\" Owens", 1, "Role: Works extra hours and contributes to your income during downtime.\nPersonality: Diligent and hardworking. Takes pride in maximizing every moment.", 30, 2000, 1000);
+			IdleNPC idleOlivia = new IdleNPC("Olivia \"The Overtime Overachiever\" Owens", 1, "Role: Works extra hours and contributes to your income during downtime.\nPersonality: Diligent and hardworking. Takes pride in maximizing every moment.", 5, 2000, 1000);
 			IdleNPC idleMilo = new IdleNPC("Milo \"The Musician\" Montoya", 4, "Role: Busks on the street, adding to your income with his musical talents.\nPersonality: Free-spirited and artistic. Believes in the power of music to bring joy.", 150, 15000, 30000);
 			IdleNPC idleHarper = new IdleNPC("Harper \"The Handy Helper\" Hernandez", 7, "Role: Takes odd jobs and performs small tasks, earning you money.\nPersonality: Helpful and resourceful. Always ready to lend a hand.", 240, 35000, 200000);
 

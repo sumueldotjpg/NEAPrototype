@@ -7,7 +7,7 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode;
+	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode, DebugNode;
 	
 	[Export]
 	Label BalanceText;
