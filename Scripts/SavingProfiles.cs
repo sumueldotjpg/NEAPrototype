@@ -46,9 +46,6 @@ namespace Main
                 List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles,settings);
                 settings.TypeNameHandling = TypeNameHandling.Objects; // Preventing a possible future 
 
-                GD.Print("Cost:"+deserializedProfiles[0].UpgradeLevels[0].Cost);
-                GD.Print(deserializedProfiles[0].UpgradeLevels[0].GetType());
-
                 AllObjects.ProfileLoad(deserializedProfiles);
             }
         }

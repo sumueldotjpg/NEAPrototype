@@ -108,6 +108,12 @@ namespace Variables
 				return originalValue*multiplier;
 			}
 		}
+		public static double CheckTimer(int npcid)
+		{
+			NPC npc = AllObjects.GetNPCID(npcid);
+			double timeLeftPercentage = npc.timer.WaitTime-npc.timer.TimeLeft;
+			return timeLeftPercentage;
+		}
 	}
 	/// <summary>
 	///Profile for storing game save data
@@ -194,16 +200,25 @@ namespace Variables
 
 			NpcHandler = nPCHandler;
 		}
+		public void Load(NPCHandler nPCHandler)
+		{
+			timer = new Timer
+            {
+				Name = NpcName + "Timer",
+                WaitTime = ActionTime,
+                OneShot = false,
+				Autostart = true
+            };
+			nPCHandler.AddChild(timer);
+			timer.Start();
+			timer.Timeout += OnTimerTimeout;
+
+			NpcHandler = nPCHandler;
+		}
 		public void OnTimerTimeout()
 		{
 			Callable callNPC = new(NpcHandler , nameof(NpcHandler.NPCAction));
 			callNPC.Call(NpcId);
-		}
-		public static double CheckTimer(int npcid)
-		{
-			NPC npc = AllObjects.GetNPCID(npcid);
-			double timeLeftPercentage = npc.timer.WaitTime-npc.timer.TimeLeft;
-			return timeLeftPercentage;
 		}
 	}
 
@@ -243,7 +258,6 @@ namespace Variables
 		public int EarnAmount {get; private set;}
 		public IdleNPC(string npcname,int npcid, string description, int actiontime, int cost, int earnamount) : base(npcname, npcid, description, actiontime, cost)
 		{
-			GD.Print("IdleNPC Action");
 			NpcName = npcname;
 			NpcId = npcid;
 			ActionTime = actiontime;
@@ -363,15 +377,12 @@ namespace Variables
 			UpgradeID = upgradeid;
 			Cost = cost;
 			Level = level;
-			GD.Print(0);
 	    }
 		public Upgrade(int upgradeid, int basecost)
 		{
 			UpgradeID = upgradeid;
 			Cost = basecost;
 			Level = 0;
-
-			GD.Print(1);
 		}
         public virtual void IncreaseLevel()
 		{

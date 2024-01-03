@@ -39,17 +39,17 @@ namespace Main
 			AllObjects.allAttacks.AddRange(new List<Attack>(){BruteForce,Phishing,Spoofing,KeyLogger,SQLInjection});
 
 			//NPCCreation
-			Investor investorWinston = new Investor("Winston \"The Wagerer\" Whitman", 3, "Investment Strategy: High-risk, high-reward. Loves to invest in emerging markets and startups.\nBackground: Former gambler turned investor, always seeking the thrill of a successful venture.", 120, 12000, 0.05f);
-			Investor investorVictoria = new Investor("Victoria \"Value Maven\" Valdez", 6, "Investment Strategy: Conservative and long-term. Prefers stable, blue-chip stocks and bonds.\nBackground: Finance expert with a knack for predicting market trends. Known for her patience.", 210, 25000, 0.07f);
-			Investor investorGordon = new Investor("Gordon \"Growth Guru\" Greene", 9, "Investment Strategy: Focuses on rapid growth opportunities. Enjoys technology and innovative companies.\nBackground: Tech-savvy entrepreneur turned investor, always looking for the next big thing.", 300, 55000, 0.10f);
+			Investor investorWinston = new Investor("Winston \"The Wagerer\" Whitman", 2, "Investment Strategy: High-risk, high-reward. Loves to invest in emerging markets and startups.\nBackground: Former gambler turned investor, always seeking the thrill of a successful venture.", 120, 12000, 0.05f);
+			Investor investorVictoria = new Investor("Victoria \"Value Maven\" Valdez", 5, "Investment Strategy: Conservative and long-term. Prefers stable, blue-chip stocks and bonds.\nBackground: Finance expert with a knack for predicting market trends. Known for her patience.", 210, 25000, 0.07f);
+			Investor investorGordon = new Investor("Gordon \"Growth Guru\" Greene", 8, "Investment Strategy: Focuses on rapid growth opportunities. Enjoys technology and innovative companies.\nBackground: Tech-savvy entrepreneur turned investor, always looking for the next big thing.", 300, 55000, 0.10f);
 
-			IdleNPC idleOlivia = new IdleNPC("Olivia \"The Overtime Overachiever\" Owens", 1, "Role: Works extra hours and contributes to your income during downtime.\nPersonality: Diligent and hardworking. Takes pride in maximizing every moment.", 5, 2000, 1000);
-			IdleNPC idleMilo = new IdleNPC("Milo \"The Musician\" Montoya", 4, "Role: Busks on the street, adding to your income with his musical talents.\nPersonality: Free-spirited and artistic. Believes in the power of music to bring joy.", 150, 15000, 30000);
-			IdleNPC idleHarper = new IdleNPC("Harper \"The Handy Helper\" Hernandez", 7, "Role: Takes odd jobs and performs small tasks, earning you money.\nPersonality: Helpful and resourceful. Always ready to lend a hand.", 240, 35000, 200000);
+			IdleNPC idleOlivia = new IdleNPC("Olivia \"The Overtime Overachiever\" Owens", 0, "Role: Works extra hours and contributes to your income during downtime.\nPersonality: Diligent and hardworking. Takes pride in maximizing every moment.", 5, 2000, 1000);
+			IdleNPC idleMilo = new IdleNPC("Milo \"The Musician\" Montoya", 3, "Role: Busks on the street, adding to your income with his musical talents.\nPersonality: Free-spirited and artistic. Believes in the power of music to bring joy.", 150, 15000, 30000);
+			IdleNPC idleHarper = new IdleNPC("Harper \"The Handy Helper\" Hernandez", 6, "Role: Takes odd jobs and performs small tasks, earning you money.\nPersonality: Helpful and resourceful. Always ready to lend a hand.", 240, 35000, 200000);
 
-			Agent agentXander = new Agent("Xander \"The Shadow\" Xavier", 2, "Role: Operates covertly to reduce your risk of detection.\nBackground: Former intelligence operative. Mysterious and skilled in staying off the radar.", 60, 8000, 0.05f);
-			Agent agentZara = new Agent("Zara \"Zero Trace\" Zephyr", 5, "Role: Specializes in erasing digital footprints and maintaining anonymity.\nBackground: Hacker turned agent. Tech-savvy and elusive.", 180, 20000, 0.08f);
-			Agent agentDylan = new Agent("Dylan \"The Distraction\" Donovan", 8, "Role: Creates diversions to divert attention away from your activities.\nBackground: Circus-born agent, master of misdirection in covert operations.", 270, 45000, 0.1f);
+			Agent agentXander = new Agent("Xander \"The Shadow\" Xavier", 1, "Role: Operates covertly to reduce your risk of detection.\nBackground: Former intelligence operative. Mysterious and skilled in staying off the radar.", 60, 8000, 0.05f);
+			Agent agentZara = new Agent("Zara \"Zero Trace\" Zephyr", 4, "Role: Specializes in erasing digital footprints and maintaining anonymity.\nBackground: Hacker turned agent. Tech-savvy and elusive.", 180, 20000, 0.08f);
+			Agent agentDylan = new Agent("Dylan \"The Distraction\" Donovan", 7, "Role: Creates diversions to divert attention away from your activities.\nBackground: Circus-born agent, master of misdirection in covert operations.", 270, 45000, 0.1f);
 
 			AllObjects.allNPC.AddRange(new List<NPC>(){idleOlivia,agentXander,investorWinston,idleMilo,agentZara,investorVictoria,idleHarper,agentDylan,investorGordon});
 

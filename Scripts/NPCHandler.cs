@@ -32,6 +32,12 @@ public partial class NPCHandler : Control
 		{
 			progressBar.Hide();
 		}
+
+		//Loading already unlocked NPCS
+		foreach(NPC npc in AllObjects.CurrentProfile.UnlockedNPCs)
+		{
+			LoadNPCs(npc.NpcId);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,7 +47,7 @@ public partial class NPCHandler : Control
 		{
 			if(progressBars[i].Visible == true)
 			{
-				progressBars[i].Value = NPC.CheckTimer(i+1);
+				progressBars[i].Value = AllObjects.CheckTimer(i);
 			}
 		}
 	}
@@ -91,14 +97,23 @@ public partial class NPCHandler : Control
 			buttons[npcID].Text = "NPC Bought";
 			buttons[npcID].Disabled = true;
 			progressBars[npcID].Show();
-			progressBars[npcID].MaxValue = AllObjects.GetNPCID(npcID+1).ActionTime;
+			progressBars[npcID].MaxValue = AllObjects.GetNPCID(npcID).ActionTime;
 			AllObjects.CurrentProfile.RemoveMoney(currentNPC.Cost);
 			currentNPC.Unlock(GetNode<NPCHandler>("/root/MainScreen/NPCs"));
 		}
 	}
+	private void LoadNPCs(int npcID)
+	{
+		NPC currentNPC = AllObjects.allNPC[npcID];
+		
+		buttons[npcID].Text = "NPC Bought";
+		buttons[npcID].Disabled = true;
+		progressBars[npcID].Show();
+		progressBars[npcID].MaxValue = AllObjects.GetNPCID(npcID).ActionTime;
+		currentNPC.Load(GetNode<NPCHandler>("/root/MainScreen/NPCs"));
+	}
 	public void NPCAction(int NpcId)
 	{
-		GD.Print(NpcId);
-		AllObjects.CurrentProfile.UnlockedNPCs[NpcId-1].NPCAction();
+		AllObjects.CurrentProfile.UnlockedNPCs[NpcId].NPCAction();
 	}
 }
