@@ -45,7 +45,9 @@ public partial class ConsoleButtonHandler : Control
 	{
 		selectedPOI = AllObjects.GetPOI(POIList.GetItemText(POIList.GetSelectedItems()[0]));
 		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
+
 		AttackPOI(selectedPOI,selectedAttack);
+		do attackfarming POI
 	}
 	public void OutputText(string output,string colour)
 	{
