@@ -47,7 +47,6 @@ public partial class ConsoleButtonHandler : Control
 		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
 
 		AttackPOI(selectedPOI,selectedAttack);
-		do attackfarming POI
 	}
 	public void OutputText(string output,string colour)
 	{
@@ -75,11 +74,22 @@ public partial class ConsoleButtonHandler : Control
 		{
 			if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
 			{
-				poi.UnlockPOI();
-				OutputText($"You have begun to hack: {poi.Name} using: {attack.Name}","green");
-				HackButton.Disabled = true;
+				if (Convert.ToString(poi.GetType()) != "Variables.FarmingPOI")
+				{
+					poi.UnlockPOI();
+					OutputText($"You have begun to hack: {poi.Name} using: {attack.Name}", "green");
+					HackButton.Disabled = true;
 
-				timer.Start(10f);
+					timer.Start(10f);
+				}
+				else
+				{
+					poi.UnlockPOI();
+					OutputText($"You have begun to hack: {poi.Name} using: {attack.Name}", "green");
+					HackButton.Disabled = true;
+
+					timer.Start();
+				}
 			}
 			else if (attack.GetStrength() > poi.GetStrength())
 			{

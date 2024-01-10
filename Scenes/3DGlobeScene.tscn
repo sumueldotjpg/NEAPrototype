@@ -67,7 +67,7 @@ surface_material_override/47 = ExtResource("3_2b6m6")
 surface_material_override/48 = ExtResource("3_2b6m6")
 script = ExtResource("2_nbyrn")
 
-[node name="GenuineSolutions" type="Label3D" parent="LowPolyEarth"]
+[node name="Genuine Solutions" type="Label3D" parent="LowPolyEarth"]
 transform = Transform3D(0.96422, 0.157747, -0.213067, -0.0295412, 0.862629, 0.504975, 0.263456, -0.480612, 0.836424, -26.4061, 114.358, 119.903)
 pixel_size = 0.25
 text = "Genuine Solutions"

@@ -1,6 +1,6 @@
+res://Scenes/GlobeScene.tscn
 res://Scenes/3DGlobeScene.tscn
 res://Scenes/MainMenuScene.tscn
-res://Scenes/GlobeScene.tscn
 res://Scripts/ConsoleButtonHandler.cs
 res://Scripts/LowPolyEarthRotation.cs
 res://Scripts/MainMenu.cs

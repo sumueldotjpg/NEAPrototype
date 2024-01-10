@@ -299,7 +299,7 @@ namespace Variables
 		public string Description {get; private set;}
 		public int Id { get; private set; }
 		public int BaseStrength { get; private set;}
-		public bool IsUnlocked {get; private set;}
+		public bool IsUnlocked {get; protected set;}
 		public List<int> Children {get; private set;}
 		public int Reward{get; protected set;}
 		public POI(string name, string description, int basestrength, List<int> children)
@@ -310,13 +310,19 @@ namespace Variables
 			Children = children;
 			IsUnlocked = false;
 		}
-		public void UnlockPOI()
+		public virtual void UnlockPOI()
 		{
 			int BaseReward = Convert.ToInt32(AllObjects.Multiply(9000,"REWARDINCREASE"));
 			int UnlockReward;
 
-			//Reward Money
-			if (BaseStrength == 0)
+            //Add the POI to the profile
+            if (!AllObjects.CurrentProfile.UnlockedPOIs.Contains(this))
+            {
+                AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
+            }
+
+            //Reward Money
+            if (BaseStrength == 0)
 			{
 				UnlockReward = BaseReward;
 				AllObjects.CurrentProfile.AddMoney(UnlockReward);
@@ -327,7 +333,8 @@ namespace Variables
 				AllObjects.CurrentProfile.AddMoney(UnlockReward);
 			}
 
-			IsUnlocked = false;
+			//Set all the other variables up	
+			IsUnlocked = true;
 			Reward = UnlockReward;
 		}
 		public int GetStrength()
@@ -355,6 +362,22 @@ namespace Variables
 		{
 			AllObjects.CurrentProfile.AddMoney(Reward);
 		}
+
+		public override void UnlockPOI()
+		{
+
+            //Add the POI to the profile
+            if (!AllObjects.CurrentProfile.UnlockedPOIs.Contains(this))
+			{
+				AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
+			}
+
+			//Pay the money
+			this.Payout();
+
+            //Set all the other variables up	
+            IsUnlocked = true;
+        }
 	}
 	/// <summary>
 	///Help speed up gameplay

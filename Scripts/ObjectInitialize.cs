@@ -11,7 +11,7 @@ namespace Main
 		public static void Load()
 		{			
 			//POI Creation
-			POI GenuineSolutions = new POI("GenuineSolutions","Lacking innovation, poor customer service, struggling reputation.",0,new List<int>(){1,2});
+			POI GenuineSolutions = new POI("Genuine Solutions","Lacking innovation, poor customer service, struggling reputation.",0,new List<int>(){1,2});
 			POI Google = new POI("Google","Invades privacy, knows too much, and tracks your life.",1,new List<int>(){4,5});
 			POI Microsoft = new POI("Microsoft","Cluttered software, endless updates, and constant crashes",1,new List<int>(){3,12});
 			POI Apple = new POI("Apple","Sells shiny gadgets, forces you to buy their ecosystem.",3,new List<int>(){8});
