@@ -322,6 +322,10 @@ namespace Variables
 			Children = children;
 			IsUnlocked = false;
 		}
+		public void PermenantUnlock()
+		{
+			IsUnlocked = true;
+		}
 		public virtual void UnlockPOI()
 		{
 			int BaseReward = Convert.ToInt32(AllObjects.Multiply(9000,"REWARDINCREASE"));

@@ -50,10 +50,7 @@ public partial class ConsoleButtonHandler : Control
 		{
 			if(selectedPOI.Name == poi.Name)
 			{
-				GD.Print(poi);
-				GD.Print(poi.Name);
-				GD.Print(poi.IsUnlocked);
-				selectedPOI = poi;
+				selectedPOI.PermenantUnlock();
 			}
 		}
 

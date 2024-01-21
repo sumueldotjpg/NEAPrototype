@@ -35,7 +35,7 @@ namespace Main
                     new SaveProfile("Profile 4" , 0, 0,new List<POI>(){}, new List<NPC>(), new List<Upgrade>(){AllObjects.allUpgrades[0],AllObjects.allUpgrades[1],AllObjects.allUpgrades[2],AllObjects.allUpgrades[3]},new List<Attack>(){AllObjects.allAttacks[0]},new List<Multiplier>{}),
                     };      
                     
-                    sw.Write(JsonConvert.SerializeObject(newProfiles));
+                    sw.Write(JsonConvert.SerializeObject(newProfiles, settings));
                 }
                 AllObjects.ProfileLoad(newProfiles);
             }
