@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Dynamic;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
@@ -80,7 +81,7 @@ namespace Variables
 			}
 			throw new Exception("There isnt any NPCs with that ID");
 		}
-		public static float Multiply(int originalValue, string multiplierType)
+		public static float Multiply(float originalValue, string multiplierType)
 		{
 			float multiplier;
 			switch (multiplierType)
@@ -95,7 +96,18 @@ namespace Variables
 						}
 					}
 				return originalValue + multiplier;
-				
+
+				case "DETECTIONDECREASE":
+					multiplier = 0;
+					foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
+					{
+						if(mp.MultiplierType == multiplierType)
+						{
+							multiplier += mp.MultiplierAmount;
+						}
+					}
+				return originalValue * multiplier;
+
 				default:
 					multiplier = 1;
 					foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
@@ -105,7 +117,7 @@ namespace Variables
 							multiplier += mp.MultiplierAmount;
 						}
 					}
-				return originalValue*multiplier;
+				return originalValue * multiplier;
 			}
 		}
 		public static double CheckTimer(int npcid)
@@ -360,14 +372,14 @@ namespace Variables
 		}
 		public void Payout()
 		{
-			AllObjects.CurrentProfile.AddMoney(Reward);
+			AllObjects.CurrentProfile.AddMoney(Convert.ToInt32(AllObjects.Multiply(Reward,"REWARDINCREASE")));
 		}
 
 		public override void UnlockPOI()
 		{
 
             //Add the POI to the profile
-            if (!AllObjects.CurrentProfile.UnlockedPOIs.Contains(this))
+            if (!this.IsUnlocked)
 			{
 				AllObjects.CurrentProfile.UnlockedPOIs.Add(this);
 			}

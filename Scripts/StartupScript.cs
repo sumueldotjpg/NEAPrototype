@@ -7,16 +7,16 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode, DebugNode;
-	
+	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode, WinScreenNode;
 	[Export]
 	Label BalanceText;
-
 	[Export]
 	Node3D Globe;
-
 	[Export]
 	TabContainer poiTabs;
+	[Export]
+	ProgressBar DetectionPercentageBar;
+	float detectionPercentage = 0;
 
 	protected List<Label3D> AllPOILabels = new List<Label3D>();
 
@@ -30,6 +30,7 @@ public partial class StartupScript : Node2D
 		ConsoleNode.Visible = false;
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
+		WinScreenNode.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,26 +45,29 @@ public partial class StartupScript : Node2D
 			string nodeType = Convert.ToString(node.GetType());
 			if(nodeType == "Godot.Label3D")
 			{
-				string poiName = node.Name;
-				POI labelPOI = AllObjects.GetPOI(poiName);
+				POI labelPOI = AllObjects.GetPOI(node.Name);
 
+				currentLabel.Modulate = new Color(1,0,0);
+				
+				foreach(POI poi in AllObjects.CurrentProfile.UnlockedPOIs)
+				{
+					if(labelPOI.Name == poi.Name)
+					{
+						//green
+						currentLabel.Modulate = new Color(0,1,0);	
+					}
+				}
+				
 				if(Convert.ToString(labelPOI.GetType()) == "Variables.FarmingPOI")
 				{
 					//yellow
 					currentLabel.Modulate = new Color(1,1,0);
 				}
-				else if(labelPOI.IsUnlocked)
-				{
-					//blue
-					currentLabel.Modulate = new Color(0,1,0);
-				}
-				else
-				{
-					//red
-					currentLabel.Modulate = new Color(1,0,0);
-				}
 			}
 		}
+
+		detectionPercentage += 1;
+		DetectionPercentageBar.Value = AllObjects.Multiply(detectionPercentage,"DETECTIONDECREASE")/36000;
 	}
 	private void _on_add_money_button_pressed()
 	{
@@ -106,5 +110,17 @@ public partial class StartupScript : Node2D
 	{
 		SaveManager.SaveProfiles();
 		GetTree().Quit();
+	}
+	public void WinGame()
+	{
+		WinScreenNode.Visible = true;
+		TabNode.Visible = false;
+		GlobeNode.Visible = false;
+		ConsoleNode.Visible = false;
+		UpgradesNode.Visible = false;
+		NPCsNode.Visible = false;
+
+		Win win = new Win{};
+		win.GameWin();
 	}
 }

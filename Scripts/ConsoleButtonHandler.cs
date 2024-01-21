@@ -46,6 +46,17 @@ public partial class ConsoleButtonHandler : Control
 		selectedPOI = AllObjects.GetPOI(POIList.GetItemText(POIList.GetSelectedItems()[0]));
 		selectedAttack = AllObjects.GetAttack(AttackList.GetItemText(AttackList.GetSelectedItems()[0]));
 
+		foreach(POI poi in AllObjects.CurrentProfile.UnlockedPOIs)
+		{
+			if(selectedPOI.Name == poi.Name)
+			{
+				GD.Print(poi);
+				GD.Print(poi.Name);
+				GD.Print(poi.IsUnlocked);
+				selectedPOI = poi;
+			}
+		}
+
 		AttackPOI(selectedPOI,selectedAttack);
 	}
 	public void OutputText(string output,string colour)
@@ -58,13 +69,14 @@ public partial class ConsoleButtonHandler : Control
 	{
 		OutputText($"You have hacked {selectedPOI.Name} here is your reward {selectedPOI.Reward}","green");
 		
-		if(RewardPOI(selectedPOI) == "")
+		string rewardedAttack = RewardPOIAttack(selectedPOI);
+		if(rewardedAttack == "")
 		{
 
 		}
 		else
 		{
-			OutputText($"You have discovered how to use the {RewardPOI(selectedPOI)} cyber attack","green");
+			OutputText($"You have discovered how to use the {rewardedAttack} cyber attack","green");
 		}
 		HackButton.Disabled = false;
 	}
@@ -72,7 +84,7 @@ public partial class ConsoleButtonHandler : Control
 	{
 		if(timer.IsStopped())
 		{
-			if (attack.GetStrength() > poi.GetStrength() && !poi.IsUnlocked)
+			if (attack.GetStrength() > poi.GetStrength() && (!poi.IsUnlocked || Convert.ToString(poi.GetType()) == "Variables.FarmingPOI"))
 			{
 				if (Convert.ToString(poi.GetType()) != "Variables.FarmingPOI")
 				{
@@ -105,23 +117,31 @@ public partial class ConsoleButtonHandler : Control
 			OutputText($"You have not finished hacking the previous POI yet.","red");
 		}
 	}
-	public string RewardPOI(POI poi)
+	public string RewardPOIAttack(POI poi)
 	{
 		//Reward new Attack if required
-		switch(poi.BaseStrength)
+		switch(poi.Name)
 		{
-			case 2:
+			case "Apple":
 			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[1]);
+			AttackList.AddItem("Phishing");
 			return "Phishing";
-			case 4:
+			case "Meta":
 			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[2]);
+			AttackList.AddItem("Spoofing");
 			return "Spoofing";
-			case 6:
+			case "Intel":
 			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[3]);
+			AttackList.AddItem("Key Logger");
 			return "Key Logger";
-			case 8:
+			case "Adobe":
 			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[4]);
+			AttackList.AddItem("SQL Injection");
 			return "SQL Injection";
+			case "WorldWideWeb":
+			StartupScript startup = new StartupScript{};
+			startup.WinGame();
+			return null;
 			default:
 			return "";
 		}	

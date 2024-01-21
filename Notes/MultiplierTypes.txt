@@ -2,6 +2,5 @@ POISTRENGTH - increases strength of POI
 ATTACKSTRENGTH - increases strength of attacks
 INCOMEINCREASE - increases amount of income every tick
 NPCDECREASE - decrease NPC cooldown
-
-
 REWARDINCREASE - increases amount of reward from a POI
+DETECTIONDECREASE - decreases detection time
