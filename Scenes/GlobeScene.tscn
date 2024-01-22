@@ -25,8 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://1vajk0j2x142" path="res://Rescources/Icon7.png" id="21_iuvee"]
 [ext_resource type="Texture2D" uid="uid://dqh7s06em4ijv" path="res://Rescources/Icon8.png" id="22_lhwy2"]
 [ext_resource type="Texture2D" uid="uid://mqncad3kembp" path="res://Rescources/Icon9.png" id="23_oofee"]
-[ext_resource type="Script" path="res://Scripts/Win.cs" id="26_34aq4"]
 [ext_resource type="AudioStream" uid="uid://bmkndan3evotm" path="res://Rescources/SUNSHINE.mp3" id="26_d6y0f"]
+[ext_resource type="Script" path="res://Scripts/WinOrLose.cs" id="27_0r00d"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
 _data = {
@@ -515,7 +515,6 @@ layout_mode = 2
 fill_mode = 3
 
 [node name="Upgrades" type="Control" parent="." node_paths=PackedStringArray("EconomyButton", "HackingButton", "NPCButton", "VirusButton", "EconomyBar", "HackingBar", "NPCBar", "VirusBar", "EconomyLabel", "HackingLabel", "NPCLabel", "VirusLabel")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -957,15 +956,15 @@ stream = ExtResource("26_d6y0f")
 volume_db = 24.0
 autoplay = true
 
-[node name="WinScreen" type="Control" parent="." node_paths=PackedStringArray("WinText")]
+[node name="WinScreen" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("26_34aq4")
-WinText = NodePath("WinText")
+script = ExtResource("27_0r00d")
 
 [node name="WinText" type="Label" parent="WinScreen"]
 layout_mode = 0

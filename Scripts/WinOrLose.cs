@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Variables;
 
-public partial class Win : Control
+public partial class WinOrLose : Control
 {
 	[Export]
 	Label WinText;
