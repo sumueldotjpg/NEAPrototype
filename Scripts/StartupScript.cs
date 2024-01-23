@@ -7,7 +7,7 @@ using Variables;
 public partial class StartupScript : Node2D
 {
 	[Export]
-	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode, WinScreenNode;
+	Control TabNode, GlobeNode, ConsoleNode, UpgradesNode, NPCsNode, WinScreenNode, LoseScreenNode;
 	[Export]
 	Label BalanceText;
 	[Export]
@@ -125,7 +125,7 @@ public partial class StartupScript : Node2D
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
 
-		Win win = new Win { };
+		WinOrLose win = new WinOrLose { };
 		win.GameWin();
 	}
 	public void LoseGame() 

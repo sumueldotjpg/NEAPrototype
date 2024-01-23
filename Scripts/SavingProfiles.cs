@@ -13,15 +13,50 @@ namespace Main
         static JsonSerializerSettings settings = new JsonSerializerSettings{TypeNameHandling = TypeNameHandling.Objects};
         public static void SaveProfiles()
         {
-            string filePath = @"Saves/Profiles.json";
+            string dirPath;
+            string filePath;
+            if (OS.HasFeature("editor"))
+            {
+                //editor
+                dirPath = @"Saves";
+                filePath = @"Saves/Profiles.json";
+            }
+            else
+            {
+                //exe
+                dirPath = @"./Saves";
+                filePath = @"./Saves/Profiles.json";
+            }
             
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
+
             string jsonProfiles = JsonConvert.SerializeObject(AllObjects.allProfiles, settings);
             File.WriteAllText(filePath,jsonProfiles);
         }
-
         public static void LoadProfiles()
         {
-            string filePath = @"Saves/Profiles.json";
+            string dirPath;
+            string filePath;
+            if (OS.HasFeature("editor"))
+            {
+                //editor
+                dirPath = @"Saves";
+                filePath = @"Saves/Profiles.json";
+            }
+            else
+            {
+                //exe
+                dirPath = @"./Saves";
+                filePath = @"./Saves/Profiles.json";
+            }
+
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+            }
 
             if(!File.Exists(filePath))
             {
@@ -44,7 +79,7 @@ namespace Main
                 string jsonProfiles = File.ReadAllText(filePath);
                 settings.TypeNameHandling = TypeNameHandling.Auto;
                 List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles,settings);
-                settings.TypeNameHandling = TypeNameHandling.Objects; // Preventing a possible future 
+                settings.TypeNameHandling = TypeNameHandling.Objects; // Preventing a possible future
                 GD.Print(deserializedProfiles[0].UnlockedPOIs[0].IsUnlocked);
                 AllObjects.ProfileLoad(deserializedProfiles);
             }

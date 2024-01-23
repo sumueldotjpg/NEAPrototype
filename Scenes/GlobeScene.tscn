@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://4qtro0aeiqq4"]
+[gd_scene load_steps=29 format=3 uid="uid://4qtro0aeiqq4"]
 
 [ext_resource type="Script" path="res://Scripts/StartupScript.cs" id="1_r05rs"]
 [ext_resource type="PackedScene" uid="uid://cmgrpegw0q5ia" path="res://Scenes/3DGlobeScene.tscn" id="1_ve86q"]
@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://1vajk0j2x142" path="res://Rescources/Icon7.png" id="21_iuvee"]
 [ext_resource type="Texture2D" uid="uid://dqh7s06em4ijv" path="res://Rescources/Icon8.png" id="22_lhwy2"]
 [ext_resource type="Texture2D" uid="uid://mqncad3kembp" path="res://Rescources/Icon9.png" id="23_oofee"]
-[ext_resource type="AudioStream" uid="uid://bmkndan3evotm" path="res://Rescources/SUNSHINE.mp3" id="26_d6y0f"]
 [ext_resource type="Script" path="res://Scripts/WinOrLose.cs" id="27_0r00d"]
 
 [sub_resource type="Curve2D" id="Curve2D_12liy"]
@@ -951,12 +950,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Buy NPC: {Cost}"
 
-[node name="SUNSHINE" type="AudioStreamPlayer2D" parent="NPCs"]
-stream = ExtResource("26_d6y0f")
-volume_db = 24.0
-autoplay = true
-
-[node name="WinScreen" type="Control" parent="."]
+[node name="WinScreen" type="Control" parent="." node_paths=PackedStringArray("WinText", "LoseText")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -965,8 +959,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_0r00d")
+WinText = NodePath("WinText")
+LoseText = NodePath("../LoseScreen/LoseText")
 
 [node name="WinText" type="Label" parent="WinScreen"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 24.0
+offset_right = 220.0
+offset_bottom = 50.0
+scale = Vector2(5, 5)
+text = "asdasdasdasdasdasdasd"
+
+[node name="LoseScreen" type="Control" parent="." node_paths=PackedStringArray("WinText", "LoseText")]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_0r00d")
+WinText = NodePath("../WinScreen/WinText")
+LoseText = NodePath("LoseText")
+
+[node name="LoseText" type="Label" parent="LoseScreen"]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 24.0
