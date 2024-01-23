@@ -28,6 +28,10 @@ public partial class TabMovement : VBoxContainer
 	{
 		ExtendTabList();
 	}
+	private void _on_pause_button_mouse_entered()
+	{
+		ExtendTabList();
+	}
 	private void _on_button_settings_mouse_entered()
 	{
 		ExtendTabList();

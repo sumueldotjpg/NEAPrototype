@@ -1,3 +1,5 @@
+Sprite2D
+VBoxContainer
 AudioStreamPlayer2D
 Button
 Label
@@ -8,7 +10,6 @@ MarginContainer
 ProgressBar
 HBoxContainer
 Container
-VBoxContainer
 TextureRect
 BoxContainer
 ItemList

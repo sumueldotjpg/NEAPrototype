@@ -37,6 +37,10 @@ namespace Variables
 		{
 			CurrentProfile = current;
 		}
+		public static void DeleteProfile(SaveProfile profile)
+		{
+			allProfiles[Convert.ToInt32(profile.Title[profile.Title.Length-1].ToString())-1] = new SaveProfile($"{profile.Title}" , 0, 0,new List<POI>(){}, new List<NPC>(), new List<Upgrade>(){AllObjects.allUpgrades[0],AllObjects.allUpgrades[1],AllObjects.allUpgrades[2],AllObjects.allUpgrades[3]},new List<Attack>(){AllObjects.allAttacks[0]},new List<Multiplier>{});
+		}
 		public static Attack GetAttack(string attackName)
 		{
 			foreach(Attack attack in AllObjects.allAttacks)
@@ -261,7 +265,7 @@ namespace Variables
 			//Returns the money invested within a +- 0.1 of investment multiplier 
 			else
 			{
-				AllObjects.CurrentProfile.AddMoney(moneyInvested*investProfit.Next(Convert.ToInt32((InvestPercent-0.1)*100),Convert.ToInt32((InvestPercent+0.1)*100))/100);
+				AllObjects.CurrentProfile.AddMoney(Convert.ToInt32(AllObjects.Multiply(moneyInvested*investProfit.Next(Convert.ToInt32((InvestPercent-0.1)*100),Convert.ToInt32((InvestPercent+0.1)*100))/100,"INCOMEINCREASE")));
 			}
 		}
 	}

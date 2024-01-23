@@ -125,7 +125,7 @@ public partial class StartupScript : Node2D
 		UpgradesNode.Visible = false;
 		NPCsNode.Visible = false;
 
-		WinOrLose win = new WinOrLose { };
+		WinOrLose win = new WinOrLose{};
 		win.GameWin();
 	}
 	public void LoseGame() 
@@ -137,7 +137,7 @@ public partial class StartupScript : Node2D
         UpgradesNode.Visible = false;
         NPCsNode.Visible = false;
 
-        WinOrLose lose = new WinOrLose { };
+        WinOrLose lose = new WinOrLose{};
         lose.GameLose();
     }
 }

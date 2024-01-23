@@ -80,7 +80,6 @@ namespace Main
                 settings.TypeNameHandling = TypeNameHandling.Auto;
                 List<SaveProfile> deserializedProfiles = JsonConvert.DeserializeObject<List<SaveProfile>>(jsonProfiles,settings);
                 settings.TypeNameHandling = TypeNameHandling.Objects; // Preventing a possible future
-                GD.Print(deserializedProfiles[0].UnlockedPOIs[0].IsUnlocked);
                 AllObjects.ProfileLoad(deserializedProfiles);
             }
         }

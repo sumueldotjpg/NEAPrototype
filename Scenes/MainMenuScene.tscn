@@ -28,6 +28,7 @@ ProfilesNode = NodePath("Profiles")
 SettingsNode = NodePath("Settings")
 
 [node name="Main" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,7 +74,6 @@ theme_override_font_sizes/font_size = 36
 text = "Quit"
 
 [node name="Profiles" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("ButtonProfile1", "ButtonProfile2", "ButtonProfile3", "ButtonProfile4")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,55 +81,96 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_yto7r")
-ButtonProfile1 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1")
-ButtonProfile2 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2")
-ButtonProfile3 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3")
-ButtonProfile4 = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4")
+ButtonProfile1 = NodePath("VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1")
+ButtonProfile2 = NodePath("VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2")
+ButtonProfile3 = NodePath("VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3")
+ButtonProfile4 = NodePath("VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Profiles"]
-custom_minimum_size = Vector2(1880, 1040)
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Profiles"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -938.0
+offset_top = -520.0
+offset_right = 942.0
+offset_bottom = 537.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Profiles/MarginContainer"]
-custom_minimum_size = Vector2(1880, 1040)
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Profiles/VBoxContainer"]
+custom_minimum_size = Vector2(1880, 950)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(1880, 800)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 15
 
-[node name="ButtonProfile1" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonProfile1" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Profile1"
+text = "Profile 1"
 
-[node name="ButtonProfile2" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonProfile2" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Profile2"
+text = "Profile 2"
 
-[node name="ButtonProfile3" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonProfile3" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Profile3"
+text = "Profile 3"
 
-[node name="ButtonProfile4" type="Button" parent="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonProfile4" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Profile4"
+text = "Profile 4"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Profiles/VBoxContainer"]
+custom_minimum_size = Vector2(1880, 75)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(1880, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ButtonDeleteProfile1" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DELETE PROFILE 1"
+
+[node name="ButtonDeleteProfile2" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DELETE PROFILE 2"
+
+[node name="ButtonDeleteProfile3" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DELETE PROFILE 3"
+
+[node name="ButtonDeleteProfile4" type="Button" parent="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DELETE PROFILE 4"
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
 visible = false
@@ -182,10 +223,14 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonPlay" to="CanvasLayer" method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonSettings" to="CanvasLayer" method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonQuit" to="CanvasLayer" method="_on_button_quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1" to="CanvasLayer/Profiles" method="_on_button_profile_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2" to="CanvasLayer/Profiles" method="_on_button_profile_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3" to="CanvasLayer/Profiles" method="_on_button_profile_3_pressed"]
-[connection signal="pressed" from="CanvasLayer/Profiles/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4" to="CanvasLayer/Profiles" method="_on_button_profile_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile1" to="CanvasLayer/Profiles" method="_on_button_profile_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile2" to="CanvasLayer/Profiles" method="_on_button_profile_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile3" to="CanvasLayer/Profiles" method="_on_button_profile_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/ButtonProfile4" to="CanvasLayer/Profiles" method="_on_button_profile_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/ButtonDeleteProfile1" to="CanvasLayer/Profiles" method="_on_button_delete_profile_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/ButtonDeleteProfile2" to="CanvasLayer/Profiles" method="_on_button_delete_profile_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/ButtonDeleteProfile3" to="CanvasLayer/Profiles" method="_on_button_delete_profile_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Profiles/VBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer/ButtonDeleteProfile4" to="CanvasLayer/Profiles" method="_on_button_delete_profile_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CheckButtonFullScreen" to="CanvasLayer" method="_on_check_button_full_screen_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonBack" to="CanvasLayer" method="_on_button_back_pressed"]

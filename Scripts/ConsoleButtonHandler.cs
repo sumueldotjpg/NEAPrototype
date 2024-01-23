@@ -106,7 +106,7 @@ public partial class ConsoleButtonHandler : Control
 			}
 			else
 			{
-				OutputText($"[color=red]You are not strong enough to hack {poi.Name} yet[/color]","red");
+				OutputText($"[color=red]{attack.Name} is not a strong enough attack to hack {poi.Name} yet[/color]","red");
 			}
 		}
 		else

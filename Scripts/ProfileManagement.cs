@@ -3,6 +3,7 @@ using System;
 using System.Collections.Specialized;
 using Variables;
 using Main;
+using System.Diagnostics;
 
 public partial class ProfileManagement : Control
 {
@@ -50,5 +51,22 @@ public partial class ProfileManagement : Control
 	{
 		AllObjects.SetCurrentProfile(AllObjects.allProfiles[3]);
 		GetTree().ChangeSceneToFile("res://Scenes/GlobeScene.tscn");
+	}
+	private void _on_button_delete_profile_1_pressed()
+	{
+		AllObjects.DeleteProfile(AllObjects.allProfiles[0]);
+		GD.Print(AllObjects.allProfiles[0].Title);
+	}
+	private void _on_button_delete_profile_2_pressed()
+	{
+		AllObjects.DeleteProfile(AllObjects.allProfiles[1]);
+	}
+	private void _on_button_delete_profile_3_pressed()
+	{
+		AllObjects.DeleteProfile(AllObjects.allProfiles[2]);
+	}
+	private void _on_button_delete_profile_4_pressed()
+	{
+		AllObjects.DeleteProfile(AllObjects.allProfiles[3]);
 	}
 }
