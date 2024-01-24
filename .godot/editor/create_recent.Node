@@ -1,8 +1,8 @@
+Label
 Sprite2D
 VBoxContainer
 AudioStreamPlayer2D
 Button
-Label
 Control
 Node
 TextEdit
