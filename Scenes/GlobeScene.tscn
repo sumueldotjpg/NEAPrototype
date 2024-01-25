@@ -45,7 +45,7 @@ ConsoleNode = NodePath("Console")
 UpgradesNode = NodePath("Upgrades")
 NPCsNode = NodePath("NPCs")
 WinScreenNode = NodePath("WinScreen")
-BalanceText = NodePath("Globe/BalanceText")
+BalanceText = NodePath("")
 Globe = NodePath("Globe/SubViewportContainer/SubViewport/GlobeScene")
 poiTabs = NodePath("Globe/TabContainer")
 DetectionPercentageBar = NodePath("Globe/HBoxContainer/ProgressBar")
@@ -151,23 +151,6 @@ grow_vertical = 2
 script = ExtResource("9_18grk")
 playerLabel = NodePath("HBoxContainer/RichTextLabelPlayer")
 metadata/_edit_use_anchors_ = true
-
-[node name="BalanceText" type="Label" parent="Globe"]
-layout_mode = 2
-offset_left = 1566.0
-offset_top = 43.0
-offset_right = 1657.0
-offset_bottom = 69.0
-size_flags_vertical = 0
-text = "Balance: ----"
-
-[node name="AddMoneyButton" type="Button" parent="Globe"]
-layout_mode = 0
-offset_left = 1545.0
-offset_top = 106.0
-offset_right = 1866.0
-offset_bottom = 257.0
-text = "+1 Hopefully"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Globe"]
 custom_minimum_size = Vector2(1000, 1000)
@@ -417,7 +400,7 @@ wrap_mode = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Globe"]
 layout_mode = 0
 offset_left = 1520.0
-offset_top = 331.0
+offset_top = 38.0
 offset_right = 1870.0
 offset_bottom = 1031.0
 theme_override_constants/separation = 40
@@ -430,7 +413,7 @@ script = ExtResource("11_tehsl")
 playerLabel = NodePath(".")
 
 [node name="ProgressBar" type="ProgressBar" parent="Globe/HBoxContainer"]
-custom_minimum_size = Vector2(30, 700)
+custom_minimum_size = Vector2(30, 993)
 layout_mode = 2
 max_value = 1.0
 step = 0.001
@@ -1045,7 +1028,6 @@ autoplay = true
 [connection signal="mouse_entered" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_entered"]
 [connection signal="mouse_exited" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="TabButtonControl/Path2D/PathFollow2D/VBoxContainer" method="_on_button_exit_mouse_exited"]
 [connection signal="pressed" from="TabButtonControl/Path2D/PathFollow2D/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
-[connection signal="pressed" from="Globe/AddMoneyButton" to="." method="_on_add_money_button_pressed"]
 [connection signal="pressed" from="Globe/ButtonConsole2" to="." method="_on_button_console_pressed"]
 [connection signal="timeout" from="Console/ButtonTimer" to="Console" method="_on_button_timer_timeout"]
 [connection signal="pressed" from="Console/VBoxContainer/ButtonMarginContainer/FirstHBoxContainer/ButtonConsoleOption3" to="Console" method="_on_button_console_option_3_pressed"]
