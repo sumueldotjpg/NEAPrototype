@@ -101,13 +101,14 @@ namespace Variables
 					}
 				return originalValue + multiplier;
 
+				case "NPCDECREASE":
 				case "DETECTIONDECREASE":
-					multiplier = 0;
+					multiplier = 1;
 					foreach(Multiplier mp in AllObjects.CurrentProfile.Multipliers)
 					{
 						if(mp.MultiplierType == multiplierType)
 						{
-							multiplier += mp.MultiplierAmount;
+							multiplier -= mp.MultiplierAmount;
 						}
 					}
 				return originalValue * multiplier;
@@ -237,7 +238,9 @@ namespace Variables
 			callNPC.Call(NpcId);
 		}
 	}
-
+	/// <summary>
+	/// Trades the players money and increases it by random amounts
+	/// </summary>
 	public class Investor : NPC
 	{
 		public float InvestPercent {get; private set; }
@@ -269,6 +272,9 @@ namespace Variables
 			}
 		}
 	}
+	/// <summary>
+	/// Earns the player moeny every tick
+	/// </summary>
 	public class IdleNPC : NPC
 	{
 		public int EarnAmount {get; private set;}
@@ -288,6 +294,9 @@ namespace Variables
 			AllObjects.CurrentProfile.AddMoney(EarnAmount);
 		}
 	}
+	/// <summary>
+	/// Slows down the rate at which the player is detected
+	/// </summary>
 	public class Agent : NPC
 	{
 		public float DecreaseDetectionRate {get; private set;}
@@ -370,6 +379,9 @@ namespace Variables
 			return strength;
 		}
 	}
+	/// <summary>
+	/// A POI primarly for making money
+	/// </summary>
 	public class FarmingPOI : POI
 	{
 		public int Cooldown {get; private set;}
@@ -503,6 +515,9 @@ namespace Variables
 			Description = $"This is a hacking upgrade to increase reward on hacking places.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
+	/// <summary>
+	/// NPC descreases the time of NPC cooldown
+	/// </summary>
 	public class NPCUpgrade : Upgrade
 	{
 		public NPCUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
@@ -527,6 +542,9 @@ namespace Variables
 			Description = $"This is an NPC upgrade to descrease the action time of your NPCs.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
+	/// <summary>
+	/// Virus upgrade the increases the strength of a virus
+	/// </summary>
 	public class VirusUpgrade : Upgrade
 	{
 		public VirusUpgrade(int upgradeid, int cost, int level) : base(upgradeid, cost, level)
@@ -551,7 +569,9 @@ namespace Variables
 			Description = $"This is a virus upgrade to increase the strength of your attacks.\nCurrent Level: {Level}\nCost to Upgrade: {Cost}";
 		}
 	}
-	
+	/// <summary>
+	/// The attack used for hacking POIs
+	/// </summary>
 	public class Attack
 	{
 		public int AttackID { get; private set; }
@@ -578,6 +598,9 @@ namespace Variables
 			return strength;
 		}
 	}
+	/// <summary>
+	/// An integer amount added to the saveprofile when an upgrade is bought for multiplaying values
+	/// </summary>
 	public class Multiplier
 	{
 		public string MultiplierType { get; private set; }

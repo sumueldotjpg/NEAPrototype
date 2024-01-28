@@ -50,6 +50,16 @@ public partial class NPCHandler : Control
 				progressBars[i].Value = AllObjects.CheckTimer(i);
 			}
 		}
+
+		for (int i = 0; i < 9; i++)
+		{
+			if(progressBars[i].Visible == true)
+			{
+				progressBars[i].MaxValue = AllObjects.Multiply(AllObjects.GetNPCID(i).ActionTime,"NPCDECREASE");
+			}
+		}
+
+		
 	}
 
 	private void _on_button_1_pressed()
@@ -97,7 +107,6 @@ public partial class NPCHandler : Control
 			buttons[npcID].Text = "NPC Bought";
 			buttons[npcID].Disabled = true;
 			progressBars[npcID].Show();
-			progressBars[npcID].MaxValue = AllObjects.GetNPCID(npcID).ActionTime;
 			AllObjects.CurrentProfile.RemoveMoney(currentNPC.Cost);
 			currentNPC.Unlock(GetNode<NPCHandler>("/root/MainScreen/NPCs"));
 		}

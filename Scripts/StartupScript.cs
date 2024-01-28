@@ -36,7 +36,19 @@ public partial class StartupScript : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		BalanceText.Text = $"Balance = {AllObjects.CurrentProfile.MoneyBalance}";
+
+		//Money Per Tick Equatin
+		int moneyPerTick = 0;
+		foreach(POI poi in AllObjects.CurrentProfile.UnlockedPOIs)
+		{
+			moneyPerTick += poi.BaseStrength;
+		}
+		foreach(Attack attack in AllObjects.CurrentProfile.UnlockedAttacks)
+		{
+			moneyPerTick += attack.BaseStrength;
+		}
+
+		AllObjects.CurrentProfile.AddMoney(Convert.ToInt32(Math.Pow(Math.E,moneyPerTick/3)*(delta/1)));
 
 		//handle poi colours
 		foreach (Node node in Globe.GetChild(2).GetChildren())
@@ -66,8 +78,8 @@ public partial class StartupScript : Node2D
 			}
 		}
 
-		detectionPercentage += 1;
-		DetectionPercentageBar.Value = AllObjects.Multiply(detectionPercentage, "DETECTIONDECREASE") / 36000;
+		detectionPercentage += ((float)delta);
+		DetectionPercentageBar.Value = AllObjects.Multiply(detectionPercentage, "DETECTIONDECREASE") / 300;
 
 		if (DetectionPercentageBar.Value == 1)
 		{

@@ -3,5 +3,5 @@ res://Rescources/GrassGreen.tres::d584c856a6121665b1632f61d8f93b1d::1701895972::
 res://Rescources/SeaBlue.tres::e310c57ead62d1ed95db1797059ae00b::1701895972::res://.godot/exported/133200997/export-172739e97c2124c44375a745813ba3ec-SeaBlue.res
 res://Rescources/Stars.tres::2306d76c3b11fa546913d36f4fdec8aa::1701895972::res://.godot/exported/133200997/export-5197c3a420c3f445ffdf063270942865-Stars.res
 res://Scenes/3DGlobeScene.tscn::2b57e87a90d00ae3a0ec7f53ef8e8791::1705703615::res://.godot/exported/133200997/export-d2b1452a7fd8acb1319f31d0b14f686c-3DGlobeScene.scn
-res://Scenes/GlobeScene.tscn::c7063c0c065c923c61f9522ba19381c2::1706138677::res://.godot/exported/133200997/export-26dcb99d0b535dd2d30354f9fa663ef7-GlobeScene.scn
-res://Scenes/MainMenuScene.tscn::bdb3756dc5a3bc2a75d698a8e743e8fc::1706138676::res://.godot/exported/133200997/export-02baf5ecf46cee6d10224ebf841df3f8-MainMenuScene.scn
+res://Scenes/GlobeScene.tscn::1c5aec81eb7c99436f1afdc4459a2dca::1706220211::res://.godot/exported/133200997/export-26dcb99d0b535dd2d30354f9fa663ef7-GlobeScene.scn
+res://Scenes/MainMenuScene.tscn::bdb3756dc5a3bc2a75d698a8e743e8fc::1706220210::res://.godot/exported/133200997/export-02baf5ecf46cee6d10224ebf841df3f8-MainMenuScene.scn

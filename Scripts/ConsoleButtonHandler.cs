@@ -119,7 +119,7 @@ public partial class ConsoleButtonHandler : Control
 		//Reward new Attack if required
 		switch(poi.Name)
 		{
-			case "Apple":
+			case "Microsoft":
 			AllObjects.CurrentProfile.UnlockedAttacks.Add(AllObjects.allAttacks[1]);
 			AttackList.AddItem("Phishing");
 			return "Phishing";

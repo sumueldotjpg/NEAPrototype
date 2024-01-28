@@ -54,10 +54,10 @@ namespace Main
 			AllObjects.allNPC.AddRange(new List<NPC>(){idleOlivia,agentXander,investorWinston,idleMilo,agentZara,investorVictoria,idleHarper,agentDylan,investorGordon});
 
 			//UpgradeCreation
-			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 10000, 0);
-			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 20000, 0);
+			EconomyUpgrade EconomyUpgrade = new EconomyUpgrade(1, 20000, 0);
+			HackingUpgrade HackingUpgrade = new HackingUpgrade(2, 40000, 0);
 			NPCUpgrade NPCUpgrade = new NPCUpgrade(3, 30000, 0);
-			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 40000, 0);
+			VirusUpgrade VirusUpgrade = new VirusUpgrade(4, 10000, 0);
 
 			AllObjects.allUpgrades.AddRange(new List<Upgrade>() {EconomyUpgrade,HackingUpgrade,NPCUpgrade,VirusUpgrade});
 
